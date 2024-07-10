@@ -59,24 +59,29 @@ public class PlanoCartesiano {
 		return false;
 	}
 	
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n");
-		int aux = 0;
-		for (int i = 0; i < dimX; i++) {
-		
-			sb.append(" ");
-			for (int j = 0; j < dimY; j++) {
-				sb.append("[");
-				sb.append("A, V");
-				sb.append("]");
-				sb.append(" ");
-				aux++;
-			}
-			sb.append("\n\n");
-		}
-		return sb.toString();
-	}
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < dimY; i++) {
+            sb.append("   ");
+            sb.append(i+1);
+            sb.append("");
+        }
+        sb.append("\n");
+        int aux = 0;
+        for (int i = 0; i < dimX; i++) {
+            sb.append(i+1);
+            sb.append(" ");
+            for (int j = 0; j < dimY; j++) {
+                sb.append("[");
+                sb.append(" ");
+                sb.append("]");
+                sb.append(" ");
+                aux++;
+            }
+            sb.append("\n\n");
+        }
+        return sb.toString();
+    }
 	
 
 }
