@@ -59,6 +59,7 @@ public class Robo {
 		
 		System.out.println("A posição X é: " + getPosX());
 		System.out.println("A posição Y é: " + getPosY());
+		System.out.println();
 	}
 	
 	public void moverRobo(int i) {
@@ -76,11 +77,11 @@ public class Robo {
 		case 4: 
 			if(posX == 0) throw new MovimentoInvalidoException();
 			posX--; 
-			break;
 		}
 		
 		System.out.println("A posição X é: " + getPosX());
 		System.out.println("A posição Y é: " + getPosY());
+		System.out.println();
 	}
 	
 }
