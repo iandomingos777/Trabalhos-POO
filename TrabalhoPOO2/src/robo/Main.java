@@ -7,6 +7,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+	
 		Robo r1 = new RoboInteligente("azul");
 		
 		r1.moverRobo(1);
