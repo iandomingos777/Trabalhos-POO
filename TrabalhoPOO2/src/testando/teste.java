@@ -10,5 +10,8 @@ public class teste {
 	}
 	public void cancaoTuf() {
 		System.out.println("se mexer com a tuf siaragay leva bala");
+	public int saulin() {
+		int a = 5;
+		return a + 5;
 	}
 }
