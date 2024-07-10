@@ -8,4 +8,7 @@ private String rg;
 	public void cometerAtos() {
 		System.out.println("oi");
 	}
+	public void saulin() {
+		
+	}
 }
