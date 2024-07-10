@@ -31,6 +31,14 @@ public class Robo {
 		this.posY = posY;
 	}
 	
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
 	public void moverRobo(String str) {
 		switch (str) {
 		case "up":

@@ -19,54 +19,25 @@ public class PlanoCartesiano {
 		this.dimY = foodY;
 	}
 	
-	
-	
 	public int getDimX() {
 		return dimX;
 	}
-
-
-
-	public void setDimX(int dimX) {
-		this.dimX = dimX;
-	}
-
-
 
 	public int getDimY() {
 		return dimY;
 	}
 
-
-
-	public void setDimY(int dimY) {
-		this.dimY = dimY;
-	}
-
-
-
 	public int getFoodX() {
 		return foodX;
 	}
 
-
-
-	public void setFoodX(int foodX) {
-		this.foodX = foodX;
-	}
-
-
-
 	public int getFoodY() {
 		return foodY;
 	}
-
-
-
-	public void setFoodY(int foodY) {
-		this.foodY = foodY;
+	
+	public ArrayList<Robo> getRobos() {
+		return robos;
 	}
-
 
 	public void adicionarRobos(Robo... robos) {
 		this.robos.addAll(Arrays.asList(robos));
