@@ -1,5 +1,6 @@
 package robo;
 
+import robo.modelo.PlanoCartesiano;
 import robo.modelo.Robo;
 import robo.modelo.RoboInteligente;
 
