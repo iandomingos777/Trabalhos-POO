@@ -7,7 +7,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-	
+		PlanoCartesiano plano = new PlanoCartesiano(10, 5);
+		plano.imprimirCampos();
 		Robo r1 = new RoboInteligente("azul");
 		
 		r1.moverRobo(1);
