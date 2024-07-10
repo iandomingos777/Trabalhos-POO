@@ -14,9 +14,8 @@ public class Main {
 		r1.moverRobo(2);
 		r1.moverRobo(2);
 		r1.moverRobo(2);
-		
+		System.out.println("BOM DIA");
 	}
-	
 }
 
 
