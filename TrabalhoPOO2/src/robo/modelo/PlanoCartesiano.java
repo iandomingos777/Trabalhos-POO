@@ -13,15 +13,15 @@ public class PlanoCartesiano {
 	private ArrayList<ArrayList<Campo>> campos = new ArrayList<ArrayList<Campo>>();
 
 	public PlanoCartesiano(int foodY, int foodX) {
-		if(foodX > 0 && foodY > 0) {
-		this.foodY = foodY;
-		this.foodX = foodX;
-		this.dimX = foodX;
-		this.dimY = foodY;
-		for (int i = 0; i < dimY; i++) {
-			campos.add(new ArrayList<Campo>());
-			for (int j = 0; j < dimX; j++) {
-				campos.get(i).add(new Campo(i + 1, j + 1));
+		if (foodX > 0 && foodY > 0) {
+			this.foodY = foodY;
+			this.foodX = foodX;
+			this.dimX = foodX;
+			this.dimY = foodY;
+			for (int i = 0; i < dimY; i++) {
+				campos.add(new ArrayList<Campo>());
+				for (int j = 0; j < dimX; j++) {
+					campos.get(i).add(new Campo(i + 1, j + 1));
 				}
 			}
 		}
@@ -65,11 +65,10 @@ public class PlanoCartesiano {
 		}
 		return false;
 	}
-	
+
 	public void imprimirCampos() {
-		for(int i = 0; i < dimY; i++) {
-			for(int j = 0; j < dimX; j++)
-			{
+		for (int i = 0; i < dimY; i++) {
+			for (int j = 0; j < dimX; j++) {
 				System.out.print(campos.get(i).get(j) + " ");
 			}
 			System.out.println();
@@ -79,23 +78,16 @@ public class PlanoCartesiano {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < dimY; i++) {
-			sb.append("   ");
-			sb.append(i + 1);
-			sb.append("");
-		}
-		sb.append("\n");
-		int aux = 0;
-		for (int i = 0; i < dimX; i++) {
-			sb.append(i + 1);
-			sb.append(" ");
-			for (int j = 0; j < dimY; j++) {
-				sb.append("[");
-				sb.append(" ");
-				sb.append("]");
-				sb.append(" ");
-				aux++;
+			sb.append((dimY - i) + " ");
+			for (int j = 0; j < dimX; j++) {
+				sb.append(campos.get(i).get(j) + " ");
 			}
-			sb.append("\n\n");
+			sb.append("\n");
+		}
+		sb.append("  ");
+		for (int j = 1; j <= dimX; j++) {
+			sb.append("  " + j + "  ");
+			sb.append(" ");
 		}
 		return sb.toString();
 	}

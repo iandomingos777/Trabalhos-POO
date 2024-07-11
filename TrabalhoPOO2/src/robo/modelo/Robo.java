@@ -83,5 +83,4 @@ public class Robo {
 		System.out.println("A posição Y é: " + getPosY());
 		System.out.println();
 	}
-	
 }
