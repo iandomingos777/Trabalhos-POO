@@ -18,16 +18,17 @@ public class Main {
 		System.out.println(plano);
 		
 		Robo r1 = new Robo("azul");
+		
 		try {
 			r1.moverRobo("up");
 			r1.moverRobo(2);
 			r1.moverRobo("right");
 			r1.moverRobo("right");
+			r1.moverRobo(3);
 			r1.moverRobo("down");
 		} catch(MovimentoInvalidoException e) {
-			e.printStackTrace();
+			System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
 			System.out.println("(" + r1.getPosX() + ", " + r1.getPosY() + ")");
-			
 		} finally {
 			System.out.println("chegou aqui!");
 		}
