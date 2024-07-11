@@ -19,13 +19,13 @@ public class RoboInteligente extends Robo{
 		try {
 			if(currentException) {
 				if(i == ultimoMovimento) {
-					System.out.println("Movimento não permitido. Um movimento válido será feito");
 			        Random random = new Random();			        
 			        int newmoviment; 
 			        do {
 			            newmoviment = random.nextInt(4) + 1; 
 			        } while (newmoviment == i);
 			        System.out.println("Novo movimento: " + newmoviment);
+			        System.out.println();
 			        while(currentException) {
 			        	moverRobo(newmoviment);
 			        }      
