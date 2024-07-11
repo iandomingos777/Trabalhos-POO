@@ -24,7 +24,6 @@ public class RoboInteligente extends Robo{
 			        do {
 			            newmoviment = random.nextInt(4) + 1; 
 			        } while (newmoviment == i);
-			        System.out.println("Novo movimento: " + newmoviment);
 			        while(currentException) {
 			        	moverRobo(newmoviment);
 			        }      
@@ -34,7 +33,9 @@ public class RoboInteligente extends Robo{
 			super.moverRobo(i);
 			currentException = false;
 		} catch (MovimentoInvalidoException e) {
-			System.out.println("Movimento inválido\n");
+			if(!currentException) {
+				System.out.println("Movimento inválido\n");
+			}
 			currentException = true;
 		} finally {
 			ultimoMovimento = i;
@@ -66,8 +67,6 @@ public class RoboInteligente extends Robo{
 			        do {
 			            newmoviment = random.nextInt(4) + 1; 
 			        } while (newmoviment == i);
-			        System.out.println("Novo movimento: " + newmoviment);
-			        System.out.println();
 			        while(currentException) {
 			        	moverRobo(newmoviment);
 			        }      
@@ -77,7 +76,9 @@ public class RoboInteligente extends Robo{
 			super.moverRobo(i);
 			currentException = false;
 		} catch (MovimentoInvalidoException e) {
-			System.out.println("Movimento inválido\n");
+			if(!currentException) {
+				System.out.println("Movimento inválido\n");
+			}
 			currentException = true;
 		} finally {
 			ultimoMovimento = i;
