@@ -58,16 +58,16 @@ public class PlanoCartesiano {
 	public String toString() {
 		
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < dimY; i++) {
-			sb.append((dimY - i) + " ");
+		for (int i = dimY; i > 0; i--) {
+			sb.append(i + " ");
 			for (int j = 0; j < dimX; j++) {
-				sb.append(campos.get(i).get(j) + " ");
+				sb.append(campos.get(i - 1).get(j) + " ");
 			}
 			sb.append("\n");
 		}
 		sb.append("  ");
 		for (int j = 1; j <= dimX; j++) {
-			sb.append("  " + j + "  ");
+			sb.append("  " + j + "   ");
 			sb.append(" ");
 		}
 		sb.append("\n");
