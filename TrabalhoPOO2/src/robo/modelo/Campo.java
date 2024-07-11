@@ -33,6 +33,13 @@ public void remRobo(String cor) {
 }
 
 public String toString() {
-	return "[ ]";
+	if(robos.size() == 2)
+	{
+		return "["+robos.get(0).toString() + " " 
+	    + robos.get(1).toString() +"]";
+	}else if(robos.size() == 1) {
+		return "[ " + robos.get(0) + " ]";
+	}
+	return "[   ]";
 }
 }
