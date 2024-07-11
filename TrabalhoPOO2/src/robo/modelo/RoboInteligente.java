@@ -25,6 +25,48 @@ public class RoboInteligente extends Robo{
 			            newmoviment = random.nextInt(4) + 1; 
 			        } while (newmoviment == i);
 			        System.out.println("Novo movimento: " + newmoviment);
+			        while(currentException) {
+			        	moverRobo(newmoviment);
+			        }      
+					return;
+				}
+			}
+			super.moverRobo(i);
+			currentException = false;
+		} catch (MovimentoInvalidoException e) {
+			System.out.println("Movimento inválido\n");
+			currentException = true;
+		} finally {
+			ultimoMovimento = i;
+		}
+	}
+	
+	@Override
+	public void moverRobo(String str) {
+		// TODO Auto-generated method stub
+		int i = 0;
+		switch (str) {
+		case "up": 
+			i = 1;
+			break;
+		case "down":
+			i = 2;
+			break;
+		case "right":
+			i = 3;
+			break;
+		case "left":
+			i = 4;
+		}
+		try {
+			if(currentException) {
+				if(i == ultimoMovimento) {
+			        Random random = new Random();			        
+			        int newmoviment; 
+			        do {
+			            newmoviment = random.nextInt(4) + 1; 
+			        } while (newmoviment == i);
+			        System.out.println("Novo movimento: " + newmoviment);
 			        System.out.println();
 			        while(currentException) {
 			        	moverRobo(newmoviment);
@@ -35,36 +77,10 @@ public class RoboInteligente extends Robo{
 			super.moverRobo(i);
 			currentException = false;
 		} catch (MovimentoInvalidoException e) {
-			System.out.println("Movimento inválido");
+			System.out.println("Movimento inválido\n");
 			currentException = true;
 		} finally {
 			ultimoMovimento = i;
-		}
-	}
-	
-	@Override
-	public void moverRobo(String str) {
-		// TODO Auto-generated method stub
-		try {
-			super.moverRobo(str);
-			currentException = false;
-		} catch (MovimentoInvalidoException e) {
-			System.out.println("Movimento inválido");
-			currentException = true;
-		} finally {
-			switch(str) {
-			case "up": 
-				ultimoMovimento = 1;
-				break;
-			case "down": 
-				ultimoMovimento = 2;
-				break;
-			case "right":
-				ultimoMovimento = 3;
-				break;
-			case "left":
-				ultimoMovimento = 4;
-			}
 		}
 	}
 

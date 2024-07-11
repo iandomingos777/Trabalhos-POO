@@ -4,7 +4,6 @@ import robo.excecao.MovimentoInvalidoException;
 
 public class Robo {
 
-	@SuppressWarnings("unused")
 	private String cor;
 	private int posX;
 	private int posY;

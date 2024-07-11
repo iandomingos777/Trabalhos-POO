@@ -1,15 +1,14 @@
 package robo.modelo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PlanoCartesiano {
-	@SuppressWarnings("unused")
+	
 	private int dimX;
-	@SuppressWarnings("unused")
 	private int dimY;
 	private int foodX;
 	private int foodY;
+	
 	private ArrayList<ArrayList<Campo>> campos = new ArrayList<ArrayList<Campo>>();
 
 	public PlanoCartesiano(int foodY, int foodX) {
@@ -89,6 +88,7 @@ public class PlanoCartesiano {
 			sb.append("  " + j + "  ");
 			sb.append(" ");
 		}
+		sb.append("\n");
 		return sb.toString();
 	}
 
