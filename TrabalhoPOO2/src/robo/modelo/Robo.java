@@ -82,4 +82,18 @@ public class Robo {
 		System.out.println("A posição Y é: " + getPosY());
 		System.out.println();
 	}
+	
+	public String toString() {
+	        String yellowColor = "\u001B[33m";
+	        String greenColor = "\u001B[32m";
+	        String resetColor = "\u001B[0m";
+	        String robot = "\uD83E\uDD16"; 
+	      if(cor.equals("Amarelo")) {
+	    	  return yellowColor + robot + resetColor;
+	      }
+	      else if(cor.equals("Verde")) {
+	    	  return greenColor + robot + resetColor;
+	      }
+               return "";
+	}
 }

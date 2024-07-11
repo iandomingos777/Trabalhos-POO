@@ -10,19 +10,24 @@ public class PlanoCartesiano {
 	private int foodY;
 	
 	private ArrayList<ArrayList<Campo>> campos = new ArrayList<ArrayList<Campo>>();
-
+   
+	private void criarCampos() {
+		for (int i = 0; i < dimY; i++) {
+		campos.add(new ArrayList<Campo>());
+		for (int j = 0; j < dimX; j++) {
+			campos.get(i).add(new Campo(i + 1, j + 1));
+		}
+	}	
+	}
+	
 	public PlanoCartesiano(int foodY, int foodX) {
 		if (foodX > 0 && foodY > 0) {
 			this.foodY = foodY;
 			this.foodX = foodX;
 			this.dimX = foodX;
 			this.dimY = foodY;
-			for (int i = 0; i < dimY; i++) {
-				campos.add(new ArrayList<Campo>());
-				for (int j = 0; j < dimX; j++) {
-					campos.get(i).add(new Campo(i + 1, j + 1));
-				}
-			}
+			criarCampos();
+			campos.get(foodY - 1).get(foodX - 1).colocarAlimento();
 		}
 	}
 
@@ -42,21 +47,6 @@ public class PlanoCartesiano {
 		return foodY;
 	}
 
-	public void expandirY() {
-		dimY++;
-		campos.add(new ArrayList<Campo>());
-		for (int j = 0; j < dimX; j++) {
-			campos.get(dimY - 1).add(new Campo(dimY, j + 1));
-		}
-	}
-
-	public void expandirX() {
-		dimX++;
-		for (int i = 0; i < dimY; i++) {
-			campos.get(i).add(new Campo(i + 1, dimX));
-		}
-
-	}
 
 	public boolean verificarVitoria(Robo robo) {
 		if (robo.getPosX() == foodX && robo.getPosY() == foodY) {
@@ -64,16 +54,7 @@ public class PlanoCartesiano {
 		}
 		return false;
 	}
-
-	public void imprimirCampos() {
-		for (int i = 0; i < dimY; i++) {
-			for (int j = 0; j < dimX; j++) {
-				System.out.print(campos.get(i).get(j) + " ");
-			}
-			System.out.println();
-		}
-	}
-
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < dimY; i++) {
