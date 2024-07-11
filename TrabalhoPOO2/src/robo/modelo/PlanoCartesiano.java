@@ -56,6 +56,7 @@ public class PlanoCartesiano {
 	}
 	
 	public String toString() {
+		
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < dimY; i++) {
 			sb.append((dimY - i) + " ");

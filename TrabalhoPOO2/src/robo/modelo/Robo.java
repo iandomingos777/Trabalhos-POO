@@ -44,14 +44,14 @@ public class Robo {
 			posY++;
 			break;
 		case "down":
-			if(posY == 0) throw new MovimentoInvalidoException();
+			if(posY == 0) throw new MovimentoInvalidoException("Down: Inválido");
 			else posY--; 
 			break;
 		case "right":
 			posX++; 
 			break;
 		case "left": 
-			if(posX == 0) throw new MovimentoInvalidoException();
+			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
 			break;
 		}
@@ -67,14 +67,14 @@ public class Robo {
 			posY++;
 			break;
 		case 2:
-			if(posY == 0) throw new MovimentoInvalidoException();
+			if(posY == 0) throw new MovimentoInvalidoException("Down: Inválido");
 			else posY--; 
 			break;
 		case 3:
 			posX++; 
 			break;
 		case 4: 
-			if(posX == 0) throw new MovimentoInvalidoException();
+			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
 		}
 		
