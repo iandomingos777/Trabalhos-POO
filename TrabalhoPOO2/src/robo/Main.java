@@ -1,5 +1,6 @@
 package robo;
 
+import robo.modelo.PlanoCartesiano;
 import robo.modelo.Robo;
 import robo.modelo.RoboInteligente;
 
@@ -12,7 +13,7 @@ public class Main {
 		r1.moverRobo(2);
 		r1.moverRobo(2);
 		r1.moverRobo(2);
-		System.out.println("BOM DIA");
+		
 	}
 }
 

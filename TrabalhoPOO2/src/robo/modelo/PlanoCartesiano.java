@@ -22,8 +22,8 @@ public class PlanoCartesiano {
 			campos.add(new ArrayList<Campo>());
 			for (int j = 0; j < dimX; j++) {
 				campos.get(i).add(new Campo(i + 1, j + 1));
+				}
 			}
-		}
 		}
 	}
 
