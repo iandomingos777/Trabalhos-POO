@@ -55,6 +55,8 @@ public class Campo {
 	public String toString() {
 		String redColor = "\u001B[31m";
 		String grayColor = "\u001B[37m ";
+		String goldColor = "\u001B[38;5;136m";
+		
 		String trofeu = "\uD83C\uDFC6";
 		String dot = "⚫";
 		String apple = "\uD83C\uDF4E";
@@ -62,13 +64,7 @@ public class Campo {
 
 		if (eAlimento) {
 			if (estaOcupado) {
-				String color;
-				if (robos.get(0).getCor().equals("Verde")) {
-					color = "\u001B[32m";
-				} else {
-					color = "\u001B[33m";
-				}
-				return "[ " + color + trofeu + resetColor + " ]";
+			return "[" + robos.get(0) + " " + goldColor + trofeu + resetColor + "]"; 
 			}
 			return "[ " + redColor + apple + resetColor + " ]";
 		}
