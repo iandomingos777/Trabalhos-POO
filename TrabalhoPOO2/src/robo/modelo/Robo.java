@@ -7,6 +7,8 @@ public class Robo {
 	private String cor;
 	private int posX;
 	private int posY;
+	private int movimentosValidos;
+	private int movimentosInvalidos;
 
 	public Robo(String cor) {
 		this.cor = cor;
@@ -32,6 +34,22 @@ public class Robo {
 	
 	public String getCor() {
 		return cor;
+	}
+
+	public int getMovimentosValidos() {
+		return movimentosValidos;
+	}
+
+	public void setMovimentosValidos(int movimentosValidos) {
+		this.movimentosValidos = movimentosValidos;
+	}
+
+	public int getMovimentosInvalidos() {
+		return movimentosInvalidos;
+	}
+
+	public void setMovimentosInvalidos(int movimentosInvalidos) {
+		this.movimentosInvalidos = movimentosInvalidos;
 	}
 
 	public void moverRobo(String str) {
