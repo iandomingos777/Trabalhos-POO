@@ -16,27 +16,22 @@ public class Campo {
 		eAlimento = false;
 	}
 
-	
-	
 	public boolean isOcupado() {
 		return estaOcupado;
 	}
 
-
-
-	public void addRobo(Robo robo)
-	{
+	public void addRobo(Robo robo) {
 		robos.add(robo);
 		estaOcupado = true;
 	}
- 
+
 	public void remRobo(Robo robo) {
-		for(int i = 0; i < robos.size(); i++) {
-			if(robos.get(i).getCor().equals(robo.getCor())) {
+		for (int i = 0; i < robos.size(); i++) {
+			if (robos.get(i).getCor().equals(robo.getCor())) {
 				robos.remove(i);
 			}
 		}
-		if(robos.isEmpty()) {
+		if (robos.isEmpty()) {
 			estaOcupado = false;
 		}
 	}
@@ -52,27 +47,41 @@ public class Campo {
 	public ArrayList<Robo> getRobos() {
 		return robos;
 	}
-	
-public void colocarAlimento() {
-	eAlimento = true;
-}
+
+	public void colocarAlimento() {
+		eAlimento = true;
+	}
 
 	public String toString() {
-        String redColor = "\u001B[31m";
-        String grayColor = "\u001B[37m ";
-        String dot = "⚫";
-        String apple = "\uD83C\uDF4E"; 
-        String resetColor = "\u001B[0m";
-        
-		if(robos.size() == 2)
-		{
-			return "["+robos.get(0) + " " 
-					+ robos.get(1) +"]";
-		}else if(robos.size() == 1) {
-			return "[ " + robos.get(0) + " ]";
-		}else if(eAlimento) {
-			return "[ " + redColor + apple + resetColor + " ]"  ;
+		String redColor = "\u001B[31m";
+		String grayColor = "\u001B[37m ";
+		String trofeu = "\uD83C\uDFC6";
+		String dot = "⚫";
+		String apple = "\uD83C\uDF4E";
+		String resetColor = "\u001B[0m";
+
+		if (eAlimento) {
+			if (estaOcupado) {
+				String color;
+				if (robos.get(0).getCor().equals("Verde")) {
+					color = "\u001B[32m";
+				} else {
+					color = "\u001B[33m";
+				}
+				return "[ " + color + trofeu + resetColor + " ]";
+			}
+			return "[ " + redColor + apple + resetColor + " ]";
 		}
+		
+		else if (robos.size() == 2) {
+			return "[" + robos.get(0) + " " + robos.get(1) + "]";
+		}
+
+		else if (robos.size() == 1) {
+			return "[ " + robos.get(0) + " ]";
+		}
+
+
 		return "[" + grayColor + dot + resetColor + " ]";
 	}
 }
