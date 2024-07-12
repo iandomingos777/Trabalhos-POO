@@ -14,6 +14,7 @@ public class Main1 {
         x = entrada.nextInt();
         System.out.print("Posição Y da comida: ");
         y = entrada.nextInt();
+        System.out.println();
 		
         PlanoCartesianoConsole plano = new PlanoCartesianoConsole(x, y); 
         
