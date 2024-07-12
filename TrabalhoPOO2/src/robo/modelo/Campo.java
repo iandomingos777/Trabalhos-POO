@@ -59,7 +59,7 @@ public void colocarAlimento() {
 
 	public String toString() {
         String redColor = "\u001B[31m";
-        String grayColor = "\u001B[30m\u001B[40m ";
+        String grayColor = "\u001B[37m ";
         String dot = "⚫";
         String apple = "\uD83C\uDF4E"; 
         String resetColor = "\u001B[0m";

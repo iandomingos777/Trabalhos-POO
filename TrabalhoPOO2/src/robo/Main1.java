@@ -10,9 +10,9 @@ public class Main1 {
 		
         Scanner entrada = new Scanner(System.in);
         int x, y;
-        System.out.println("Posição X da comida: ");
+        System.out.print("Posição X da comida: ");
         x = entrada.nextInt();
-        System.out.println("Posição Y da comida: ");
+        System.out.print("Posição Y da comida: ");
         y = entrada.nextInt();
 		
         PlanoCartesianoConsole plano = new PlanoCartesianoConsole(x, y); 
