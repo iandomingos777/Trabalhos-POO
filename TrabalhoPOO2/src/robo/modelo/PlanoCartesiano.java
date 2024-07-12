@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class PlanoCartesiano {
 	
-	private int dimX;
-	private int dimY;
+	private int dimX = 4;
+	private int dimY = 4;
 	private int foodX;
 	private int foodY;
 	
@@ -20,12 +20,10 @@ public class PlanoCartesiano {
 	}	
 	}
 	
-	public PlanoCartesiano(int foodY, int foodX) {
+	public PlanoCartesiano(int foodX, int foodY) {
 		if (foodX > 0 && foodY > 0) {
 			this.foodY = foodY;
 			this.foodX = foodX;
-			this.dimX = foodX;
-			this.dimY = foodY;
 			criarCampos();
 			campos.get(foodY).get(foodX).colocarAlimento();
 		}
