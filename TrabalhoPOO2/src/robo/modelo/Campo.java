@@ -6,17 +6,28 @@ public class Campo {
 	private int posX;
 	private int posY;
 	private boolean eAlimento;
+	private boolean estaOcupado;
 	private ArrayList<Robo> robos = new ArrayList<Robo>();
 
 	public Campo(int posY, int posX) {
 		this.posX = posX;
 		this.posY = posY;
+		estaOcupado = false;
 		eAlimento = false;
 	}
+
+	
+	
+	public boolean isOcupado() {
+		return estaOcupado;
+	}
+
+
 
 	public void addRobo(Robo robo)
 	{
 		robos.add(robo);
+		estaOcupado = true;
 	}
  
 	public void remRobo(Robo robo) {
@@ -24,6 +35,9 @@ public class Campo {
 			if(robos.get(i).getCor().equals(robo.getCor())) {
 				robos.remove(i);
 			}
+		}
+		if(robos.isEmpty()) {
+			estaOcupado = false;
 		}
 	}
 
