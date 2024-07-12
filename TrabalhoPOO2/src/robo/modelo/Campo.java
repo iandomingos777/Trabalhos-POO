@@ -59,7 +59,7 @@ public void colocarAlimento() {
 
 	public String toString() {
         String redColor = "\u001B[31m";
-        String blackColor = "\u001B[30m ";
+        String grayColor = "\u001B[37m ";
         String dot = "⚫";
         String apple = "\uD83C\uDF4E"; 
         String resetColor = "\u001B[0m";
@@ -73,6 +73,6 @@ public void colocarAlimento() {
 		}else if(eAlimento) {
 			return "[ " + redColor + apple + resetColor + " ]"  ;
 		}
-		return "[" + blackColor + dot + resetColor + " ]";
+		return "[" + grayColor + dot + resetColor + " ]";
 	}
 }

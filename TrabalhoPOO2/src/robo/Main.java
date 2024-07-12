@@ -15,8 +15,8 @@ public class Main {
 		
 		
 		PlanoCartesiano plano = new PlanoCartesiano(4, 1);
-		Robo novoRobo = new Robo("azul");
-		Robo novoRobo2 = new Robo("amarelo");
+		Robo novoRobo = new Robo("Verde");
+		Robo novoRobo2 = new Robo("Amarelo");
 		plano.moverNoCampo(novoRobo, 1);
 		plano.moverNoCampo(novoRobo, 1);
 		plano.moverNoCampo(novoRobo2, 3);
