@@ -37,7 +37,13 @@ public class PlanoCartesiano {
 			campos.get(foodY).get(foodX).colocarAlimento();
 		}
 	}
-
+	
+	public void addRoboNoPlano(Robo... robos) {
+		for(Robo robo : robos) {
+			campos.get(0).get(0).addRobo(robo);
+		}
+	}
+	
 	public int getDimX() {
 		return dimX;
 	}
