@@ -2,6 +2,8 @@ package robo.modelo;
 
 import java.util.ArrayList;
 
+import robo.excecao.MovimentoInvalidoException;
+
 public class PlanoCartesiano {
 
 	
@@ -61,8 +63,15 @@ public class PlanoCartesiano {
 	}
 
 	public void moverNoCampo(Robo robo, int i) {
-		campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
+		int iniX = robo.getPosX();
+		int iniY = robo.getPosY();
+		try {
+	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
 		robo.moverRobo(i);
+		} catch(MovimentoInvalidoException e) {
+			robo.setPosX(iniX);
+			robo.setPosY(iniY); 
+		}
 		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
 	}
 
