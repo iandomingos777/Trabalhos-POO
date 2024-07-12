@@ -12,10 +12,10 @@ public class PlanoCartesiano {
 	private ArrayList<ArrayList<Campo>> campos = new ArrayList<ArrayList<Campo>>();
    
 	private void criarCampos() {
-		for (int i = 0; i < dimY; i++) {
+		for (int i = 0; i <= dimY; i++) {
 		campos.add(new ArrayList<Campo>());
-		for (int j = 0; j < dimX; j++) {
-			campos.get(i).add(new Campo(i + 1, j + 1));
+		for (int j = 0; j <= dimX; j++) {
+			campos.get(i).add(new Campo(i, j));
 		}
 	}	
 	}
@@ -27,7 +27,7 @@ public class PlanoCartesiano {
 			this.dimX = foodX;
 			this.dimY = foodY;
 			criarCampos();
-			campos.get(foodY - 1).get(foodX - 1).colocarAlimento();
+			campos.get(foodY).get(foodX).colocarAlimento();
 		}
 	}
 
@@ -46,27 +46,40 @@ public class PlanoCartesiano {
 	public int getFoodY() {
 		return foodY;
 	}
+  
+	public void moverNoCampo(Robo robo, int i) {
+		campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
+		robo.moverRobo(i);
+		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
+	}
+	
+	public void moverNoCampo(Robo robo, String str) {
+		campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
+		robo.moverRobo(str);
+		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
+	}
 
-
-	public boolean verificarVitoria(Robo robo) {
-		if (robo.getPosX() == foodX && robo.getPosY() == foodY) {
-			return true;
-		}
-		return false;
+	public boolean verificarVitoria() {
+	if(campos.get(foodY).get(foodX).isOcupado()) {
+		System.out.println(campos.get(foodY).get(foodX).getRobos().get(0).getCor() +
+				" Venceu");
+		return true;
+	}
+	return false;
 	}
 	
 	public String toString() {
 		
 		StringBuilder sb = new StringBuilder();
-		for (int i = dimY; i > 0; i--) {
+		for (int i = dimY; i >= 0; i--) {
 			sb.append(i + " ");
-			for (int j = 0; j < dimX; j++) {
-				sb.append(campos.get(i - 1).get(j) + " ");
+			for (int j = 0; j <= dimX; j++) {
+				sb.append(campos.get(i).get(j) + " ");
 			}
 			sb.append("\n");
 		}
 		sb.append("  ");
-		for (int j = 1; j <= dimX; j++) {
+		for (int j = 0; j <= dimX; j++) {
 			sb.append("  " + j + "   ");
 			sb.append(" ");
 		}
