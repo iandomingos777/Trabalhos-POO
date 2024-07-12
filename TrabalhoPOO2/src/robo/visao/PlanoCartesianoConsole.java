@@ -31,13 +31,8 @@ public class PlanoCartesianoConsole {
 			System.out.println("1 - Up. 2 - Down. 3 - Right. 4 - Left");
 	        System.out.print("Jogada: ");
 	        int move = entrada.nextInt();
-	        System.out.println();
-	        try {
-	        	plano.moverNoCampo(robo, move);
-	        } catch(MovimentoInvalidoException e) {
-				System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
-				System.out.println("(" + robo.getPosX() + ", " + robo.getPosY() + ")");
-	        }
+	        System.out.println();	
+	        plano.moverNoCampo(robo, move);
 	        
 	        System.out.println();
 			

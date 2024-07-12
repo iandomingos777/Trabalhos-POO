@@ -69,6 +69,7 @@ public class PlanoCartesiano {
 	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
 		robo.moverRobo(i);
 		} catch(MovimentoInvalidoException e) {
+			System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
 			robo.setPosY(iniY); 
 		}
@@ -83,7 +84,8 @@ public class PlanoCartesiano {
 
 	public boolean verificarVitoria() {
 		if (campos.get(foodY).get(foodX).isOcupado()) {
-			System.out.println(campos.get(foodY).get(foodX).getRobos().get(0).getCor() + " Venceu");
+			System.out.println(this);
+			System.out.println(campos.get(foodY).get(foodX).getRobos().get(0).getCor().toUpperCase() + " VENCEU!");
 			return true;
 		}
 		return false;
