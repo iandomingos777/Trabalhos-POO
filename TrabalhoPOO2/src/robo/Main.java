@@ -14,14 +14,7 @@ public class Main {
 
 		
 		
-		PlanoCartesiano plano = new PlanoCartesiano(4, 1);
-		Robo novoRobo = new Robo("Verde");
-		Robo novoRobo2 = new Robo("Amarelo");
-		plano.moverNoCampo(novoRobo, 1);
-		plano.moverNoCampo(novoRobo, 1);
-		plano.moverNoCampo(novoRobo2, 3);
-		plano.moverNoCampo(novoRobo2, 3);
-		plano.moverNoCampo(novoRobo2, 3);
+		PlanoCartesiano plano = new PlanoCartesiano(4, 1, new Robo("Verde"), new Robo("Amarelo"));
 		System.out.println(plano);
 		
 		Robo r1 = new Robo("azul");
