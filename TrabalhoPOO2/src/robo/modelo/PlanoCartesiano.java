@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class PlanoCartesiano {
 
+	
 	private int dimX = 4;
 	private int dimY = 4;
 	private int foodX;
