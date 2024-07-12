@@ -1,6 +1,7 @@
 package robo.visao;
 
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 import robo.modelo.PlanoCartesiano;
 import robo.modelo.Robo;
@@ -47,6 +48,32 @@ public class PlanoCartesianoConsole {
 		
 		entrada.close();
 		
+	}
+	
+	public void jogarMain2() {
+	   Robo[] robos = new Robo[2];
+	   robos[0] = new Robo("Amarelo");
+	   robos[1] = new Robo("Verde");
+		plano.addRoboNoPlano(robos[0]);
+		plano.addRoboNoPlano(robos[1]);
+		
+		while(!plano.verificarVitoria())
+		{
+			for(int i = 0; i < 2; i++) {
+			int random = ThreadLocalRandom.current().nextInt(1, 5);
+			plano.moverNoCampo(robos[i], random);
+			System.out.println(plano);
+			 try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+	}
+		Robo vencedor = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().get(0);
+		System.out.println("Jogadas validas: " + vencedor.getMovimentosValidos());
+		System.out.println("Jogadas invalidas: " + vencedor.getMovimentosInvalidos());
 	}
 	
 }
