@@ -22,9 +22,9 @@ public class PlanoCartesianoConsole {
 		
 		Robo robo = new Robo("Verde");
 		
-		int cont = 0;
+		plano.addRoboNoPlano(robo);
 		
-		while(!plano.verificarVitoria() && cont < 10) {
+		while(!plano.verificarVitoria()) {
 			
 			System.out.println(plano);
 			

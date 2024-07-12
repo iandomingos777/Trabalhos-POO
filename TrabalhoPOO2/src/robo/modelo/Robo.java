@@ -64,14 +64,18 @@ public class Robo {
 	public void moverRobo(int i) {
 		switch (i) {
 		case 1:
-			posY++;
+			if(posY != 4) {
+				posY++;
+			}
 			break;
 		case 2:
 			if(posY == 0) throw new MovimentoInvalidoException("Down: Inválido");
 			else posY--; 
 			break;
 		case 3:
-			posX++; 
+			if(posX != 4) {
+				posX++;
+			}		 
 			break;
 		case 4: 
 			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
