@@ -3,29 +3,35 @@ package robo.modelo;
 import java.util.ArrayList;
 
 public class PlanoCartesiano {
-	
-	private int dimX;
-	private int dimY;
+
+	private int dimX = 4;
+	private int dimY = 4;
 	private int foodX;
 	private int foodY;
-	
+
 	private ArrayList<ArrayList<Campo>> campos = new ArrayList<ArrayList<Campo>>();
-   
+
 	private void criarCampos() {
 		for (int i = 0; i <= dimY; i++) {
-		campos.add(new ArrayList<Campo>());
-		for (int j = 0; j <= dimX; j++) {
-			campos.get(i).add(new Campo(i, j));
+			campos.add(new ArrayList<Campo>());
+			for (int j = 0; j <= dimX; j++) {
+				campos.get(i).add(new Campo(i, j));
+			}
 		}
-	}	
 	}
-	
-	public PlanoCartesiano(int foodY, int foodX) {
-		if (foodX > 0 && foodY > 0) {
+
+	public PlanoCartesiano(int foodX, int foodY) {
+		if (!(foodX <= 0 && foodY <= 0)) {
+
+			if (foodY > 4) {
+				foodY = 4;
+			}
+			if (foodX > 4) {
+				foodX = 4;
+			}
+
 			this.foodY = foodY;
 			this.foodX = foodX;
-			this.dimX = foodX;
-			this.dimY = foodY;
 			criarCampos();
 			campos.get(foodY).get(foodX).colocarAlimento();
 		}
@@ -46,13 +52,13 @@ public class PlanoCartesiano {
 	public int getFoodY() {
 		return foodY;
 	}
-  
+
 	public void moverNoCampo(Robo robo, int i) {
 		campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
 		robo.moverRobo(i);
 		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
 	}
-	
+
 	public void moverNoCampo(Robo robo, String str) {
 		campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
 		robo.moverRobo(str);
@@ -60,16 +66,15 @@ public class PlanoCartesiano {
 	}
 
 	public boolean verificarVitoria() {
-	if(campos.get(foodY).get(foodX).isOcupado()) {
-		System.out.println(campos.get(foodY).get(foodX).getRobos().get(0).getCor() +
-				" Venceu");
-		return true;
+		if (campos.get(foodY).get(foodX).isOcupado()) {
+			System.out.println(campos.get(foodY).get(foodX).getRobos().get(0).getCor() + " Venceu");
+			return true;
+		}
+		return false;
 	}
-	return false;
-	}
-	
+
 	public String toString() {
-		
+
 		StringBuilder sb = new StringBuilder();
 		for (int i = dimY; i >= 0; i--) {
 			sb.append(i + " ");

@@ -14,7 +14,7 @@ public class Main {
 
 		
 		
-		PlanoCartesiano plano = new PlanoCartesiano(4, 4);
+		PlanoCartesiano plano = new PlanoCartesiano(0, 0 );
 		System.out.println(plano);
 		
 		Robo r1 = new Robo("azul");
