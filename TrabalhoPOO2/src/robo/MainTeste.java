@@ -8,7 +8,7 @@ import robo.modelo.Robo;
 import robo.modelo.RoboInteligente;
 import robo.visao.PlanoCartesianoConsole;
 
-public class Main {
+public class MainTeste {
 	
 	public static void main(String[] args) {
 
