@@ -34,26 +34,25 @@ public class Robo {
 		return cor;
 	}
 
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
 	public void moverRobo(String str) {
 		switch (str) {
 		case "up":
-			posY++;
+			if(posY != 4) {
+				posY++;
+			}
 			break;
 		case "down":
 			if(posY == 0) throw new MovimentoInvalidoException("Down: Inválido");
 			else posY--; 
 			break;
 		case "right":
-			posX++; 
+			if(posX != 4) {
+				posX++;
+			}		 
 			break;
 		case "left": 
 			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
-			break;
 		}
 		
 		System.out.println("A posição X é: " + getPosX());
