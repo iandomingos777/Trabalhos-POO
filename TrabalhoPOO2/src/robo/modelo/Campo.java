@@ -56,7 +56,7 @@ public class Campo {
 		String redColor = "\u001B[31m";
 		String grayColor = "\u001B[37m ";
 		String goldColor = "\u001B[38;5;136m";
-		
+
 		String trofeu = "\uD83C\uDFC6";
 		String dot = "⚫";
 		String apple = "\uD83C\uDF4E";
@@ -64,11 +64,15 @@ public class Campo {
 
 		if (eAlimento) {
 			if (estaOcupado) {
-			return "[" + robos.get(0) + " " + goldColor + trofeu + resetColor + "]"; 
+				if (robos.size() == 1) {
+					return "[" + robos.get(0) + " " + goldColor + trofeu + resetColor + "]";
+				} else {
+					return "[" + robos.get(0) + goldColor + trofeu + resetColor + robos.get(1) + "]";
+				}
 			}
 			return "[ " + redColor + apple + resetColor + " ]";
 		}
-		
+
 		else if (robos.size() == 2) {
 			return "[" + robos.get(0) + " " + robos.get(1) + "]";
 		}
@@ -76,7 +80,6 @@ public class Campo {
 		else if (robos.size() == 1) {
 			return "[ " + robos.get(0) + " ]";
 		}
-
 
 		return "[" + grayColor + dot + resetColor + " ]";
 	}

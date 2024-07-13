@@ -99,8 +99,6 @@ public class PlanoCartesiano {
 
 	public boolean verificarVitoria() {
 		if (campos.get(foodY).get(foodX).isOcupado()) {
-			System.out.println(this);
-			System.out.println(campos.get(foodY).get(foodX).getRobos().get(0).getCor().toUpperCase() + " VENCEU!");
 			return true;
 		}
 		return false;
