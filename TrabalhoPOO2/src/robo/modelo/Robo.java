@@ -7,8 +7,8 @@ public class Robo {
 	private String cor;
 	private int posX;
 	private int posY;
-	private int movimentosValidos;
-	private int movimentosInvalidos;
+	private int movimentosValidos = 0;
+	private int movimentosInvalidos = 0;
 
 	public Robo(String cor) {
 		this.cor = cor;
@@ -55,24 +55,24 @@ public class Robo {
 	public void moverRobo(String str) {
 		switch (str) {
 		case "up":
-			if(posY != 4) {
-				posY++;
-			}
+			if(posY == 4) throw new MovimentoInvalidoException("Up: Inválido");
+			else posY++;		
 			break;
 		case "down":
 			if(posY == 0) throw new MovimentoInvalidoException("Down: Inválido");
 			else posY--; 
 			break;
 		case "right":
-			if(posX != 4) {
-				posX++;
-			}		 
+			if(posX == 4) throw new MovimentoInvalidoException("Right: Inválido");
+			else posX++;
+					 
 			break;
 		case "left": 
 			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
 		}
 		
+		System.out.println(this.getCor().toUpperCase());
 		System.out.println("A posição X é: " + getPosX());
 		System.out.println("A posição Y é: " + getPosY());
 		System.out.println();
@@ -81,24 +81,23 @@ public class Robo {
 	public void moverRobo(int i) {
 		switch (i) {
 		case 1:
-			if(posY != 4) {
-				posY++;
-			}
+			if(posY == 4) throw new MovimentoInvalidoException("Up: Inválido");
+			else posY++;			
 			break;
 		case 2:
 			if(posY == 0) throw new MovimentoInvalidoException("Down: Inválido");
 			else posY--; 
 			break;
 		case 3:
-			if(posX != 4) {
-				posX++;
-			}		 
+			if(posX == 4) throw new MovimentoInvalidoException("Right: Inválido");
+			else posX++; 
 			break;
 		case 4: 
 			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
 		}
 		
+		System.out.println(this.getCor().toUpperCase());
 		System.out.println("A posição X é: " + getPosX());
 		System.out.println("A posição Y é: " + getPosY());
 		System.out.println();

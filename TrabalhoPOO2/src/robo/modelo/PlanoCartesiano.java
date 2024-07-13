@@ -71,15 +71,16 @@ public class PlanoCartesiano {
 		int iniY = robo.getPosY();
 		try {
 	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
-		robo.moverRobo(i);
+	   robo.moverRobo(i);
+	   robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
 		} catch(MovimentoInvalidoException e) {
-			System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
+			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
 			robo.setPosY(iniY); 
 			robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
 		}
 		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
-		robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
+		
 	}
 
 	public void moverNoCampo(Robo robo, String str) {
@@ -87,7 +88,7 @@ public class PlanoCartesiano {
 		int iniY = robo.getPosY();
 		try {
 	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
-		robo.moverRobo(str);
+	   robo.moverRobo(str);
 		} catch(MovimentoInvalidoException e) {
 			System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);

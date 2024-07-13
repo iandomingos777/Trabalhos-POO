@@ -57,20 +57,27 @@ public class PlanoCartesianoConsole {
 		plano.addRoboNoPlano(robos[0]);
 		plano.addRoboNoPlano(robos[1]);
 		
+		int vez = 0;
+		
 		while(!plano.verificarVitoria())
 		{
-			for(int i = 0; i < 2; i++) {
+			if(vez == 2) {
+				vez = 0;
+			}
+			
 			int random = ThreadLocalRandom.current().nextInt(1, 5);
-			plano.moverNoCampo(robos[i], random);
+			plano.moverNoCampo(robos[vez], random);
 			System.out.println(plano);
 			 try {
-				Thread.sleep(1000);
+				Thread.sleep(000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			}
+			
+			 vez++;
 	}
+		
 		Robo vencedor = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().get(0);
 		System.out.println("Jogadas validas: " + vencedor.getMovimentosValidos());
 		System.out.println("Jogadas invalidas: " + vencedor.getMovimentosInvalidos());
