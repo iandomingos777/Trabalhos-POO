@@ -77,7 +77,9 @@ public class PlanoCartesiano {
 			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
 			robo.setPosY(iniY); 
-			robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
+			if (!(robo instanceof RoboInteligente)) {
+				robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
+			}			
 		}
 		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
 		

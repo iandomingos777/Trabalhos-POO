@@ -40,6 +40,7 @@ public class RoboInteligente extends Robo{
 			else {
 				System.out.println("Movimento inválido\n");
 				currentException = true;
+				setMovimentosInvalidos(getMovimentosInvalidos()+1);
 			}
 		} finally {
 			ultimoMovimento = i;

@@ -117,15 +117,18 @@ public class PlanoCartesianoConsole {
 			}
 			System.out.println();
 		}
-		for (int i = 0; i < 2; i++) {
-			if (robos[i] instanceof RoboInteligente) {
-				System.out.println("Movimentos do Robo Inteligente:");
-			} else {
-				System.out.println("Movimentos do Robo Comum: ");
-			}
-			System.out.println("Movimentos Validos: " + robos[i].getMovimentosValidos());
-			System.out.println("Movimentos Invalidos: " + robos[i].getMovimentosInvalidos());
-			System.out.println();
-		}
+		
+		System.out.println("Movimentos do Robo Comum: ");
+		System.out.println("Movimentos Validos: " + robos[0].getMovimentosValidos());
+		System.out.println("Movimentos Invalidos: " + robos[0].getMovimentosInvalidos());
+		System.out.println();
+		
+		
+		int movimentosvalidosinteligente = robos[1].getMovimentosValidos() - robos[1].getMovimentosInvalidos();
+		System.out.println("Movimentos do Robo Inteligente:");
+		System.out.println("Movimentos Validos: " + movimentosvalidosinteligente);
+		System.out.println("Movimentos Invalidos: " + robos[1].getMovimentosInvalidos());
+		System.out.println();
+		
 	}
 }
