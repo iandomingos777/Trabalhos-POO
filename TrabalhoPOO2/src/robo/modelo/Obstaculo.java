@@ -11,7 +11,7 @@ public abstract class Obstaculo {
 		this.posY = posY;
 	}
 	
-	public abstract void bater();
+	public abstract void bater(Robo robo);
 
 	public int getId() {
 		return id;
