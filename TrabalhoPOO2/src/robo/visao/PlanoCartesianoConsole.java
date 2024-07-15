@@ -106,8 +106,8 @@ public class PlanoCartesianoConsole {
 		robos[0] = new Robo("Amarelo");
 		robos[1] = new RoboInteligente("Verde");
 		plano.addRoboNoPlano(robos);
-		System.out.println("Robo Verde é inteligente");
 		System.out.println("Robo Amarelo é Comum");
+		System.out.println("Robo Verde é inteligente");		
 		System.out.println();
 		System.out.println(plano);
 		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
@@ -117,6 +117,12 @@ public class PlanoCartesianoConsole {
 					int random = ThreadLocalRandom.current().nextInt(1, 5);
 					plano.moverNoCampo(robos[i], random);
 					System.out.println(plano);
+					try {
+						Thread.sleep(000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 			System.out.println();
