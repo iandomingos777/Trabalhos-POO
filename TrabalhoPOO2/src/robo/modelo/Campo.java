@@ -8,12 +8,14 @@ public class Campo {
 	private boolean eAlimento;
 	private boolean estaOcupado;
 	private ArrayList<Robo> robos = new ArrayList<Robo>();
+	private Obstaculo obstaculo;
 
 	public Campo(int posY, int posX) {
 		this.posX = posX;
 		this.posY = posY;
 		estaOcupado = false;
 		eAlimento = false;
+		obstaculo = null;
 	}
 
 	public boolean isOcupado() {
@@ -23,6 +25,16 @@ public class Campo {
 	public void addRobo(Robo robo) {
 		robos.add(robo);
 		estaOcupado = true;
+	}
+	
+	public void setObstaculo(Obstaculo obstaculo) {
+		this.obstaculo = obstaculo;
+	}
+	
+	
+
+	public Obstaculo getObstaculo() {
+		return obstaculo;
 	}
 
 	public void remRobo(Robo robo) {
@@ -51,6 +63,21 @@ public class Campo {
 	public void colocarAlimento() {
 		eAlimento = true;
 	}
+	
+	public void baterEmObstaculo() {
+		if(obstaculo instanceof Bomba) {
+			for(Robo r : robos) {
+				obstaculo.bater(r);
+				remRobo(r);
+				obstaculo = null;
+			}
+		}
+		else if(obstaculo instanceof Rocha) {
+			for(Robo r : robos) {
+				obstaculo.bater(r);
+			}
+		}
+	}
 
 	public String toString() {
 		String redColor = "\u001B[31m";
@@ -60,8 +87,13 @@ public class Campo {
 		String trofeu = "\uD83C\uDFC6";
 		String dot = "⚫";
 		String apple = "\uD83C\uDF4E";
+        String bomba = "\uD83D\uDCA3";
+        String pedra = "\uD83E\uDEA8"; 
 		String resetColor = "\u001B[0m";
 
+		if(obstaculo != null) {
+		return "[ "+ obstaculo + " ]";
+		}
 		if (eAlimento) {
 			if (estaOcupado) {
 				if (robos.size() == 1) {
