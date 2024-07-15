@@ -108,7 +108,7 @@ public class PlanoCartesianoConsole {
 		robos[1] = new RoboInteligente("Verde");
 		plano.addRoboNoPlano(robos);
 		System.out.println("Robo Amarelo é Comum");
-		System.out.println("Robo Verde é inteligente");		
+		System.out.println("Robo Verde é inteligente");
 		System.out.println();
 		System.out.println(plano);
 		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
@@ -141,15 +141,51 @@ public class PlanoCartesianoConsole {
 		System.out.println();
 
 	}
-	
+
 	public void jogarMain4(Obstaculo[]... obstaculos) {
 
-		for(Obstaculo[] array: obstaculos) {
-			for(Obstaculo obstaculo: array) {
+		for (Obstaculo[] array : obstaculos) {
+			for (Obstaculo obstaculo : array) {
 				plano.addObstaculoNoPlano(obstaculo);
 			}
 		}
+		Robo robo1 = new Robo("Amarelo");
+		RoboInteligente robo2 = new RoboInteligente("Verde");
+		ArrayList<Robo> robos = new ArrayList<Robo>();
+		robos.add(robo2);
+		robos.add(robo1);
+		plano.addRoboNoPlano(robo1, robo2);
+		
+		System.out.println("Robo Amarelo é comum");
+		System.out.println("Robo Verde é inteligente");
+		System.out.println();
 		System.out.println(plano);
+		
+		while (!plano.verificarVitoria()) {
+         for(int i = 0; i < 2; i++) {
+        	 int random =  ThreadLocalRandom.current().nextInt(1, 5);
+        	 plano.moverNoCampo(robos[i], random);
+        	 System.out.println(plano);
+        	 if(plano.verificarVitoria()) {
+        		 break;
+        	 }
+         }
+		}
+		Robo vencedor = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().get(0);
+		System.out.println(vencedor.getCor().toUpperCase() + " VENCEU !");
+		System.out.println("Jogadas validas: " + vencedor.getMovimentosValidos());
+		System.out.println("Jogadas invalidas: " + vencedor.getMovimentosInvalidos());
+		System.out.println();
+
+		Robo perdedor;
+		if (robos[0] == vencedor) {
+			perdedor = robos[1];
+		} else {
+			perdedor = robos[0];
+		}
+		System.out.println(perdedor.getCor().toUpperCase() + " PERDEU :(");
+		System.out.println("Jogadas validas: " + perdedor.getMovimentosValidos());
+		System.out.println("Jogadas invalidas: " + perdedor.getMovimentosInvalidos());
 	}
-	
+
 }
