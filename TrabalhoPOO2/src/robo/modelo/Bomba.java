@@ -8,8 +8,10 @@ public class Bomba extends Obstaculo{
 	}
 
 	@Override
-	public void bater() {
+	public void bater(Robo robo) {
 		// TODO Auto-generated method stub
+		robo.setPosX(-1);
+		robo.setPosY(-1);
 		
 	}
 
