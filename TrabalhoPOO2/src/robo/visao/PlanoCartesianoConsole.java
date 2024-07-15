@@ -1,5 +1,6 @@
 package robo.visao;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -109,26 +110,28 @@ public class PlanoCartesianoConsole {
 		System.out.println("Robo Amarelo é Comum");
 		System.out.println();
 		System.out.println(plano);
-		for (int i = 0; i < 2; i++) {
-			while (plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().size() == i) {
-				int random = ThreadLocalRandom.current().nextInt(1, 5);
-				plano.moverNoCampo(robos[i], random);
-				System.out.println(plano);
+		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
+		while (robosFood.size() != 2) {
+			for (int i = 0; i < 2; i++) {
+				if (robosFood.isEmpty() || !(robosFood.get(0) == robos[i])) {
+					int random = ThreadLocalRandom.current().nextInt(1, 5);
+					plano.moverNoCampo(robos[i], random);
+					System.out.println(plano);
+				}
 			}
 			System.out.println();
 		}
-		
+
 		System.out.println("Movimentos do Robo Comum: ");
 		System.out.println("Movimentos Validos: " + robos[0].getMovimentosValidos());
 		System.out.println("Movimentos Invalidos: " + robos[0].getMovimentosInvalidos());
 		System.out.println();
-		
-		
+
 		int movimentosvalidosinteligente = robos[1].getMovimentosValidos() - robos[1].getMovimentosInvalidos();
 		System.out.println("Movimentos do Robo Inteligente:");
 		System.out.println("Movimentos Validos: " + movimentosvalidosinteligente);
 		System.out.println("Movimentos Invalidos: " + robos[1].getMovimentosInvalidos());
 		System.out.println();
-		
+
 	}
 }
