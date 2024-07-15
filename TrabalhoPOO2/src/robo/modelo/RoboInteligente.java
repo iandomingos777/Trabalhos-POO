@@ -33,10 +33,14 @@ public class RoboInteligente extends Robo{
 			super.moverRobo(i);
 			currentException = false;
 		} catch (MovimentoInvalidoException e) {
-			if(!currentException) {
-				System.out.println("Movimento inválido\n");
+			if(currentException) {
+				moverRobo(ultimoMovimento);
+				return;
 			}
-			currentException = true;
+			else {
+				System.out.println("Movimento inválido\n");
+				currentException = true;
+			}
 		} finally {
 			ultimoMovimento = i;
 		}
@@ -76,10 +80,13 @@ public class RoboInteligente extends Robo{
 			super.moverRobo(i);
 			currentException = false;
 		} catch (MovimentoInvalidoException e) {
-			if(!currentException) {
-				System.out.println("Movimento inválido\n");
+			if(currentException) {
+				moverRobo(ultimoMovimento);
 			}
-			currentException = true;
+			else {
+				System.out.println("Movimento inválido\n");
+				currentException = true;
+			}
 		} finally {
 			ultimoMovimento = i;
 		}
