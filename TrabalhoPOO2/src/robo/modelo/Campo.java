@@ -87,8 +87,6 @@ public class Campo {
 		String trofeu = "\uD83C\uDFC6";
 		String dot = "⚫";
 		String apple = "\uD83C\uDF4E";
-        String bomba = "\uD83D\uDCA3";
-        String rocha = "\uD83E\uDEA8"; 
 		String resetColor = "\u001B[0m";
 
 		if(obstaculo != null) {

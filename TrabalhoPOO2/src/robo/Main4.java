@@ -37,7 +37,7 @@ public class Main4 {
         }
         
         for(int i = 0; i < numRochas; i++) {
-            System.out.print("Posição da bomba " + (i + 1) + " (x, y): ");
+            System.out.print("Posição da rocha " + (i + 1) + " (x, y): ");
             int auxX = entrada.nextInt();
             int auxY = entrada.nextInt();
             rochas[i] = new Rocha(auxX, auxY);

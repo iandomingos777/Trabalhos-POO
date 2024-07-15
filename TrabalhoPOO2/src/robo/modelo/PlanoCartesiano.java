@@ -46,10 +46,6 @@ public class PlanoCartesiano {
 		}
 	}
 	
-	public void addObstaculoNoPlano(Obstaculo obstaculo) {		
-			campos.get(obstaculo.getPosY()).get(obstaculo.getPosX()).setObstaculo(obstaculo);
-	}
-	
 	public int getDimX() {
 		return dimX;
 	}
@@ -100,7 +96,15 @@ public class PlanoCartesiano {
 			robo.setPosX(iniX);
 			robo.setPosY(iniY); 
 		}
-		campos.get(robo.getPosY()).get(robo.getPosX()).addRobo(robo);
+		Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
+		campo.addRobo(robo);
+		campo.baterEmObstaculo();
+		if(campo.getObstaculo() instanceof Rocha) {
+			robo.setPosX(iniX);
+			robo.setPosY(iniY);
+			campo.remRobo(robo);
+			campos.get(iniY).get(iniX).addRobo(robo);
+		}
 	}
 
 	public boolean verificarVitoria() {
@@ -108,6 +112,10 @@ public class PlanoCartesiano {
 			return true;
 		}
 		return false;
+	}
+	
+	public void addObstaculoNoPlano(Obstaculo obstaculo) {
+		campos.get(obstaculo.getPosY()).get(obstaculo.getPosX()).setObstaculo(obstaculo);
 	}
 
 	public String toString() {

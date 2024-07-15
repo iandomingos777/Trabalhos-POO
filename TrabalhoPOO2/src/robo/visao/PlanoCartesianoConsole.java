@@ -149,7 +149,7 @@ public class PlanoCartesianoConsole {
 				plano.addObstaculoNoPlano(obstaculo);
 			}
 		}
-		
+		System.out.println(plano);
 	}
 	
 }
