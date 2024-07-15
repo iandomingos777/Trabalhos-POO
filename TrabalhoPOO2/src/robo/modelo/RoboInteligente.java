@@ -38,7 +38,7 @@ public class RoboInteligente extends Robo{
 				return;
 			}
 			else {
-				System.out.println("Movimento inválido\n");
+				System.out.println("\u001B[31m" + this.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
 				currentException = true;
 				setMovimentosInvalidos(getMovimentosInvalidos()+1);
 			}
