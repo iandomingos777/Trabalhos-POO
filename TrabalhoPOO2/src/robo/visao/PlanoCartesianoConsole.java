@@ -149,43 +149,46 @@ public class PlanoCartesianoConsole {
 				plano.addObstaculoNoPlano(obstaculo);
 			}
 		}
-		Robo robo1 = new Robo("Amarelo");
-		RoboInteligente robo2 = new RoboInteligente("Verde");
-		ArrayList<Robo> robos = new ArrayList<Robo>();
-		robos.add(robo2);
-		robos.add(robo1);
-		plano.addRoboNoPlano(robo1, robo2);
 		
-		System.out.println("Robo Amarelo é comum");
+		ArrayList<Robo> robos = new ArrayList<>();
+		robos.add(new Robo("Amarelo"));
+		robos.add(new RoboInteligente("Verde"));
+		plano.addRoboNoPlano(robos.get(0), robos.get(1));
+		System.out.println("Robo Amarelo é Comum");
 		System.out.println("Robo Verde é inteligente");
 		System.out.println();
 		System.out.println(plano);
-		
-		while (!plano.verificarVitoria()) {
-         for(int i = 0; i < 2; i++) {
-        	 int random =  ThreadLocalRandom.current().nextInt(1, 5);
-        	 plano.moverNoCampo(robos[i], random);
-        	 System.out.println(plano);
-        	 if(plano.verificarVitoria()) {
-        		 break;
-        	 }
-         }
+		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
+		while (robosFood.size() != 1 || (robos.get(0).getPosX() == -1 && robos.get(0).getPosY() == -1 && 
+				robos.get(1).getPosX() == -1 && robos.get(1).getPosY() == -1)) {
+			for (int i = 0; i < robos.size(); i++) {
+				if (robosFood.isEmpty() || !(robosFood.get(0) == robos.get(i))) {
+					int random = ThreadLocalRandom.current().nextInt(1, 5);
+					plano.moverNoCampo(robos.get(i), random);
+					System.out.println(plano);
+					if(robos.get(i).getPosX() == -1 && robos.get(i).getPosY() == -1) {
+						robos.remove(i);
+					}
+					try {
+						Thread.sleep(000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			System.out.println();
 		}
-		Robo vencedor = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().get(0);
-		System.out.println(vencedor.getCor().toUpperCase() + " VENCEU !");
-		System.out.println("Jogadas validas: " + vencedor.getMovimentosValidos());
-		System.out.println("Jogadas invalidas: " + vencedor.getMovimentosInvalidos());
+
+		System.out.println("Movimentos do Robo Comum: ");
+		System.out.println("Movimentos Validos: " + robos.get(0).getMovimentosValidos());
+		System.out.println("Movimentos Invalidos: " + robos.get(0).getMovimentosInvalidos());
 		System.out.println();
 
-		Robo perdedor;
-		if (robos[0] == vencedor) {
-			perdedor = robos[1];
-		} else {
-			perdedor = robos[0];
-		}
-		System.out.println(perdedor.getCor().toUpperCase() + " PERDEU :(");
-		System.out.println("Jogadas validas: " + perdedor.getMovimentosValidos());
-		System.out.println("Jogadas invalidas: " + perdedor.getMovimentosInvalidos());
+		int movimentosvalidosinteligente = robos.get(1).getMovimentosValidos() - robos.get(1).getMovimentosInvalidos();
+		System.out.println("Movimentos do Robo Inteligente:");
+		System.out.println("Movimentos Validos: " + movimentosvalidosinteligente);
+		System.out.println("Movimentos Invalidos: " + robos.get(1).getMovimentosInvalidos());
+		System.out.println();
 	}
-
-}
+} 
