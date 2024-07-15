@@ -46,6 +46,10 @@ public class PlanoCartesiano {
 		}
 	}
 	
+	public void addObstaculoNoPlano(Obstaculo obstaculo) {		
+			campos.get(obstaculo.getPosY()).get(obstaculo.getPosX()).setObstaculo(obstaculo);
+	}
+	
 	public int getDimX() {
 		return dimX;
 	}
