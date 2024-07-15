@@ -82,6 +82,7 @@ public class RoboInteligente extends Robo{
 		} catch (MovimentoInvalidoException e) {
 			if(currentException) {
 				moverRobo(ultimoMovimento);
+				return;
 			}
 			else {
 				System.out.println("Movimento inválido\n");
