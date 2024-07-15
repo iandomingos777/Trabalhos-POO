@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
+import robo.modelo.Obstaculo;
 import robo.modelo.PlanoCartesiano;
 import robo.modelo.Robo;
 import robo.modelo.RoboInteligente;
@@ -140,4 +141,15 @@ public class PlanoCartesianoConsole {
 		System.out.println();
 
 	}
+	
+	public void jogarMain4(Obstaculo[]... obstaculos) {
+
+		for(Obstaculo[] array: obstaculos) {
+			for(Obstaculo obstaculo: array) {
+				plano.addObstaculoNoPlano(obstaculo);
+			}
+		}
+		
+	}
+	
 }
