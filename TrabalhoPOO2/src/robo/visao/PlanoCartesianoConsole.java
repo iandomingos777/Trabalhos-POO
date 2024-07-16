@@ -51,7 +51,6 @@ public class PlanoCartesianoConsole {
 
 		}
 		System.out.println(plano);
-		System.out.println();
 		Robo vencedor = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().get(0);
 		System.out.println(vencedor.getCor().toUpperCase() + " VENCEU !");
 		entrada.close();
@@ -134,8 +133,9 @@ public class PlanoCartesianoConsole {
 		System.out.println("Movimentos Invalidos: " + robos[0].getMovimentosInvalidos());
 		System.out.println();
 
+		int movimentosvalidosinteligente = robos[1].getMovimentosValidos() - robos[1].getMovimentosInvalidos();
 		System.out.println("Movimentos do Robo Inteligente:");
-		System.out.println("Movimentos Validos: " + robos[1].getMovimentosValidos());
+		System.out.println("Movimentos Validos: " + movimentosvalidosinteligente);
 		System.out.println("Movimentos Invalidos: " + robos[1].getMovimentosInvalidos());
 		System.out.println();
 
@@ -186,8 +186,9 @@ public class PlanoCartesianoConsole {
 		System.out.println("Movimentos Invalidos: " + robos.get(0).getMovimentosInvalidos());
 		System.out.println();
 
+		int movimentosvalidosinteligente = robos.get(1).getMovimentosValidos() - robos.get(1).getMovimentosInvalidos();
 		System.out.println("Movimentos do Robo Inteligente:");
-		System.out.println("Movimentos Validos: " + robos.get(1).getMovimentosValidos());
+		System.out.println("Movimentos Validos: " + movimentosvalidosinteligente);
 		System.out.println("Movimentos Invalidos: " + robos.get(1).getMovimentosInvalidos());
      } else {
     	 Robo vencedor, perdedor;

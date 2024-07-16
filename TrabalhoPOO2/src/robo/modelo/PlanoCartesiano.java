@@ -105,7 +105,6 @@ public class PlanoCartesiano {
 				System.out.println("A posição Y é: " + robo.getPosY());
 			}
 
-			System.out.println();
 		}
 
 	}
