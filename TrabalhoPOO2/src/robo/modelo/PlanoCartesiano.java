@@ -6,7 +6,6 @@ import robo.excecao.MovimentoInvalidoException;
 
 public class PlanoCartesiano {
 
-	
 	private int dimX = 4;
 	private int dimY = 4;
 	private int foodX;
@@ -39,13 +38,13 @@ public class PlanoCartesiano {
 			campos.get(foodY).get(foodX).colocarAlimento();
 		}
 	}
-	
+
 	public void addRoboNoPlano(Robo... robos) {
-		for(Robo robo : robos) {
+		for (Robo robo : robos) {
 			campos.get(0).get(0).addRobo(robo);
 		}
 	}
-	
+
 	public int getDimX() {
 		return dimX;
 	}
@@ -61,7 +60,7 @@ public class PlanoCartesiano {
 	public int getFoodY() {
 		return foodY;
 	}
-	
+
 	public ArrayList<ArrayList<Campo>> getCampos() {
 		return campos;
 	}
@@ -70,40 +69,38 @@ public class PlanoCartesiano {
 		int iniX = robo.getPosX();
 		int iniY = robo.getPosY();
 		try {
-	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
-	   robo.moverRobo(i);
-	   robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
-		 Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
-		campo.addRobo(robo);
-		campo.baterEmObstaculo(robo);
+			campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
+			robo.moverRobo(i);
+			robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
+			Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
+			campo.addRobo(robo);
+			campo.baterEmObstaculo(robo);
 
-		} catch(MovimentoInvalidoException e) {
-			if(e.getMessage().equals("Bateu na rocha") || (robo instanceof RoboInteligente && ((RoboInteligente) robo).isCurrentException())) {
-				if(robo instanceof RoboInteligente) {
-					if(((RoboInteligente) robo).isCurrentException()) {
+		} catch (MovimentoInvalidoException e) {
+			robo.setPosX(iniX);
+			robo.setPosY(iniY);
+			campos.get(iniY).get(iniX).addRobo(robo);
+			if (e.getMessage().equals("Bateu na rocha")
+					|| (robo instanceof RoboInteligente && ((RoboInteligente) robo).isCurrentException())) {
+				if (robo instanceof RoboInteligente) {
+					if (((RoboInteligente) robo).isCurrentException()) {
 						int x = ((RoboInteligente) robo).getUltimoMovimento();
 						robo.moverRobo(x);
-					}
-					else ((RoboInteligente) robo).setCurrentException(true);
-					robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
+					} else
+						((RoboInteligente) robo).setCurrentException(true);
 				}
-				
+
 				return;
 			}
 			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
-			robo.setPosX(iniX);
-			robo.setPosY(iniY); 
-			campos.get(iniY).get(iniX).addRobo(robo);
 			if (!(robo instanceof RoboInteligente)) {
 				robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
-			}			
-		}
-		finally {
-			System.out.println(robo.getCor().toUpperCase());
-			if(robo.getPosX() == -1 && robo.getPosY() == -1) {
-				System.out.println("EXPLODIU");
 			}
-			else {
+		} finally {
+			System.out.println(robo.getCor().toUpperCase());
+			if (robo.getPosX() == -1 && robo.getPosY() == -1) {
+				System.out.println("EXPLODIU");
+			} else {
 				System.out.println("A posição X é: " + robo.getPosX());
 				System.out.println("A posição Y é: " + robo.getPosY());
 			}
@@ -117,12 +114,12 @@ public class PlanoCartesiano {
 		int iniX = robo.getPosX();
 		int iniY = robo.getPosY();
 		try {
-	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
-	   robo.moverRobo(str);
-		} catch(MovimentoInvalidoException e) {
+			campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
+			robo.moverRobo(str);
+		} catch (MovimentoInvalidoException e) {
 			System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
-			robo.setPosY(iniY); 
+			robo.setPosY(iniY);
 		}
 	}
 
@@ -132,7 +129,7 @@ public class PlanoCartesiano {
 		}
 		return false;
 	}
-	
+
 	public void addObstaculoNoPlano(Obstaculo obstaculo) {
 		campos.get(obstaculo.getPosY()).get(obstaculo.getPosX()).setObstaculo(obstaculo);
 	}

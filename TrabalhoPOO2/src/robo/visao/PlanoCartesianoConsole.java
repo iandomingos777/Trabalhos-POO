@@ -162,7 +162,7 @@ public class PlanoCartesianoConsole {
 		while (robosFood.size() != 1 && !(robos.get(0).getPosX() == -1 && robos.get(0).getPosY() == -1
 				&& robos.get(1).getPosX() == -1 && robos.get(1).getPosY() == -1)) {
 			for (int i = 0; i < robos.size(); i++) {
-				if (robos.get(i).getPosX() != -1 && robos.get(i).getPosY() != -1) {
+				if (robos.get(i).getPosX() != -1 && robos.get(i).getPosY() != -1 || plano.verificarVitoria()) {
 					int random = ThreadLocalRandom.current().nextInt(1, 5);
 					plano.moverNoCampo(robos.get(i), random);
 					System.out.println(plano);
