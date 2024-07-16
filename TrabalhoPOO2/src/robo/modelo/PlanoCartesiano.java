@@ -88,8 +88,14 @@ public class PlanoCartesiano {
 		}
 		finally {
 			System.out.println(robo.getCor().toUpperCase());
-			System.out.println("A posição X é: " + robo.getPosX());
-			System.out.println("A posição Y é: " + robo.getPosY());
+			if(robo.getPosX() == -1 && robo.getPosY() == -1) {
+				System.out.println("EXPLODIU");
+			}
+			else {
+				System.out.println("A posição X é: " + robo.getPosX());
+				System.out.println("A posição Y é: " + robo.getPosY());
+			}
+
 			System.out.println();
 		}
 

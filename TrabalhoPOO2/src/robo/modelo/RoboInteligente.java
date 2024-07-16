@@ -27,6 +27,12 @@ public class RoboInteligente extends Robo{
 
 
 
+	public int getUltimoMovimento() {
+		return ultimoMovimento;
+	}
+
+
+
 	@Override
 	public void moverRobo(int i) {
 		// TODO Auto-generated method stub

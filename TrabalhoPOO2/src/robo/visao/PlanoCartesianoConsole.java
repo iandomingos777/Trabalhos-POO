@@ -154,7 +154,7 @@ public class PlanoCartesianoConsole {
 		robos.add(new Robo("Amarelo"));
 		robos.add(new RoboInteligente("Verde"));
 		plano.addRoboNoPlano(robos.get(0), robos.get(1));
-		System.out.println("Robo Amarelo é Comum");
+		System.out.println("\nRobo Amarelo é Comum");
 		System.out.println("Robo Verde é inteligente");
 		System.out.println();
 		System.out.println(plano);

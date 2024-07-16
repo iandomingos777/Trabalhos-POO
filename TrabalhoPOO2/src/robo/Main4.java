@@ -28,6 +28,9 @@ public class Main4 {
             System.out.println();
         } while((x < 0 || y < 0) || (x == 0 && y == 0)) ;
         
+        if(x > 4) x = 4;
+        if(y > 4) y = 4;
+        
         check[y][x] = true;
         
         int numRochas, numBombas;
