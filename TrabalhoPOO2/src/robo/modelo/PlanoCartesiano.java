@@ -78,7 +78,6 @@ public class PlanoCartesiano {
 		campo.baterEmObstaculo(robo);
 
 		} catch(MovimentoInvalidoException e) {
-			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
 			if(e.getMessage().equals("Bateu na rocha") || (robo instanceof RoboInteligente && ((RoboInteligente) robo).isCurrentException())) {
 				if(robo instanceof RoboInteligente) {
 					if(((RoboInteligente) robo).isCurrentException()) {
@@ -86,9 +85,12 @@ public class PlanoCartesiano {
 						robo.moverRobo(x);
 					}
 					else ((RoboInteligente) robo).setCurrentException(true);
+					robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
 				}
-				robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
+				
+				return;
 			}
+			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
 			robo.setPosY(iniY); 
 			campos.get(iniY).get(iniX).addRobo(robo);
