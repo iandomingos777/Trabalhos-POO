@@ -13,9 +13,15 @@ public class Rocha extends Obstaculo{
 	public void bater(Robo robo) {
 		if(robo.getPosX() == posX && robo.getPosY() == posY ) {
 			if(robo instanceof RoboInteligente) {
-				((RoboInteligente) robo).setCurrentException(true);
+				if(((RoboInteligente) robo).isCurrentException()) {
+					while(((RoboInteligente) robo).isCurrentException()) {
+						robo.moverRobo(((RoboInteligente) robo).getUltimoMovimento());
+					}
+					
+				}
 				
 			}
+			
 			throw new MovimentoInvalidoException("Bateu na rocha");
 			
 		}
