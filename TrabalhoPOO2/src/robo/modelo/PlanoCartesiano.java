@@ -115,10 +115,19 @@ public class PlanoCartesiano {
 		try {
 			campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
 			robo.moverRobo(str);
+			robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
+			Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
+			campo.addRobo(robo);
 		} catch (MovimentoInvalidoException e) {
 			System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
 			robo.setPosY(iniY);
+			campos.get(iniY).get(iniX).addRobo(robo);
+		}
+		finally {
+			System.out.println(robo.getCor().toUpperCase());
+			System.out.println("A posição X é: " + robo.getPosX());
+			System.out.println("A posição Y é: " + robo.getPosY());
 		}
 	}
 
