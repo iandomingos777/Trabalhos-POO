@@ -86,27 +86,27 @@ public class Campo {
 		String resetColor = "\u001B[0m";
 
 		if(obstaculo != null) {
-		return "[ "+ obstaculo + " ]";
+		return  "   " + obstaculo.toString() +" ";
 		}
 		if (eAlimento) {
 			if (estaOcupado) {
 				if (robos.size() == 1) {
-					return "[" + robos.get(0) + " " + goldColor + trofeu + resetColor + "]";
+					return "  " + robos.get(0) + " " + goldColor + trofeu + resetColor;
 				} else {
-					return "[" + robos.get(0) + goldColor + trofeu + resetColor + robos.get(1) + "]";
+					return " " + robos.get(0) + goldColor + trofeu + resetColor + robos.get(1);
 				}
 			}
-			return "[ " + redColor + apple + resetColor + " ]";
+			return "   " + redColor + apple + resetColor + " ";
 		}
 
 		else if (robos.size() == 2) {
-			return "[" + robos.get(0) + " " + robos.get(1) + "]";
+			return "  " + robos.get(0) + robos.get(1);
 		}
 
 		else if (robos.size() == 1) {
-			return "[ " + robos.get(0) + " ]";
+			return  "   " + robos.get(0).toString() +" ";
 		}
 
-		return "[" + grayColor + dot + resetColor + " ]";
+		return "  " + grayColor + dot + resetColor + " ";
 	}
 }

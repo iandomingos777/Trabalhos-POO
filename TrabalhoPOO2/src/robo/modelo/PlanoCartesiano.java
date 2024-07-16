@@ -146,7 +146,7 @@ public class PlanoCartesiano {
 		}
 		sb.append("  ");
 		for (int j = 0; j <= dimX; j++) {
-			sb.append("  " + j + "   ");
+			sb.append("   " + j + "  ");
 			sb.append(" ");
 		}
 		sb.append("\n");

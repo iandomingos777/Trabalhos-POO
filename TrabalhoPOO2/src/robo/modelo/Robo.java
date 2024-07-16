@@ -4,11 +4,11 @@ import robo.excecao.MovimentoInvalidoException;
 
 public class Robo {
 
-	private String cor;
-	private int posX;
-	private int posY;
-	private int movimentosValidos = 0;
-	private int movimentosInvalidos = 0;
+	protected String cor;
+	protected int posX;
+	protected int posY;
+	protected int movimentosValidos = 0;
+	protected int movimentosInvalidos = 0;
 
 	public Robo(String cor) {
 		this.cor = cor;

@@ -31,6 +31,10 @@ public class RoboInteligente extends Robo{
 		return ultimoMovimento;
 	}
 
+	@Override
+	public int getMovimentosValidos() {
+		return movimentosValidos - movimentosInvalidos;
+	}
 
 
 	@Override
