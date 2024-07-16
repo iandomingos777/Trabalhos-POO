@@ -75,7 +75,7 @@ public class PlanoCartesiano {
 	   robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
 		 Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
 		campo.addRobo(robo);
-		campo.baterEmObstaculo();
+		campo.baterEmObstaculo(robo);
 
 		} catch(MovimentoInvalidoException e) {
 			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");

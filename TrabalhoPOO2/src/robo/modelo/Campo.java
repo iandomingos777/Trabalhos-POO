@@ -64,13 +64,13 @@ public class Campo {
 		eAlimento = true;
 	}
 	
-	public void baterEmObstaculo() {
+	public void baterEmObstaculo(Robo robo) {
 		if(obstaculo == null) {
 			return;
 		}
-	  obstaculo.bater(robos.get(0));
+	  obstaculo.bater(robo);
 	  if(obstaculo instanceof Bomba) {
-		  robos.remove(0);
+		  remRobo(robo);
 		  obstaculo = null;
 	  }
 	}
