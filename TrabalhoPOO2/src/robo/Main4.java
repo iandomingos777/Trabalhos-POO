@@ -50,6 +50,12 @@ public class Main4 {
         	System.out.print("Posição da bomba " + (i + 1) + " (x, y): ");
             auxX = entrada.nextInt();
             auxY = entrada.nextInt();
+            if(auxX > 4) {
+            	auxX = 4;
+            }
+            if(auxY > 4){
+            	auxY = 4;
+            }
             bombas[i] = new Bomba(auxX, auxY);
             } while((auxX < 0 || auxY < 0) || (auxX == 0 && auxY == 0) || check[auxY][auxX] == true);
             check[auxY][auxX] = true;
@@ -61,6 +67,12 @@ public class Main4 {
             System.out.print("Posição da rocha " + (i + 1) + " (x, y): ");
             auxX = entrada.nextInt();
             auxY = entrada.nextInt();
+            if(auxX > 4) {
+            	auxX = 4;
+            }
+            if(auxY > 4){
+            	auxY = 4;
+            }
             rochas[i] = new Rocha(auxX, auxY);
         	 } while((auxX < 0 || auxY < 0) || (auxX == 0 && auxY == 0) || check[auxY][auxX] == true);
             check[auxY][auxX] = true;

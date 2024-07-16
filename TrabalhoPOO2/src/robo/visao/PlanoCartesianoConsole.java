@@ -51,7 +51,6 @@ public class PlanoCartesianoConsole {
 
 		}
 		System.out.println(plano);
-		System.out.println();
 		Robo vencedor = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos().get(0);
 		System.out.println(vencedor.getCor().toUpperCase() + " VENCEU !");
 		entrada.close();
