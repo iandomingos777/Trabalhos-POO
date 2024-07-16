@@ -149,7 +149,7 @@ public class PlanoCartesianoConsole {
 				plano.addObstaculoNoPlano(obstaculo);
 			}
 		}
-		
+
 		ArrayList<Robo> robos = new ArrayList<>();
 		robos.add(new Robo("Amarelo"));
 		robos.add(new RoboInteligente("Verde"));
@@ -159,16 +159,13 @@ public class PlanoCartesianoConsole {
 		System.out.println();
 		System.out.println(plano);
 		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
-		while (robosFood.size() != 1 || (robos.get(0).getPosX() == -1 && robos.get(0).getPosY() == -1 && 
-				robos.get(1).getPosX() == -1 && robos.get(1).getPosY() == -1)) {
+		while (robosFood.size() != 1 && !(robos.get(0).getPosX() == -1 && robos.get(0).getPosY() == -1
+				&& robos.get(1).getPosX() == -1 && robos.get(1).getPosY() == -1)) {
 			for (int i = 0; i < robos.size(); i++) {
-				if (robosFood.isEmpty() || !(robosFood.get(0) == robos.get(i))) {
+				if (robos.get(i).getPosX() != -1 && robos.get(i).getPosY() != -1) {
 					int random = ThreadLocalRandom.current().nextInt(1, 5);
 					plano.moverNoCampo(robos.get(i), random);
 					System.out.println(plano);
-					if(robos.get(i).getPosX() == -1 && robos.get(i).getPosY() == -1) {
-						robos.remove(i);
-					}
 					try {
 						Thread.sleep(000);
 					} catch (InterruptedException e) {
@@ -191,4 +188,4 @@ public class PlanoCartesianoConsole {
 		System.out.println("Movimentos Invalidos: " + robos.get(1).getMovimentosInvalidos());
 		System.out.println();
 	}
-} 
+}

@@ -13,6 +13,20 @@ public class RoboInteligente extends Robo{
 		super(cor);
 	}
 	
+	
+	
+	public boolean isCurrentException() {
+		return currentException;
+	}
+
+
+
+	public void setCurrentException(boolean currentException) {
+		this.currentException = currentException;
+	}
+
+
+
 	@Override
 	public void moverRobo(int i) {
 		// TODO Auto-generated method stub

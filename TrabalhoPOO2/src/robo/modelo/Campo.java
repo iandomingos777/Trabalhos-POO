@@ -66,15 +66,16 @@ public class Campo {
 	
 	public void baterEmObstaculo() {
 		if(obstaculo instanceof Bomba) {
-			for(Robo r : robos) {
-				obstaculo.bater(r);
-				remRobo(r);
-				obstaculo = null;
-			}
+			obstaculo.bater(robos.get(0));
+			remRobo(robos.get(0));
+			obstaculo = null;
 		}
 		else if(obstaculo instanceof Rocha) {
 			for(Robo r : robos) {
 				obstaculo.bater(r);
+				if(r instanceof RoboInteligente) {
+					((RoboInteligente) r).setCurrentException(true);
+				}
 			}
 		}
 	}
