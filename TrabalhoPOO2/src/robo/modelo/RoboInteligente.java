@@ -46,8 +46,8 @@ public class RoboInteligente extends Robo{
 			        } while (newmoviment == i);
 			        while(currentException) {
 			        	moverRobo(newmoviment);
+			        	return;
 			        }      
-					return;
 				}
 			}
 			super.moverRobo(i);
