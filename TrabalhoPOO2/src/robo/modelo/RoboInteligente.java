@@ -32,12 +32,6 @@ public class RoboInteligente extends Robo{
 	}
 
 	@Override
-	public int getMovimentosValidos() {
-		return movimentosValidos - movimentosInvalidos;
-	}
-
-
-	@Override
 	public void moverRobo(int i) {
 		// TODO Auto-generated method stub
 		try {
