@@ -1,5 +1,7 @@
 package robo.modelo;
 
+import robo.excecao.MovimentoInvalidoException;
+
 public class Rocha extends Obstaculo{
 
 	public Rocha(int posX, int posY) {
@@ -9,7 +11,9 @@ public class Rocha extends Obstaculo{
 
 	@Override
 	public void bater(Robo robo) {
-		
+		if(robo.getPosX() == posX && robo.getPosY() == posY ) {
+			throw new MovimentoInvalidoException("Bateu na rocha");
+		}
 	}
 	
 	public String toString(){

@@ -71,11 +71,6 @@ public class Robo {
 			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
 		}
-		
-		System.out.println(this.getCor().toUpperCase());
-		System.out.println("A posição X é: " + getPosX());
-		System.out.println("A posição Y é: " + getPosY());
-		System.out.println();
 	}
 	
 	public void moverRobo(int i) {
@@ -96,11 +91,6 @@ public class Robo {
 			if(posX == 0) throw new MovimentoInvalidoException("Left: Inválido");
 			posX--; 
 		}
-		
-		System.out.println(this.getCor().toUpperCase());
-		System.out.println("A posição X é: " + getPosX());
-		System.out.println("A posição Y é: " + getPosY());
-		System.out.println();
 	}
 	
 	public String toString() {

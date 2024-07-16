@@ -73,19 +73,18 @@ public class PlanoCartesiano {
 	   campos.get(robo.getPosY()).get(robo.getPosX()).remRobo(robo);
 	   robo.moverRobo(i);
 	   robo.setMovimentosValidos(robo.getMovimentosValidos() + 1);
-		Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
+		 Campo campo = campos.get(robo.getPosY()).get(robo.getPosX());
 		campo.addRobo(robo);
 		campo.baterEmObstaculo();
-		if(campo.getObstaculo() instanceof Rocha) {
-			robo.setPosX(iniX);
-			robo.setPosY(iniY);
-			campo.remRobo(robo);
-			campos.get(iniY).get(iniX).addRobo(robo);
-		}
+		System.out.println(robo.getCor().toUpperCase());
+		System.out.println("A posição X é: " + robo.getPosX());
+		System.out.println("A posição Y é: " + robo.getPosY());
+		System.out.println();
 		} catch(MovimentoInvalidoException e) {
 			System.out.println("\u001B[31m" + robo.getCor() + " - " + e.getMessage() + "\u001B[0m" + "\n");
 			robo.setPosX(iniX);
 			robo.setPosY(iniY); 
+			campos.get(iniY).get(iniX).addRobo(robo);
 			if (!(robo instanceof RoboInteligente)) {
 				robo.setMovimentosInvalidos(robo.getMovimentosInvalidos() + 1);
 			}			

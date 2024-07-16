@@ -23,7 +23,7 @@ public class PlanoCartesianoConsole {
 
 	public void jogarMain1() {
 
-		Robo robo = new Robo("Verde");
+		RoboInteligente robo = new RoboInteligente("Verde");
 
 		plano.addRoboNoPlano(robo);
 

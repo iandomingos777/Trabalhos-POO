@@ -2,9 +2,9 @@ package robo.modelo;
 
 public abstract class Obstaculo {
 
-	private int id;
-	private int posX;
-	private int posY;
+	protected int id;
+	protected int posX;
+	protected int posY;
 	
 	public Obstaculo(int posX, int posY) {
 		this.posX = posX;
