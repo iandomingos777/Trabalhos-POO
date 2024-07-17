@@ -88,6 +88,7 @@ public class PlanoCartesiano {
 						robo.moverRobo(x);
 					} else
 						((RoboInteligente) robo).setCurrentException(true);
+						System.out.println("Bateu na rocha");
 				}
 
 				return;
