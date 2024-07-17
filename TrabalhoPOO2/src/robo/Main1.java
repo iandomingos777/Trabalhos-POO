@@ -9,7 +9,7 @@ public class Main1 {
 	public static void main(String[] args) {
 		
         Scanner entrada = new Scanner(System.in);
-        int x, y;
+        int x, y; 
         
         do {
             System.out.print("Posição X da comida: ");
