@@ -10,7 +10,7 @@ public class Main1 {
 		
         Scanner entrada = new Scanner(System.in);
         int x, y;
-        //
+        
         do {
             System.out.print("Posição X da comida: ");
             x = entrada.nextInt();
