@@ -157,6 +157,14 @@ public class PlanoCartesianoConsole {
 		System.out.println("Robo Verde é inteligente");
 		System.out.println();
 		System.out.println(plano);
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
 		while (robosFood.size() != 1 && !(robos.get(0).getPosX() == -1 && robos.get(0).getPosY() == -1
 				&& robos.get(1).getPosX() == -1 && robos.get(1).getPosY() == -1)) {
@@ -209,8 +217,8 @@ public class PlanoCartesianoConsole {
     		}else {
         tipov = "Comum";
         tipop = "Inteligente";
-        movP = vencedor.getMovimentosValidos() - vencedor.getMovimentosInvalidos();
-        movV = perdedor.getMovimentosValidos();
+        movV = vencedor.getMovimentosValidos();
+        movP = perdedor.getMovimentosValidos() - perdedor.getMovimentosInvalidos();
     }
     
     System.out.println("Robo " + tipov + " Venceu :)");
