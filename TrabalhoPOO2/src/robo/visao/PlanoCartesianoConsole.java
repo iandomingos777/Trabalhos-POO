@@ -67,6 +67,12 @@ public class PlanoCartesianoConsole {
 		int vez = 0;
 
 		System.out.println(plano);
+		try {
+			Thread.sleep(2500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		while (!plano.verificarVitoria()) {
 			if (vez == 2) {
 				vez = 0;
@@ -75,7 +81,7 @@ public class PlanoCartesianoConsole {
 			plano.moverNoCampo(robos[vez], random);
 			System.out.println(plano);
 			try {
-				Thread.sleep(000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -110,6 +116,12 @@ public class PlanoCartesianoConsole {
 		System.out.println("Robo Verde é inteligente");
 		System.out.println();
 		System.out.println(plano);
+		try {
+			Thread.sleep(2500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ArrayList<Robo> robosFood = plano.getCampos().get(plano.getFoodY()).get(plano.getFoodX()).getRobos();
 		while (robosFood.size() != 2) {
 			for (int i = 0; i < 2; i++) {
@@ -118,7 +130,7 @@ public class PlanoCartesianoConsole {
 					plano.moverNoCampo(robos[i], random);
 					System.out.println(plano);
 					try {
-						Thread.sleep(000);
+						Thread.sleep(2000);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -159,7 +171,7 @@ public class PlanoCartesianoConsole {
 		System.out.println(plano);
 		
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(2500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -174,7 +186,7 @@ public class PlanoCartesianoConsole {
 					plano.moverNoCampo(robos.get(i), random);
 					System.out.println(plano);
 					try {
-						Thread.sleep(000);
+						Thread.sleep(2000);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
