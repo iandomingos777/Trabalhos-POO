@@ -193,6 +193,7 @@ public class PlanoCartesianoConsole {
      } else {
     	 Robo vencedor, perdedor;
     	 String tipov,tipop;
+    	 int movV, movP;
     	 if(robos.get(0) == robosFood.get(0)) {
     		 vencedor = robos.get(0);
     		 perdedor = robos.get(1);
@@ -203,18 +204,22 @@ public class PlanoCartesianoConsole {
     if(vencedor instanceof RoboInteligente) {
     tipov = "Inteligente";
     tipop = "Comum";
-    }else {
+    movV = vencedor.getMovimentosValidos() - vencedor.getMovimentosInvalidos();
+    movP = perdedor.getMovimentosValidos();
+    		}else {
         tipov = "Comum";
         tipop = "Inteligente";
+        movP = vencedor.getMovimentosValidos() - vencedor.getMovimentosInvalidos();
+        movV = perdedor.getMovimentosValidos();
     }
     
     System.out.println("Robo " + tipov + " Venceu :)");
-	System.out.println("Movimentos Validos: " + vencedor.getMovimentosValidos());
+	System.out.println("Movimentos Validos: " + movV);
 	System.out.println("Movimentos Invalidos: " + vencedor.getMovimentosInvalidos());
 	System.out.println();
 	
 	System.out.println("Robo " + tipop + " Perdeu :(");
-	System.out.println("Movimentos Validos: " + perdedor.getMovimentosValidos());
+	System.out.println("Movimentos Validos: " + movP);
 	System.out.println("Movimentos Invalidos: " + perdedor.getMovimentosInvalidos());
 	System.out.println();
      }
