@@ -6,7 +6,7 @@ public abstract class Jogador {
 	protected int id;
 	protected int position;
 	protected int numberMoves;
-	protected boolean blocked;
+	protected boolean blocked = false;
 	
 	public Jogador(String color, int id) {
 		this.color = color;
@@ -45,8 +45,9 @@ public abstract class Jogador {
 		return id;
 	}
 	
-	public void movePlayer() {
-		// ao definir o metodo nas classes filhas, tornar ele abstract aqui!!!
+	public void movePlayer(int sum) {
+		int newPosition = this.position + sum;
+		setPosition(newPosition);
 	}
 	
 }
