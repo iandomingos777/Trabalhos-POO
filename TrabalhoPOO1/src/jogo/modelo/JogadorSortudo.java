@@ -2,8 +2,8 @@ package jogo.modelo;
 
 public class JogadorSortudo extends Jogador{
 
-	public JogadorSortudo(String color, int id) {
-		super(color, id);
+	public JogadorSortudo(int id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
 
