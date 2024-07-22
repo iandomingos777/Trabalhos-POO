@@ -8,9 +8,27 @@ public abstract class Jogador {
 	protected int numberMoves;
 	protected boolean blocked = false;
 	
-	public Jogador(String color, int id) {
-		this.color = color;
+	public Jogador(int id) {
 		this.id = id;
+		switch (id) {
+		case 1: 
+			color = "azul";
+			break;
+		case 2: 
+			color = "vermelho";
+			break;
+		case 3: 
+			color = "branco";
+			break;
+		case 4: 
+			color = "amarelo";
+			break;
+		case 5: 
+			color = "verde";
+			break;
+		case 6: 
+			color = "roxo";			
+		}
 	}
 
 	public int getPosition() {
