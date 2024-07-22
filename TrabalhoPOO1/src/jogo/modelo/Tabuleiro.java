@@ -12,8 +12,9 @@ public class Tabuleiro {
 		for(int i = 0; i < 41; i++) {
 			squares.add(new Campo(i));
 		}		
-		for(Jogador jogador : jogadores) {
+		for(Jogador jogador : players) {
 			jogadores.add(jogador);
+			squares.get(0).addPlayer(jogador);
 		}
 	}
 	
@@ -25,9 +26,8 @@ public class Tabuleiro {
 			System.out.println(this);
 			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
 			veriFicarVitoria();
-			if(veriFicarVitoria()) System.exit(0);
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(0000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -58,7 +58,12 @@ public class Tabuleiro {
 			sum = 7;
 		}
 		System.out.println("Soma dos dados: " + sum);
-		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//for(int i = 0; i < sum; i++) {
 			//squares.get(jogador.getPosition()).remPlayer(jogador);
 			//jogador.movePlayer(1);
@@ -134,7 +139,7 @@ public class Tabuleiro {
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
 			System.out.println(squares.get(40).getPlayers().get(0).getColor() + " venceu :)");
-			return true;
+			System.exit(0);
 		}
 		return false;
 	}

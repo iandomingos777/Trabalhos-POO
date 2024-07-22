@@ -18,7 +18,7 @@ public abstract class Jogador {
 			color = "vermelho";
 			break;
 		case 3: 
-			color = "branco";
+			color = "rosa";
 			break;
 		case 4: 
 			color = "amarelo";
@@ -68,4 +68,28 @@ public abstract class Jogador {
 		setPosition(newPosition);
 	}
 	
+	public String toString() {
+		String strColor = " ";
+		String resetColor = "\u001B[0m";
+		switch (id) {
+		case 1: 
+			strColor = "\u001B[34m";
+			break;
+		case 2: 
+			strColor = "\u001B[31m";
+			break;
+		case 3: 
+			strColor = "\u001B[38;5;205m";
+			break;
+		case 4: 
+			strColor = "\u001B[33m";
+			break;
+		case 5: 
+			strColor = "\u001B[32m";
+			break;
+		case 6: 
+			strColor = "\u001B[35m";			
+		}
+		return strColor + id + resetColor;
+	}
 }

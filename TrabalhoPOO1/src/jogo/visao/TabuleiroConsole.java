@@ -48,7 +48,7 @@ public class TabuleiroConsole {
 			
 		}
 		scan.close();
-		
+		System.out.println(tabuleiro);
 		while(!tabuleiro.veriFicarVitoria()) {
 			for(Jogador j : arrayPlayers) {
 				tabuleiro.moveInSquare(j);
