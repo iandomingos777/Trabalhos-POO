@@ -60,6 +60,7 @@ public class TabuleiroConsole {
 			}
 		}
 		scan.close();
+		
 	}
 	
 

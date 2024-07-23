@@ -26,6 +26,7 @@ public class Tabuleiro {
 			squares.get(jogador.getPosition()).addPlayer(jogador);
 			System.out.println(this);
 			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
+			jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 			veriFicarVitoria();
 			try {
 				Thread.sleep(000);
@@ -45,6 +46,9 @@ public class Tabuleiro {
 			jogador.setBlocked(false);
 			return;
 		}
+		Scanner scan = new Scanner(System.in);
+        System.out.println("Pressione Enter para girar os dados");
+        scan.nextLine();
 		
 		Random random = new Random();
 		int dado1 = random.nextInt(6) + 1;
@@ -72,6 +76,10 @@ public class Tabuleiro {
 		moveAtomic(sum, jogador);
 		checkPosition(jogador);
 		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition() );
+		if(dado1 == dado2 && !(jogador instanceof JogadorAzarado && sum > 6)) {
+			System.out.println("Dados iguais. Jogue mais uma vez");
+			moveInSquare(jogador);
+		}
 	}
 	
 	public void checkPosition(Jogador jogador) {
@@ -112,9 +120,7 @@ public class Tabuleiro {
 	        try {
 	            boolean found = false;
 	            for (Jogador j : jogadores) {
-	                System.out.println("Comparing with player color: " + j.getColor());
 	                if (j.getColor().equalsIgnoreCase(harmed)) {
-	                    System.out.println("Match found: " + j.getColor());
 	                    squares.get(j.getPosition()).remPlayer(j);
 	                    j.setPosition(0);
 	                    squares.get(0).addPlayer(j);
@@ -123,7 +129,8 @@ public class Tabuleiro {
 	                }
 	            }
 	            if (!found) {
-	                System.out.println("Player color not found: " + harmed);
+	                System.out.println("Jogador não encontrado");
+	                checkPosition(jogador);
 	            }
 	        } catch (Exception e) {
 	            System.out.println("Exception occurred: " + e.getMessage());
@@ -167,6 +174,10 @@ public class Tabuleiro {
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
 			System.out.println(squares.get(40).getPlayers().get(0).getColor() + " venceu :)");
+			System.out.println();
+			for(Jogador j : jogadores) {
+				System.out.println("Movimentos do jogador " + j.getColor() + ": " + j.getNumberMoves());
+			}
 			System.exit(0);
 		}
 		return false;
