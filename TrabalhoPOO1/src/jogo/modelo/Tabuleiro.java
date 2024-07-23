@@ -128,8 +128,6 @@ public class Tabuleiro {
 	        } catch (Exception e) {
 	            System.out.println("Exception occurred: " + e.getMessage());
 	            e.printStackTrace();
-	        } finally {
-	            enter.close();
 	        }
 	        break;
 

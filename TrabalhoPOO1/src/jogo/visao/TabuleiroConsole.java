@@ -47,7 +47,6 @@ public class TabuleiroConsole {
 			tabuleiro = new Tabuleiro(arrayPlayers);
 			
 		}
-		scan.close();
 		System.out.println(tabuleiro);
 		while(!tabuleiro.veriFicarVitoria()) {
 			for(Jogador j : arrayPlayers) {
@@ -60,6 +59,7 @@ public class TabuleiroConsole {
 				}
 			}
 		}
+		scan.close();
 	}
 	
 
