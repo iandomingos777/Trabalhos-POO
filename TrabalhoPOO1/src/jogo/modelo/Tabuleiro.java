@@ -2,6 +2,7 @@ package jogo.modelo;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Tabuleiro {
 
@@ -80,13 +81,13 @@ public class Tabuleiro {
 		moveAtomic(sum, jogador);
 
 
-		/*
 		switch (jogador.getPosition()) {
 		    case 10:
 		    case 25:
 		    case 38:
 		        // Se o jogador está nas posições 10, 25 ou 38, ele fica bloqueado
-		        jogador.setBlocked(true);
+		    	System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
+		    	jogador.setBlocked(true);
 		        break; // Sai do switch após definir o jogador como bloqueado
 		        
 		    case 13:
@@ -97,8 +98,11 @@ public class Tabuleiro {
 		    case 15:
 		    case 30:
 		        // Se o jogador não for do tipo JogadorAzarado, ele avança 3 posições
+	        	System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
 		        if (!(jogador instanceof JogadorAzarado)) {
 		            jogador.movePlayer(3);
+		        }else {
+		        	System.out.println("Jogador é azarado. Nao andara as 3 casas");
 		        }
 		        // Adicionado break aqui para evitar a execução em casos seguintes
 		        break;
@@ -106,7 +110,7 @@ public class Tabuleiro {
 		    case 17:
 		    case 27:
 		        // Se o jogador está nas posições 17 ou 27, pede ao usuário para escolher um jogador para voltar ao início
-		        System.out.print("Escolha um jogador para voltar para o início, diga sua cor: ");
+		        System.out.print("Casa "+ jogador.getPosition() + ": Escolha um jogador para voltar para o início, diga sua cor: ");
 		        Scanner enter = new Scanner(System.in);
 		        String harmed = enter.nextLine();
 		        
@@ -122,7 +126,8 @@ public class Tabuleiro {
 		    case 20:
 		    case 35:
 		        // Se o jogador está nas posições 20 ou 35, encontra o jogador com a posição mais baixa
-		        int lower = 40; // Inicializa com um valor alto para encontrar a menor posição
+		        System.out.print("Casa "+ jogador.getPosition() + ": Troca de posiçao com o jogador mais atras");
+		    	int lower = 40; // Inicializa com um valor alto para encontrar a menor posição
 		        for (Jogador j : jogadores) {
 		            if (j.getPosition() < lower) {
 		                lower = j.getPosition();
