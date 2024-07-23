@@ -8,6 +8,8 @@ public class Tabuleiro {
 
 	private ArrayList<Jogador> jogadores = new ArrayList<>();
 	private ArrayList<Campo> squares = new ArrayList<>(41);
+	
+	
 
 	public Tabuleiro(ArrayList<Jogador> players) {
 		for(int i = 0; i < 41; i++) {
@@ -85,6 +87,31 @@ public class Tabuleiro {
 	        break; 
 	        
 	    case 13:
+	    	Jogador newPlayer = null;
+	    	if(jogador instanceof JogadorAzarado) {
+	    		Random random = new Random();
+	    		int option = random.nextInt(2) + 1;
+	    		if(option == 1) {
+	    			 newPlayer = new JogadorNormal(jogador.getId());
+	    			 newPlayer = jogador;
+	    			 int index = jogador.getId()-1;
+	    			 jogadores.set(index, newPlayer);	    			 
+	    			 System.out.println(jogador.getColor() + " mudou de azarado para NORMAL");
+	    			 if(jogadores.get(index) instanceof JogadorNormal) {
+	    				 System.out.println("OI");
+	    			 }
+	    		}
+	    		else {
+	    			 newPlayer = new JogadorSortudo(jogador.getId());
+	    			 newPlayer = jogador;
+	    			 int index = jogador.getId()-1;
+	    			 jogadores.set(index, newPlayer);	    			 
+	    			 System.out.println(jogador.getColor() + " mudou de azarado para SORTUDO");
+	    			 if(jogadores.get(index) instanceof JogadorSortudo) {
+	    				 System.out.println("OLA");
+	    			 }
+	    		}
+	    	}
 	        // Implementação para a posição 13 (a ser definida conforme necessário)
 	        break;
 	        
