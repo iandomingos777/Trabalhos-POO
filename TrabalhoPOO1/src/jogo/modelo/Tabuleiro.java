@@ -79,66 +79,85 @@ public class Tabuleiro {
 			//}
 		//}
 		moveAtomic(sum, jogador);
-
-
+		checkPosition(jogador);
+	}
+	
+	public void checkPosition(Jogador jogador) {
 		switch (jogador.getPosition()) {
-		    case 10:
-		    case 25:
-		    case 38:
-		        // Se o jogador está nas posições 10, 25 ou 38, ele fica bloqueado
-		    	System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
-		    	jogador.setBlocked(true);
-		        break; // Sai do switch após definir o jogador como bloqueado
-		        
-		    case 13:
-		        // Implementação para a posição 13 (a ser definida conforme necessário)
-		        break;
-		        
-		    case 5:
-		    case 15:
-		    case 30:
-		        // Se o jogador não for do tipo JogadorAzarado, ele avança 3 posições
-	        	System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
-		        if (!(jogador instanceof JogadorAzarado)) {
-		            jogador.movePlayer(3);
-		        }else {
-		        	System.out.println("Jogador é azarado. Nao andara as 3 casas");
-		        }
-		        // Adicionado break aqui para evitar a execução em casos seguintes
-		        break;
-		        
-		    case 17:
-		    case 27:
-		        // Se o jogador está nas posições 17 ou 27, pede ao usuário para escolher um jogador para voltar ao início
-		        System.out.print("Casa "+ jogador.getPosition() + ": Escolha um jogador para voltar para o início, diga sua cor: ");
-		        Scanner enter = new Scanner(System.in);
-		        String harmed = enter.nextLine();
-		        
-		        // Itera sobre todos os jogadores e move o jogador escolhido para a posição 0
-		        for (Jogador j : jogadores) {
-		            if (j.getColor().equalsIgnoreCase(harmed)) {
-		                j.setPosition(0);
-		            }
-		        }
-		        // Adicionado break para evitar a execução em casos seguintes
-		        break;
-		        
-		    case 20:
-		    case 35:
-		        // Se o jogador está nas posições 20 ou 35, encontra o jogador com a posição mais baixa
-		        System.out.print("Casa "+ jogador.getPosition() + ": Troca de posiçao com o jogador mais atras");
-		    	int lower = 40; // Inicializa com um valor alto para encontrar a menor posição
-		        for (Jogador j : jogadores) {
-		            if (j.getPosition() < lower) {
-		                lower = j.getPosition();
-		            }
-		        }
-		        // Implementação adicional para o caso 20 e 35 deve ser continuada aqui
-		        break; // Sai do switch após encontrar a menor posição
+	    case 10:
+	    case 25:
+	    case 38:
+	        // Se o jogador está nas posições 10, 25 ou 38, ele fica bloqueado
+	    	System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
+	    	jogador.setBlocked(true);
+	        break; // Sai do switch após definir o jogador como bloqueado
+	        
+	    case 13:
+	        // Implementação para a posição 13 (a ser definida conforme necessário)
+	        break;
+	        
+	    case 5:
+	    case 15:
+	    case 30:
+	        // Se o jogador não for do tipo JogadorAzarado, ele avança 3 posições
+        	System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
+	        if (!(jogador instanceof JogadorAzarado)) {
+	            jogador.movePlayer(3);
+	        }else {
+	        	System.out.println("Jogador é azarado. Não andará as 3 casas");
+	        }
+	        // Adicionado break aqui para evitar a execução em casos seguintes
+	        break;
+	        
+	    case 17:
+	    case 27:
+	        // Se o jogador está nas posições 17 ou 27, pede ao usuário para escolher um jogador para voltar ao início
+	        System.out.print("Casa "+ jogador.getPosition() + ": Escolha um jogador para voltar para o início, diga sua cor");
+	        Scanner enter = new Scanner(System.in);
+	        String harmed = enter.nextLine();
+	        
+	        // Itera sobre todos os jogadores e move o jogador escolhido para a posição 0
+	        for (Jogador j : jogadores) {
+	            if (j.getColor().equalsIgnoreCase(harmed)) {
+	            	squares.get(j.getPosition()).remPlayer(j);
+	                j.setPosition(0);
+	                squares.get(0).addPlayer(j);
+	            }
+	        }
+	        // Adicionado break para evitar a execução em casos seguintes
+	        enter.close();
+	        break;
+	        
+	    case 20:
+	    case 35:
+	        // Se o jogador está nas posições 20 ou 35, encontra o jogador com a posição mais baixa
+	        System.out.print("Casa "+ jogador.getPosition() + ": Troca de posiçao com o jogador mais atras");
+	    	int lower = 40; // Inicializa com um valor alto para encontrar a menor posição
+	    	Jogador aux = null;
+	        for (Jogador j : jogadores) {
+	            if (j.getPosition() < lower) {
+	                lower = j.getPosition();
+	                aux = j;
+	            }
+	        }
+	        squares.get(lower).remPlayer(aux);
+	        aux.setPosition(jogador.getPosition());
+	        squares.get(jogador.getPosition()).addPlayer(aux);
+	        
+	        squares.get(jogador.getPosition()).remPlayer(jogador);
+	        jogador.setPosition(lower);
+	        squares.get(jogador.getPosition()).addPlayer(jogador);
+	        checkPosition(jogador);
+	        
+	        // Implementação adicional para o caso 20 e 35 deve ser continuada aqui
+	        break; // Sai do switch após encontrar a menor posição
+	}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		*/
-
-		
 	}
 
 	public boolean veriFicarVitoria() {
