@@ -28,7 +28,7 @@ public class Tabuleiro {
 			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
 			veriFicarVitoria();
 			try {
-				Thread.sleep(0000);
+				Thread.sleep(000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,8 +37,11 @@ public class Tabuleiro {
 	}
 
 	public void moveInSquare(Jogador jogador) {
+		
+		System.out.println("\nÉ a vez do jogador " + jogador.getColor());
 
 		if (jogador.isBlocked()) {
+			System.out.println(jogador.getColor() + " está bloqueado");
 			jogador.setBlocked(false);
 			return;
 		}
@@ -53,33 +56,22 @@ public class Tabuleiro {
 		int sum = dado1 + dado2;
 		if (jogador instanceof JogadorAzarado && sum > 6) {
 			System.out.println("Jogador é azarado, soma dos dados não pode ser maior que 6");
-			sum = 5;
+			sum = 6;
 		} else if (jogador instanceof JogadorSortudo && sum < 7) {
 			System.out.println("Jogador é sortudo, a soma dos dados não pode ser menor que 7");
 			sum = 7;
 		}
 		System.out.println("Soma dos dados: " + sum);
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//for(int i = 0; i < sum; i++) {
-			//squares.get(jogador.getPosition()).remPlayer(jogador);
-			//jogador.movePlayer(1);
-			//squares.get(jogador.getPosition()).addPlayer(jogador);
-			//System.out.println(this);
-			//veriFicarVitoria();
-			//try {
-				//Thread.sleep(1000);
-			//} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			//}
-		//}
+
 		moveAtomic(sum, jogador);
 		checkPosition(jogador);
+		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition() );
 	}
 	
 	public void checkPosition(Jogador jogador) {
@@ -87,10 +79,10 @@ public class Tabuleiro {
 	    case 10:
 	    case 25:
 	    case 38:
-	        // Se o jogador está nas posições 10, 25 ou 38, ele fica bloqueado
+	        
 	    	System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
 	    	jogador.setBlocked(true);
-	        break; // Sai do switch após definir o jogador como bloqueado
+	        break; 
 	        
 	    case 13:
 	        // Implementação para a posição 13 (a ser definida conforme necessário)
@@ -99,34 +91,48 @@ public class Tabuleiro {
 	    case 5:
 	    case 15:
 	    case 30:
-	        // Se o jogador não for do tipo JogadorAzarado, ele avança 3 posições
+	        
         	System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
 	        if (!(jogador instanceof JogadorAzarado)) {
-	            jogador.movePlayer(3);
+	            moveAtomic(3, jogador);
 	        }else {
 	        	System.out.println("Jogador é azarado. Não andará as 3 casas");
 	        }
-	        // Adicionado break aqui para evitar a execução em casos seguintes
+	        
 	        break;
 	        
 	    case 17:
 	    case 27:
-	        // Se o jogador está nas posições 17 ou 27, pede ao usuário para escolher um jogador para voltar ao início
-	        System.out.print("Casa "+ jogador.getPosition() + ": Escolha um jogador para voltar para o início, diga sua cor");
+	        if(jogadores.size() <= 1) return;
 	        Scanner enter = new Scanner(System.in);
-	        String harmed = enter.nextLine();
+	        System.out.println("Casa " + jogador.getPosition() + ": Escolha um jogador para voltar para o início!");
+	        System.out.println("Diga sua cor: ");
+	        String harmed = enter.next(); 
 	        
-	        // Itera sobre todos os jogadores e move o jogador escolhido para a posição 0
-	        for (Jogador j : jogadores) {
-	            if (j.getColor().equalsIgnoreCase(harmed)) {
-	            	squares.get(j.getPosition()).remPlayer(j);
-	                j.setPosition(0);
-	                squares.get(0).addPlayer(j);
+	        try {
+	            boolean found = false;
+	            for (Jogador j : jogadores) {
+	                System.out.println("Comparing with player color: " + j.getColor());
+	                if (j.getColor().equalsIgnoreCase(harmed)) {
+	                    System.out.println("Match found: " + j.getColor());
+	                    squares.get(j.getPosition()).remPlayer(j);
+	                    j.setPosition(0);
+	                    squares.get(0).addPlayer(j);
+	                    found = true;
+	                    break; // Exit loop after finding and processing the player
+	                }
 	            }
+	            if (!found) {
+	                System.out.println("Player color not found: " + harmed);
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Exception occurred: " + e.getMessage());
+	            e.printStackTrace();
+	        } finally {
+	            enter.close();
 	        }
-	        // Adicionado break para evitar a execução em casos seguintes
-	        enter.close();
 	        break;
+
 	        
 	    case 20:
 	    case 35:
@@ -147,13 +153,13 @@ public class Tabuleiro {
 	        squares.get(jogador.getPosition()).remPlayer(jogador);
 	        jogador.setPosition(lower);
 	        squares.get(jogador.getPosition()).addPlayer(jogador);
-	        checkPosition(jogador);
+	        
 	        
 	        // Implementação adicional para o caso 20 e 35 deve ser continuada aqui
 	        break; // Sai do switch após encontrar a menor posição
 	}
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
