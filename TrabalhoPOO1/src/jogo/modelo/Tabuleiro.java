@@ -18,20 +18,14 @@ public class Tabuleiro {
 			squares.get(0).addPlayer(jogador);
 		}
 	}
-	
-	
 
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
 
-
-
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
-
-
 
 	private void moveAtomic(int sum, Jogador jogador) {
 		for (int i = 0; i < sum; i++) {
@@ -40,7 +34,7 @@ public class Tabuleiro {
 			squares.get(jogador.getPosition()).addPlayer(jogador);
 			System.out.println("\n" + this);
 			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
-			if(jogador.getPosition() == 40) {
+			if (jogador.getPosition() == 40) {
 				jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 			}
 			veriFicarVitoria();
@@ -94,7 +88,8 @@ public class Tabuleiro {
 		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 		checkPosition(jogador);
 		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
-		if (dado1 == dado2 && !(jogador instanceof JogadorAzarado && sum > 6) && !(jogador instanceof JogadorSortudo && sum < 7)) {
+		if (dado1 == dado2 && !(jogador instanceof JogadorAzarado && sum > 6)
+				&& !(jogador instanceof JogadorSortudo && sum < 7)) {
 			System.out.println("Dados iguais. Jogue mais uma vez");
 			moveInSquare(jogador);
 		}
@@ -109,7 +104,7 @@ public class Tabuleiro {
 			System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
 			jogador.setBlocked(true);
 			break;
-			
+
 		case 13:
 			Jogador newPlayer = null;
 			Random random = new Random();
@@ -122,7 +117,7 @@ public class Tabuleiro {
 					newPlayer = new JogadorSortudo(jogador.getId());
 					System.out.println(jogador.getColor() + " mudou de azarado para SORTUDO");
 				}
-			} else if(jogador instanceof JogadorNormal) {
+			} else if (jogador instanceof JogadorNormal) {
 				if (option == 1) {
 					newPlayer = new JogadorAzarado(jogador.getId());
 					System.out.println(jogador.getColor() + " mudou de normal para AZARADO");
@@ -139,11 +134,11 @@ public class Tabuleiro {
 					System.out.println(jogador.getColor() + " mudou de sortudo para AZARADO");
 				}
 			}
-			
+
 			newPlayer.setBlocked(jogador.isBlocked());
 			newPlayer.setPosition(jogador.getPosition());
 			newPlayer.setNumberMoves(jogador.getNumberMoves());
-		    int index = jogadores.indexOf(jogador);
+			int index = jogadores.indexOf(jogador);
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			squares.get(jogador.getPosition()).addPlayer(newPlayer);
 			jogadores.set(index, newPlayer);
@@ -154,14 +149,14 @@ public class Tabuleiro {
 		case 30:
 
 			System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
-			
+
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			if (!(jogador instanceof JogadorAzarado)) {
 				moveAtomic(3, jogador);
 			} else {
@@ -218,9 +213,9 @@ public class Tabuleiro {
 
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			jogador.setPosition(lower);
-			squares.get(jogador.getPosition()).addPlayer(jogador);			
-			break; 
-			
+			squares.get(jogador.getPosition()).addPlayer(jogador);
+			break;
+
 		}
 		try {
 			Thread.sleep(1500);
@@ -228,7 +223,7 @@ public class Tabuleiro {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public boolean veriFicarVitoria() {
