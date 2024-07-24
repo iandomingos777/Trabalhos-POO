@@ -149,11 +149,22 @@ public class Tabuleiro {
 			jogadores.set(index, newPlayer);
 			break;
 
+		case 7:
+		case 8:
+		case 6:
 		case 5:
 		case 15:
 		case 30:
 
 			System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
+			
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			if (!(jogador instanceof JogadorAzarado)) {
 				moveAtomic(3, jogador);
 			} else {
