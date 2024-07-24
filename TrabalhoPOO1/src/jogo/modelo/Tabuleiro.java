@@ -160,7 +160,7 @@ public class Tabuleiro {
 			}
 
 			break;
-
+			
 		case 17:
 		case 27:
 			if (jogadores.size() <= 1)
@@ -173,7 +173,7 @@ public class Tabuleiro {
 			try {
 				boolean found = false;
 				for (Jogador j : jogadores) {
-					if (j.getColor().equalsIgnoreCase(harmed)) {
+					if (j.getColor().toLowerCase().contains(harmed.toLowerCase())) {
 						squares.get(j.getPosition()).remPlayer(j);
 						j.setPosition(0);
 						squares.get(0).addPlayer(j);
@@ -224,7 +224,7 @@ public class Tabuleiro {
 
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
-			System.out.println(squares.get(40).getPlayers().get(0).getColor().toUpperCase() + " VENCEU :)");
+			System.out.println(squares.get(40).getPlayers().get(0).getColor() + " VENCEU :)");
 			System.out.println();
 			for (Jogador j : jogadores) {
 				System.out.println("Jogadas do " + j.getColor() + ": " + j.getNumberMoves());
