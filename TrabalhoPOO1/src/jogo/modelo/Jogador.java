@@ -7,6 +7,15 @@ public abstract class Jogador {
 	protected int position;
 	protected int numberMoves = 0;
 	protected boolean blocked = false;
+	protected boolean winner = false;
+
+	public boolean isWinner() {
+		return winner;
+	}
+
+	public void setWinner(boolean winner) {
+		this.winner = winner;
+	}
 
 	public Jogador(int id) {
 		this.id = id;
@@ -77,7 +86,8 @@ public abstract class Jogador {
 		case 6:
 			strColor = "\u001B[35m";
 		}
-		return strColor + color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase() + resetColor;
+		if(winner) return strColor + color.toUpperCase() + resetColor;
+		else return strColor + color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase() + resetColor;
 	}
 
 	public int getId() {

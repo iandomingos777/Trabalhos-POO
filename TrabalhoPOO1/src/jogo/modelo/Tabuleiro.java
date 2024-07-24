@@ -224,6 +224,7 @@ public class Tabuleiro {
 
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
+			squares.get(40).getPlayers().get(0).setWinner(true);
 			System.out.println(squares.get(40).getPlayers().get(0).getColor() + " VENCEU :)");
 			System.out.println();
 			for (Jogador j : jogadores) {
