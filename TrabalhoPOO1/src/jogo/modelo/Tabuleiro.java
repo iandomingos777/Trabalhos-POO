@@ -38,14 +38,14 @@ public class Tabuleiro {
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			jogador.movePlayer(1);
 			squares.get(jogador.getPosition()).addPlayer(jogador);
-			System.out.println(this);
+			System.out.println("\n" + this);
 			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
 			if(jogador.getPosition() == 40) {
 				jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 			}
 			veriFicarVitoria();
 			try {
-				Thread.sleep(000);
+				Thread.sleep(1500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -62,6 +62,7 @@ public class Tabuleiro {
 			jogador.setBlocked(false);
 			return;
 		}
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Pressione Enter para girar os dados");
 		scan.nextLine();
@@ -83,7 +84,7 @@ public class Tabuleiro {
 		}
 		System.out.println("Soma dos dados: " + sum);
 		try {
-			Thread.sleep(000);
+			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,7 +98,7 @@ public class Tabuleiro {
 			System.out.println("Dados iguais. Jogue mais uma vez");
 			moveInSquare(jogador);
 		}
-		System.out.println("Jogadas " + jogador.getNumberMoves());
+
 	}
 
 	public void checkPosition(Jogador jogador) {
@@ -105,10 +106,10 @@ public class Tabuleiro {
 		case 10:
 		case 25:
 		case 38:
-
 			System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
 			jogador.setBlocked(true);
 			break;
+			
 		case 13:
 			Jogador newPlayer = null;
 			Random random = new Random();
@@ -138,6 +139,7 @@ public class Tabuleiro {
 					System.out.println(jogador.getColor() + " mudou de sortudo para AZARADO");
 				}
 			}
+			
 			newPlayer.setBlocked(jogador.isBlocked());
 			newPlayer.setPosition(jogador.getPosition());
 			newPlayer.setNumberMoves(jogador.getNumberMoves());
@@ -145,7 +147,6 @@ public class Tabuleiro {
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			squares.get(jogador.getPosition()).addPlayer(newPlayer);
 			jogadores.set(index, newPlayer);
-			// Implementação para a posição 13 (a ser definida conforme necessário)
 			break;
 
 		case 5:
@@ -193,10 +194,9 @@ public class Tabuleiro {
 
 		case 20:
 		case 35:
-			// Se o jogador está nas posições 20 ou 35, encontra o jogador com a posição
-			// mais baixa
-			System.out.print("Casa " + jogador.getPosition() + ": Troca de posiçao com o jogador mais atras");
-			int lower = 40; // Inicializa com um valor alto para encontrar a menor posição
+
+			System.out.print("Casa " + jogador.getPosition() + ": Troca de posiçao com o jogador mais atras ");
+			int lower = 40;
 			Jogador aux = null;
 			for (Jogador j : jogadores) {
 				if (j.getPosition() < lower) {
@@ -210,25 +210,27 @@ public class Tabuleiro {
 
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			jogador.setPosition(lower);
-			squares.get(jogador.getPosition()).addPlayer(jogador);
-
-			// Implementação adicional para o caso 20 e 35 deve ser continuada aqui
-			break; // Sai do switch após encontrar a menor posição
+			squares.get(jogador.getPosition()).addPlayer(jogador);			
+			break; 
+			
 		}
 		try {
-			Thread.sleep(000);
+			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
-			System.out.println(squares.get(40).getPlayers().get(0).getColor() + " venceu :)");
+			System.out.println(squares.get(40).getPlayers().get(0).getColor().toUpperCase() + " VENCEU :)");
 			System.out.println();
 			for (Jogador j : jogadores) {
 				System.out.println("Jogadas do " + j.getColor() + ": " + j.getNumberMoves());
+				System.out.println(j.getColor() + " terminou na casa " + j.getPosition());
+				System.out.println();
 			}
 			System.exit(0);
 		}

@@ -13,17 +13,21 @@ public class TabuleiroConsole {
 
 	Tabuleiro tabuleiro;
 	
+	ArrayList<Jogador> arrayPlayers = new ArrayList<Jogador>();
+	
+	Scanner scan = new Scanner(System.in);
+	
 	public TabuleiroConsole() {
 		// TODO Auto-generated constructor stub
 		boolean repetiçao = true;
-		Scanner scan = new Scanner(System.in);
+		
 		int numPlayers = 0;
 		do {
 			System.out.println("Quantos jogadores?");
 			numPlayers = scan.nextInt();
 		} while(numPlayers < 2 || numPlayers > 6);
 		
-		ArrayList<Jogador> arrayPlayers = new ArrayList<Jogador>();
+		
 		
 		do {
 		for(int i = 1; i <= numPlayers; i++) {
@@ -51,8 +55,14 @@ public class TabuleiroConsole {
 		}
 		} while(repetiçao);
 		
-			tabuleiro = new Tabuleiro(arrayPlayers);
-			
+
+		
+		
+	}
+	
+	public void jogar() {
+		tabuleiro = new Tabuleiro(arrayPlayers);
+		
 		System.out.println(tabuleiro);
 		while(!tabuleiro.veriFicarVitoria()) {
 			for(Jogador j : tabuleiro.getJogadores()) {
@@ -66,7 +76,6 @@ public class TabuleiroConsole {
 			}
 		}
 		scan.close();
-		
 	}
 	
 

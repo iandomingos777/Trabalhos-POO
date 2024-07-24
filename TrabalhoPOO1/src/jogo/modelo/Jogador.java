@@ -56,7 +56,7 @@ public abstract class Jogador {
 	}
 
 	public String getColor() {
-		return color;
+		return color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase();
 	}
 
 	public int getId() {
