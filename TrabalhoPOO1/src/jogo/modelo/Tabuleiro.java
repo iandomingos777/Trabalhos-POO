@@ -194,7 +194,7 @@ public class Tabuleiro {
 		case 20:
 		case 35:
 
-			System.out.print("Casa " + jogador.getPosition() + ": Troca de posiçao com o jogador mais atras ");
+			System.out.print("Casa " + jogador.getPosition() + ": Troca de posiçao com o jogador mais atras\n");
 			int lower = 40;
 			Jogador aux = null;
 			for (Jogador j : jogadores) {
