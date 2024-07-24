@@ -3,6 +3,7 @@ package jogo.modelo;
 import java.util.ArrayList;
 
 public class Campo {
+
 	int number;
 	private ArrayList<Jogador> players = new ArrayList<Jogador>();
 
