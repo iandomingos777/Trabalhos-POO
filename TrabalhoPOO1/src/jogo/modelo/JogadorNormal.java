@@ -6,5 +6,8 @@ public class JogadorNormal extends Jogador{
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+public String classString() {
+	return "Normal";
+}
 }

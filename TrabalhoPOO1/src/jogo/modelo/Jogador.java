@@ -5,7 +5,7 @@ public abstract class Jogador {
 	protected String color;
 	protected int id;
 	protected int position;
-	protected int numberMoves;
+	protected int numberMoves = 0;
 	protected boolean blocked = false;
 	
 	public Jogador(int id) {
@@ -92,4 +92,5 @@ public abstract class Jogador {
 		}
 		return strColor + id + resetColor;
 	}
+	public abstract String classString();
 }

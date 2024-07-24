@@ -15,15 +15,17 @@ public class TabuleiroConsole {
 	
 	public TabuleiroConsole() {
 		// TODO Auto-generated constructor stub
+		boolean repetiçao = true;
 		Scanner scan = new Scanner(System.in);
 		int numPlayers = 0;
 		do {
 			System.out.println("Quantos jogadores?");
 			numPlayers = scan.nextInt();
-		} while(numPlayers <= 0 || numPlayers > 6);
+		} while(numPlayers < 2 || numPlayers > 6);
 		
 		ArrayList<Jogador> arrayPlayers = new ArrayList<Jogador>();
 		
+		do {
 		for(int i = 1; i <= numPlayers; i++) {
 			
 			int opc = 0;
@@ -43,13 +45,17 @@ public class TabuleiroConsole {
 			case 3: 
 				arrayPlayers.add(new JogadorSortudo(i));
 			}
-			
+			if(i > 1 && arrayPlayers.get(i - 1).getClass() != arrayPlayers.get(i - 2).getClass()) {
+				repetiçao = false;
+			}
+		}
+		} while(repetiçao);
+		
 			tabuleiro = new Tabuleiro(arrayPlayers);
 			
-		}
 		System.out.println(tabuleiro);
 		while(!tabuleiro.veriFicarVitoria()) {
-			for(Jogador j : arrayPlayers) {
+			for(Jogador j : tabuleiro.getJogadores()) {
 				tabuleiro.moveInSquare(j);
 				try {
 					Thread.sleep(1000);

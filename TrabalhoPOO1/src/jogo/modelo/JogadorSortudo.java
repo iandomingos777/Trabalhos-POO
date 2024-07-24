@@ -6,5 +6,8 @@ public class JogadorSortudo extends Jogador{
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public String classString() {
+		return "Sortudo";
+	}
 }
