@@ -18,20 +18,14 @@ public class Tabuleiro {
 			squares.get(0).addPlayer(jogador);
 		}
 	}
-	
-	
 
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
 
-
-
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
-
-
 
 	private void moveAtomic(int sum, Jogador jogador) {
 		for (int i = 0; i < sum; i++) {
@@ -40,7 +34,7 @@ public class Tabuleiro {
 			squares.get(jogador.getPosition()).addPlayer(jogador);
 			System.out.println("\n" + this);
 			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
-			if(jogador.getPosition() == 40) {
+			if (jogador.getPosition() == 40) {
 				jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 			}
 			veriFicarVitoria();
@@ -66,22 +60,19 @@ public class Tabuleiro {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Pressione Enter para girar os dados");
 		scan.nextLine();
-
-		Random random = new Random();
-		int dado1 = random.nextInt(6) + 1;
+		int sum = 0;
+		int dado1 = 0;
+		int dado2 = 0;
+		do {
+			Random random = new Random();
+			dado1 = random.nextInt(6) + 1;
+			dado2 = random.nextInt(6) + 1;
+			sum = dado1 + dado2;
+		} while ((jogador instanceof JogadorAzarado && sum > 6) || (jogador instanceof JogadorSortudo && sum < 7));
 		System.out.print("Dado 1: ");
-		int dado2 = random.nextInt(6) + 1;
 		System.out.println(dado1);
 		System.out.print("Dado 2: ");
 		System.out.println(dado2);
-		int sum = dado1 + dado2;
-		if (jogador instanceof JogadorAzarado && sum > 6) {
-			System.out.println("Jogador é azarado, soma dos dados não pode ser maior que 6");
-			sum = 6;
-		} else if (jogador instanceof JogadorSortudo && sum < 7) {
-			System.out.println("Jogador é sortudo, a soma dos dados não pode ser menor que 7");
-			sum = 7;
-		}
 		System.out.println("Soma dos dados: " + sum);
 		try {
 			Thread.sleep(1500);
@@ -94,7 +85,7 @@ public class Tabuleiro {
 		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 		checkPosition(jogador);
 		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
-		if (dado1 == dado2 && !(jogador instanceof JogadorAzarado && sum > 6) && !(jogador instanceof JogadorSortudo && sum < 7)) {
+		if (dado1 == dado2) {
 			System.out.println("Dados iguais. Jogue mais uma vez");
 			moveInSquare(jogador);
 		}
@@ -109,7 +100,7 @@ public class Tabuleiro {
 			System.out.println("Casa " + jogador.getPosition() + ": nao joga a proxima rodada");
 			jogador.setBlocked(true);
 			break;
-			
+
 		case 13:
 			Jogador newPlayer = null;
 			Random random = new Random();
@@ -122,7 +113,7 @@ public class Tabuleiro {
 					newPlayer = new JogadorSortudo(jogador.getId());
 					System.out.println(jogador.getColor() + " mudou de azarado para SORTUDO");
 				}
-			} else if(jogador instanceof JogadorNormal) {
+			} else if (jogador instanceof JogadorNormal) {
 				if (option == 1) {
 					newPlayer = new JogadorAzarado(jogador.getId());
 					System.out.println(jogador.getColor() + " mudou de normal para AZARADO");
@@ -139,11 +130,11 @@ public class Tabuleiro {
 					System.out.println(jogador.getColor() + " mudou de sortudo para AZARADO");
 				}
 			}
-			
+
 			newPlayer.setBlocked(jogador.isBlocked());
 			newPlayer.setPosition(jogador.getPosition());
 			newPlayer.setNumberMoves(jogador.getNumberMoves());
-		    int index = jogadores.indexOf(jogador);
+			int index = jogadores.indexOf(jogador);
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			squares.get(jogador.getPosition()).addPlayer(newPlayer);
 			jogadores.set(index, newPlayer);
@@ -154,14 +145,14 @@ public class Tabuleiro {
 		case 30:
 
 			System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
-			
+
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			if (!(jogador instanceof JogadorAzarado)) {
 				moveAtomic(3, jogador);
 			} else {
@@ -218,9 +209,9 @@ public class Tabuleiro {
 
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			jogador.setPosition(lower);
-			squares.get(jogador.getPosition()).addPlayer(jogador);			
-			break; 
-			
+			squares.get(jogador.getPosition()).addPlayer(jogador);
+			break;
+
 		}
 		try {
 			Thread.sleep(1500);
@@ -228,7 +219,7 @@ public class Tabuleiro {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public boolean veriFicarVitoria() {
