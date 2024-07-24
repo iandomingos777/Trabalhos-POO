@@ -149,9 +149,6 @@ public class Tabuleiro {
 			jogadores.set(index, newPlayer);
 			break;
 
-		case 7:
-		case 8:
-		case 6:
 		case 5:
 		case 15:
 		case 30:
