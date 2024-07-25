@@ -1,7 +1,9 @@
 package jogo.visao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import jogo.modelo.Jogador;
 import jogo.modelo.JogadorAzarado;
@@ -18,42 +20,58 @@ public class TabuleiroConsole {
 	Scanner scan = new Scanner(System.in);
 
 	public TabuleiroConsole() {
-		// TODO Auto-generated constructor stub
-		boolean repetiçao = true;
 
+		boolean repetição;
 		int numPlayers = 0;
+
 		do {
+
 			System.out.println("Quantos jogadores?");
 			numPlayers = scan.nextInt();
+
 		} while (numPlayers < 2 || numPlayers > 6);
 
 		do {
+
+			arrayPlayers.clear();
+			Set<String> tiposJogadores = new HashSet<>();
+
 			for (int i = 1; i <= numPlayers; i++) {
 
 				int opc = 0;
 				do {
+
 					System.out.println("Defina o tipo do jogador " + i + "!");
 					System.out.print("1 - Jogador azarado\n2 - Jogador normal\n3 - Jogador sortudo\n");
 					opc = scan.nextInt();
-					
+
 				} while (opc <= 0 || opc > 3);
 
 				switch (opc) {
+
 				case 1:
 					arrayPlayers.add(new JogadorAzarado(i));
+					tiposJogadores.add("JogadorAzarado");
 					break;
 				case 2:
 					arrayPlayers.add(new JogadorNormal(i));
+					tiposJogadores.add("JogadorNormal");
 					break;
 				case 3:
 					arrayPlayers.add(new JogadorSortudo(i));
-				}
-				if (i > 1 && arrayPlayers.get(i - 1).getClass() != arrayPlayers.get(i - 2).getClass()) {
-					repetiçao = false;
+					tiposJogadores.add("JogadorSortudo");
+
 				}
 			}
-		} while (repetiçao);
-		
+
+			repetição = tiposJogadores.size() < 2;
+
+			if (repetição) {
+				System.out.println("Você deve definir pelo menos dois tipos diferentes de jogadores.\n");
+			}
+
+		} while (repetição);
+
 		System.out.println();
 
 	}
