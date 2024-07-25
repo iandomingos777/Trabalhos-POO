@@ -86,7 +86,10 @@ public abstract class Jogador {
 		case 6:
 			strColor = "\u001B[35m";
 		}
-		if(winner) return strColor + color.toUpperCase() + resetColor;
+		if(winner) {
+			setWinner(false);
+			return strColor + color.toUpperCase() + " VENCEU :)" + resetColor;
+		}
 		else return strColor + color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase() + resetColor;
 	}
 
