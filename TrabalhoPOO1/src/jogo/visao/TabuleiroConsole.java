@@ -33,8 +33,9 @@ public class TabuleiroConsole {
 				int opc = 0;
 				do {
 					System.out.println("Defina o tipo do jogador " + i + "!");
-					System.out.print("1 - Jogador azarado\n 2 - Jogador normal\n 3 - Jogador sortudo ");
+					System.out.print("1 - Jogador azarado\n2 - Jogador normal\n3 - Jogador sortudo\n");
 					opc = scan.nextInt();
+					
 				} while (opc <= 0 || opc > 3);
 
 				switch (opc) {
@@ -52,6 +53,8 @@ public class TabuleiroConsole {
 				}
 			}
 		} while (repetiçao);
+		
+		System.out.println();
 
 	}
 
