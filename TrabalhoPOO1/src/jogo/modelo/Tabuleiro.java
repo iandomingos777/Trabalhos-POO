@@ -83,11 +83,12 @@ public class Tabuleiro {
 
 		moveAtomic(sum, jogador);
 		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
+		int index = jogadores.indexOf(jogador);
 		checkPosition(jogador);
 		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
 		if (dado1 == dado2) {
 			System.out.println("Dados iguais. Jogue mais uma vez");
-			moveInSquare(jogador);
+			moveInSquare(jogadores.get(index));
 		}
 
 	}
