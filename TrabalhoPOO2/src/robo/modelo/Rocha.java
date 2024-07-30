@@ -1,6 +1,6 @@
 package robo.modelo;
 
-import robo.excecao.MovimentoInvalidoException;
+import robo.excecao.RochaException;
 
 public class Rocha extends Obstaculo{
 
@@ -13,7 +13,7 @@ public class Rocha extends Obstaculo{
 	public void bater(Robo robo) {
 		if(robo.getPosX() == posX && robo.getPosY() == posY ) {
 			
-			throw new MovimentoInvalidoException("Bateu na rocha");
+			throw new RochaException("Bateu na rocha");
 			
 		}
 	}

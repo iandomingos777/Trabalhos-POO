@@ -3,6 +3,7 @@ package robo.modelo;
 import java.util.ArrayList;
 
 import robo.excecao.MovimentoInvalidoException;
+import robo.excecao.RochaException;
 
 public class PlanoCartesiano {
 
@@ -76,7 +77,7 @@ public class PlanoCartesiano {
 			campo.addRobo(robo);
 			campo.baterEmObstaculo(robo);
 
-		} catch (MovimentoInvalidoException e) {
+		} catch (MovimentoInvalidoException | RochaException e) {
 			robo.setPosX(iniX);
 			robo.setPosY(iniY);
 			campos.get(iniY).get(iniX).addRobo(robo);
