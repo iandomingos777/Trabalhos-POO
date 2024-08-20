@@ -1,9 +1,14 @@
 package arquivo;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Disciplina {
@@ -67,9 +72,19 @@ public class Disciplina {
 		registrarAluno.write("\t");
 		registrarAluno.write(nome);
 		registrarAluno.write("\n");
-		alunos.add(new Aluno(nome, sequenciaRespostas.toUpperCase()));
 		registrarAluno.close();
-		
+	}
+	
+	public void acessarDados(String endereco) throws IOException {
+		File arq = new File(endereco);
+	    BufferedReader br = new BufferedReader(new FileReader(arq));
+	    String linha = br.readLine();
+	    while(linha !=null) {
+	    	String[] dados = linha.split("\t");
+	    	alunos.add(new Aluno(dados[1], dados[0]));
+	    	linha = br.readLine();
+	    }
+		br.close();
 	}
 	
 	public void calcularAcertos() {
@@ -107,4 +122,8 @@ public class Disciplina {
 		this.media = media;
 	}
 	
+	public void criarArquivoEmOrdemAlfabetica() throws IOException {
+		File arq = new File(diretorio,"Notas_em_ordem_alfabetica.txt");
+		BufferedWriter bw = new BufferedWriter(new FileWriter(arq,true));
+	}
 }
