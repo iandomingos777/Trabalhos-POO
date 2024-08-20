@@ -1,10 +1,6 @@
 package arquivo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Disciplina {
 	
@@ -12,34 +8,42 @@ public class Disciplina {
 	private int numAlunos;
 	private double media;
 	private String caminhoGabaritoOficial;
-	private ArrayList<Aluno> alunos;
-	private File diretorio;
+	private String gabarito; 
+	private ArrayList<Aluno> alunos; 
 	
-	public Disciplina(String nome) {
-		this.nome = nome;
-		this.alunos = new ArrayList<>();
-		this.diretorio = new File("C:\\Users\\Vitor\\desktop\\" + nome);
-		diretorio.mkdir();
-		try {
-			cadastrarGabaritoOficial();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void calcularAcertos() {
+		for(Aluno al: alunos) {
+			int length = gabarito.length();
+	         int acertos = 0;
+	         int numV = 0;
+	         int numF = 0;
+			for(int i = 0;i < gabarito.length(); i++) {
+				char resposta = al.getRespostas().charAt(i);
+				if(gabarito.charAt(i) == resposta) {
+					acertos++;
+					if(resposta == 'F') {
+						numF++;
+					}else {
+						numV++;
+					}
+				}
+			}
+			if(numV == gabarito.length() || numF == gabarito.length()) {
+				al.setNumAcertos(0);
+				return;
+			}
+			al.setNumAcertos(acertos);
 		}
 	}
 	
-	public void cadastrarGabaritoOficial() throws IOException {
-		File gabaritoOficial = new File(diretorio, "gabarito.txt");
-		FileWriter f = new FileWriter(gabaritoOficial);
-		Scanner scan = new Scanner(System.in);
-		String gabarito = scan.next();
-		f.write(gabarito);
-		f.close();
-		scan.close();
-	}
-	
-	public void registrarGabaritoAluno() {
-		
+	public void calcularMedia() {
+		int total = 0;
+		double media = 0.0;
+		for(Aluno al : alunos) {
+			total += al.getNumAcertos();
+		}
+		media = total / alunos.size();
+		this.media = media;
 	}
 	
 }
