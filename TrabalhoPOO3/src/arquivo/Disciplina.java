@@ -20,21 +20,16 @@ public class Disciplina {
 		this.alunos = new ArrayList<>();
 		this.diretorio = new File("C:\\Users\\Vitor\\desktop\\" + nome);
 		diretorio.mkdir();
-		try {
-			cadastrarGabaritoOficial();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public void cadastrarGabaritoOficial() throws IOException {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
-		FileWriter f = new FileWriter(gabaritoOficial);
+		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
 		Scanner scan = new Scanner(System.in);
+		System.out.println("Insira a sequência das respostas: ");
 		String gabarito = scan.next();
-		f.write(gabarito);
-		f.close();
+		registrarGabarito.write(gabarito);
+		registrarGabarito.close();
 		scan.close();
 	}
 	
