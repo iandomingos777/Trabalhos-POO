@@ -24,7 +24,7 @@ public class Aluno {
 		this.numAcertos = numAcertos;
 	}
 	
-	public Aluno(String nome, String respotas) {
+	public Aluno(String nome, String respostas) {
 		this.nome = nome;
 		this.respostas = respostas;
 	}
