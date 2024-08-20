@@ -13,12 +13,12 @@ public class Disciplina {
 	private double media;
 	private String caminhoGabaritoOficial;
 	private ArrayList<Aluno> alunos;
-	private File diretorio;
+	private static File diretorio;
 	
 	public Disciplina(String nome) {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
-		this.diretorio = new File("C:\\Users\\Vitor\\desktop\\" + nome);
+		diretorio = new File("C:\\Users\\Vitor\\desktop\\" + nome);
 		diretorio.mkdir();
 	}
 	
@@ -27,13 +27,24 @@ public class Disciplina {
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Insira a sequência das respostas: ");
-		String gabarito = scan.next();
+		String gabarito = scan.next(); 
 		registrarGabarito.write(gabarito);
 		registrarGabarito.close();
-		scan.close();
+		
 	}
 	
-	public void registrarGabaritoAluno() {
+	public void registrarGabaritoAluno() throws IOException {
+		File respostaAlunos = new File(diretorio, nome + ".txt");
+		FileWriter registrarAluno = new FileWriter(respostaAlunos, true);
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Insira a sequência de respostas e o nome do aluno: ");
+		String sequenciaRespostas = scan.next();
+		String nome = scan.next();
+		registrarAluno.write(sequenciaRespostas);
+		registrarAluno.write("\t");
+		registrarAluno.write(nome);
+		registrarAluno.write("\n");
+		registrarAluno.close();
 		
 	}
 	
