@@ -1,5 +1,5 @@
 package arquivo;
 
-public class teste {
+public class Main {
 
 }
