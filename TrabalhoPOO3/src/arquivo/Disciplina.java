@@ -133,4 +133,16 @@ public class Disciplina {
 		File arq = new File(diretorio,"Notas_em_ordem_alfabetica.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(arq,true));
 	}
+	
+	public void acessarDados(String endereco) throws IOException {
+		File arq = new File(endereco);
+	    BufferedReader br = new BufferedReader(new FileReader(arq));
+	    String linha = br.readLine();
+	    while(linha !=null) {
+	    	String[] dados = linha.split("\t");
+	    	alunos.add(new Aluno(dados[1], dados[0]));
+	    	linha = br.readLine();
+	    }
+		br.close();
+	}
 }
