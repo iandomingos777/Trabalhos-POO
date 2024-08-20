@@ -12,6 +12,7 @@ public class Disciplina {
 	private int numAlunos;
 	private double media;
 	private String caminhoGabaritoOficial;
+	private String gabarito;
 	private ArrayList<Aluno> alunos;
 	private static File diretorio;
 	
@@ -22,12 +23,34 @@ public class Disciplina {
 		diretorio.mkdir();
 	}
 	
+	private boolean validarSequencia(String seq) {
+		int numF = 0;
+		int numV = 0;
+		if(seq.length() != 10) {
+			return false;
+		}
+       for(int i = 0; i < seq.length(); i++) {
+    	   char c = seq.charAt(i);
+    	   if(c == 'V') {
+    		   numV++;
+    	   }else if(c == 'F') {
+    		   numF++;
+    	   }else {
+    		   return false;
+    	   }
+       }
+       return true;
+	}
+	
 	public void cadastrarGabaritoOficial() throws IOException {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
 		Scanner scan = new Scanner(System.in);
+		String gabarito = " ";
+		while(validarSequencia(gabarito)) {
 		System.out.println("Insira a sequência das respostas: ");
-		String gabarito = scan.next(); 
+	    gabarito = scan.next(); 
+		}
 		registrarGabarito.write(gabarito);
 		registrarGabarito.close();
 		
@@ -40,12 +63,48 @@ public class Disciplina {
 		System.out.println("Insira a sequência de respostas e o nome do aluno: ");
 		String sequenciaRespostas = scan.next();
 		String nome = scan.next();
-		registrarAluno.write(sequenciaRespostas);
+		registrarAluno.write(sequenciaRespostas.toUpperCase());
 		registrarAluno.write("\t");
 		registrarAluno.write(nome);
 		registrarAluno.write("\n");
+		alunos.add(new Aluno(nome, sequenciaRespostas.toUpperCase()));
 		registrarAluno.close();
 		
+	}
+	
+	public void calcularAcertos() {
+		for(Aluno al: alunos) {
+			int length = gabarito.length();
+	         int acertos = 0;
+	         int numV = 0;
+	         int numF = 0;
+			for(int i = 0;i < gabarito.length(); i++) {
+				char resposta = al.getRespostas().charAt(i);
+				if(gabarito.charAt(i) == resposta) {
+					acertos++;
+					if(resposta == 'F') {
+						numF++;
+					}else {
+						numV++;
+					}
+				}
+			}
+			if(numV == gabarito.length() || numF == gabarito.length()) {
+				al.setNumAcertos(0);
+				return;
+			}
+			al.setNumAcertos(acertos);
+		}
+	}
+	
+	public void calcularMedia() {
+		int total = 0;
+		double media = 0.0;
+		for(Aluno al : alunos) {
+			total += al.getNumAcertos();
+		}
+		media = total / alunos.size();
+		this.media = media;
 	}
 	
 }
