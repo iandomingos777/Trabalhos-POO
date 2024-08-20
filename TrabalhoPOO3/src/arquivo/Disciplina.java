@@ -1,9 +1,14 @@
 package arquivo;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Disciplina {
@@ -124,4 +129,8 @@ public class Disciplina {
 		this.media = media;
 	}
 	
+	public void criarArquivoEmOrdemAlfabetica() throws IOException {
+		File arq = new File(diretorio,"Notas_em_ordem_alfabetica.txt");
+		BufferedWriter bw = new BufferedWriter(new FileWriter(arq,true));
+	}
 }
