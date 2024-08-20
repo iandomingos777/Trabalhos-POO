@@ -8,5 +8,5 @@ public class Disciplina {
 	private int numAlunos;
 	private double media;
 	private String caminhoGabaritoOficial;
-	private ArrayList<String> 
+	private ArrayList<Aluno> alunos; 
 }
