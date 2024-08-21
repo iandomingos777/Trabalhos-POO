@@ -24,7 +24,7 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\ianbr\\teste" + nome);
+		diretorio = new File("C:\\Users\\ianbr\\teste\\" + nome);
 		diretorio.mkdir();
 	}
 
@@ -36,6 +36,7 @@ public class Disciplina {
 		System.out.println("Insira a sequência das respostas: ");
 		gabarito = scan.nextLine();
 		}
+		 this.gabarito = gabarito;
 		registrarGabarito.write(gabarito);
 		registrarGabarito.close();
 	}
@@ -131,9 +132,28 @@ public class Disciplina {
 		this.media = media;
 	}
 
+	public void criarArquivoEmOrdemDeAcertos() throws IOException {
+		alunos.sort((a1, a2) -> Double.compare(a1.getNumAcertos(), a2.getNumAcertos()));;
+		File arq = new File(diretorio, "Notas_em_ordem_de_acertos.txt");
+		BufferedWriter bw = new BufferedWriter(new FileWriter(arq, true));
+		for(Aluno al : alunos) {
+			bw.write("Nome: " + al.getNome() + "Acertos: " + al.getNumAcertos());
+			bw.newLine();
+		}
+		bw.write("Média: " + media);
+		bw.close();
+	}
+	
 	public void criarArquivoEmOrdemAlfabetica() throws IOException {
+		alunos.sort((a1, a2) -> a1.getNome().compareToIgnoreCase(a2.getNome()));
 		File arq = new File(diretorio, "Notas_em_ordem_alfabetica.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(arq, true));
+		for(Aluno al : alunos) {
+			bw.write("Nome: " + al.getNome() + "Acertos: " + al.getNumAcertos());
+			bw.newLine();
+		}
+		bw.write("Média: " + media);
+		bw.close();
 	}
 
 	public void acessarDados(String endereco) throws IOException {
