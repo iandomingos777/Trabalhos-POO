@@ -24,32 +24,35 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\ianbr\\teste" + nome);
+		diretorio = new File("C:\\Users\\Vitor\\Desktop\\" + nome);
 		diretorio.mkdir();
 	}
 
 	public void cadastrarGabaritoOficial() throws IOException {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
-		String gabarito = "";
-		 while(!validarSequencia(gabarito.toUpperCase())) {
-		System.out.println("Insira a sequência das respostas: ");
-		gabarito = scan.nextLine();
+		String sequenciaGabarito = "";
+		while (!validarSequencia(sequenciaGabarito)) {
+			System.out.println("Insira a sequência das respostas: ");
+			sequenciaGabarito = scan.nextLine();
 		}
-		registrarGabarito.write(gabarito);
+		sequenciaGabarito = sequenciaGabarito.toUpperCase();
+		gabarito = sequenciaGabarito;
+		registrarGabarito.write(sequenciaGabarito);
 		registrarGabarito.close();
+		caminhoGabaritoOficial = gabaritoOficial.getAbsolutePath();
 	}
 
 	public boolean registrarGabaritoAluno() throws IOException {
 		File respostaAlunos = new File(diretorio, nome + ".txt");
 		System.out.println("Insira a sequência de respostas e o nome do aluno: ");
 		String sequenciaRespostas = scan.next();
-		if (sequenciaRespostas.equals("sair") || sequenciaRespostas.equals("-1")) {
+		if (sequenciaRespostas.equalsIgnoreCase("sair") || sequenciaRespostas.equals("-1")) {
 			return false;
 		}
 		String nome = scan.next();
 		StringBuilder sb = new StringBuilder();
-		sb.append(sequenciaRespostas.toUpperCase()).append("\t").append(nome).append("\n");
+		sb.append(sequenciaRespostas.toUpperCase()).append("\t").append(nome.toUpperCase()).append("\n");
 		FileWriter registrarAluno = new FileWriter(respostaAlunos, true);
 		registrarAluno.write(sb.toString());
 		registrarAluno.close();
@@ -74,6 +77,8 @@ public class Disciplina {
 	}
 
 	private boolean validarSequencia(String seq) {
+		
+		seq =seq.toUpperCase();
 		int numF = 0;
 		int numV = 0;
 		if (seq.length() != 10) {
@@ -89,14 +94,41 @@ public class Disciplina {
 				return false;
 			}
 		}
-		
-		if(numF == 10 || numV == 10) {
+
+		if (numF == 10 || numV == 10) {
 			return false;
 		}
 		return true;
+		
 	}
 
-	public void calcularAcertos() {
+	public void calcularMedia() {
+		int total = 0;		
+		for (Aluno al : alunos) {
+			total += al.getNumAcertos();
+		}
+		media = total / numAlunos;
+	}
+
+	public void criarArquivoEmOrdemAlfabetica() throws IOException {
+		File arq = new File(diretorio, "Notas_em_ordem_alfabetica.txt");
+		BufferedWriter bw = new BufferedWriter(new FileWriter(arq, true));
+	}
+
+	public void gerarDados(String endereco) throws IOException {
+		File arq = new File(endereco);
+		BufferedReader br = new BufferedReader(new FileReader(arq));
+		String linha = br.readLine();
+		while (linha != null) {
+			String[] dados = linha.split("\t");
+			alunos.add(new Aluno(dados[1], dados[0]));
+			linha = br.readLine();
+		}
+		br.close();
+		registrarAcertos();
+	}
+	
+	private void registrarAcertos() {
 		for (Aluno al : alunos) {
 			int length = 10;
 			int acertos = 0;
@@ -119,32 +151,5 @@ public class Disciplina {
 			}
 			al.setNumAcertos(acertos);
 		}
-	}
-
-	public void calcularMedia() {
-		int total = 0;
-		double media = 0.0;
-		for (Aluno al : alunos) {
-			total += al.getNumAcertos();
-		}
-		media = total / alunos.size();
-		this.media = media;
-	}
-
-	public void criarArquivoEmOrdemAlfabetica() throws IOException {
-		File arq = new File(diretorio, "Notas_em_ordem_alfabetica.txt");
-		BufferedWriter bw = new BufferedWriter(new FileWriter(arq, true));
-	}
-
-	public void acessarDados(String endereco) throws IOException {
-		File arq = new File(endereco);
-		BufferedReader br = new BufferedReader(new FileReader(arq));
-		String linha = br.readLine();
-		while (linha != null) {
-			String[] dados = linha.split("\t");
-			alunos.add(new Aluno(dados[1], dados[0]));
-			linha = br.readLine();
-		}
-		br.close();
 	}
 }
