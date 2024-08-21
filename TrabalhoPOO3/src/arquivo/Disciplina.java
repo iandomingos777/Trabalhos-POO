@@ -24,18 +24,18 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\Vitor\\desktop\\" + nome);
+		diretorio = new File("C:\\Users\\ianbr\\teste" + nome);
 		diretorio.mkdir();
 	}
 
 	public void cadastrarGabaritoOficial() throws IOException {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
-		String gabarito = " ";
-		// while(!validarSequencia(gabarito)) {
+		String gabarito = "";
+		 while(!validarSequencia(gabarito.toUpperCase())) {
 		System.out.println("Insira a sequência das respostas: ");
-		gabarito = scan.next();
-		// }
+		gabarito = scan.nextLine();
+		}
 		registrarGabarito.write(gabarito);
 		registrarGabarito.close();
 	}
@@ -79,15 +79,19 @@ public class Disciplina {
 		if (seq.length() != 10) {
 			return false;
 		}
-		for (int i = 0; i < seq.length(); i++) {
+		for (int i = 0; i < 10; i++) {
 			char c = seq.charAt(i);
 			if (c == 'V') {
 				numV++;
 			} else if (c == 'F') {
 				numF++;
 			} else {
-				// problema aqui return false;
+				return false;
 			}
+		}
+		
+		if(numF == 10 || numV == 10) {
+			return false;
 		}
 		return true;
 	}
