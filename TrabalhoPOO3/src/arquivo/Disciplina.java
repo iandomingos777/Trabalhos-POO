@@ -198,6 +198,9 @@ public class Disciplina {
 		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
 		System.out.println(String.format("Média da turma: %.2f", media));
 		System.out.println();
+		for(Aluno al : alunos) {
+			System.out.println(al.getNome() + ": " + al.getNumAcertos() + "\n");
+		}
 	}
 	
 	public String getNome() {
