@@ -20,6 +20,13 @@ public class Correcao {
 			e.printStackTrace();
 		}
 		d1.calcularMedia();
+		try {
+			d1.criarArquivoEmOrdemAlfabetica();
+			d1.criarArquivoEmOrdemDeAcertos();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
