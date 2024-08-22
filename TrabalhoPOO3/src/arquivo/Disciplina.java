@@ -15,9 +15,11 @@ public class Disciplina {
 	private int numAlunos;
 	private double media;
 	private String caminhoGabaritoOficial;
+	private String caminhoRespostasAlunos;
 	private String gabarito;
 	private ArrayList<Aluno> alunos;
 	private File diretorio;
+	private File respostaAlunos;
 	Scanner scan = new Scanner(System.in);
 
 	public Disciplina(String nome) {
@@ -26,6 +28,13 @@ public class Disciplina {
 		numAlunos = 0;
 		diretorio = new File("C:\\Users\\Vitor\\Desktop\\" + nome);
 		diretorio.mkdir();
+		respostaAlunos = new File(diretorio, nome + ".txt");
+		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
+	    try (FileWriter limparArquivo = new FileWriter(respostaAlunos, false)) {
+	        limparArquivo.write("");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	public void cadastrarGabaritoOficial() throws IOException {
@@ -43,8 +52,7 @@ public class Disciplina {
 		caminhoGabaritoOficial = gabaritoOficial.getAbsolutePath();
 	}
 
-	public boolean registrarGabaritoAluno() throws IOException {
-		File respostaAlunos = new File(diretorio, nome + ".txt");
+	public boolean registrarGabaritoAluno() throws IOException {		
 		System.out.println("Insira a sequência de respostas e o nome do aluno: ");
 		String sequenciaRespostas = scan.next();
 		if (sequenciaRespostas.equalsIgnoreCase("sair") || sequenciaRespostas.equals("-1")) {
@@ -104,15 +112,18 @@ public class Disciplina {
 	}
 
 	public void calcularMedia() {
-		int total = 0;		
+		double total = 0.0;		
 		for (Aluno al : alunos) {
 			total += al.getNumAcertos();
 		}
 		media = total / numAlunos;
+		System.out.println("Total: " + total);
+		System.out.println("Num alunos: " + numAlunos) ;
+		System.out.println("Media: " + media);
 	}
 
-	public void gerarDados(String endereco) throws IOException {
-		File arq = new File(endereco);
+	public void gerarDados() throws IOException {
+		File arq = new File(caminhoRespostasAlunos);
 		BufferedReader br = new BufferedReader(new FileReader(arq));
 		String linha = br.readLine();
 		while (linha != null) {
@@ -143,9 +154,13 @@ public class Disciplina {
 			}
 			if (numV == gabarito.length() || numF == gabarito.length()) {
 				al.setNumAcertos(0);
-				return;
+			} else {
+				al.setNumAcertos(acertos);
 			}
-			al.setNumAcertos(acertos);
+			
+		}
+		for(int i = 0; i < alunos.size(); i++) {
+			System.out.println("Numero de acertos de " + i + " = " + alunos.get(i).getNumAcertos());
 		}
 	}
 	

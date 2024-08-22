@@ -13,6 +13,13 @@ public class Correcao {
 			e.printStackTrace();
 		}
 		d1.registrarClasse();
+		try {
+			d1.gerarDados();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		d1.calcularMedia();
 	}
 	
 }
