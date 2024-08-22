@@ -58,6 +58,14 @@ public class Disciplina {
 		if (sequenciaRespostas.equalsIgnoreCase("sair") || sequenciaRespostas.equals("-1")) {
 			return false;
 		}
+		while(!validarSequencia(sequenciaRespostas, false)) {
+			System.out.println("Sequência inválida.");
+			scan.nextLine();
+			sequenciaRespostas = scan.next();
+			if (sequenciaRespostas.equalsIgnoreCase("sair") || sequenciaRespostas.equals("-1")) {
+				return false;
+			}
+		}
 		String nome = scan.next();
 		StringBuilder sb = new StringBuilder();
 		sb.append(sequenciaRespostas.toUpperCase()).append("\t").append(nome.toUpperCase()).append("\n");

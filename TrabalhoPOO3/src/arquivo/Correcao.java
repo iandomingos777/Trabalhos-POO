@@ -20,6 +20,7 @@ public class Correcao {
 			e.printStackTrace();
 		}
 		d1.calcularMedia();
+		d1.exibirResultado();
 		try {
 			d1.criarArquivoEmOrdemAlfabetica();
 			d1.criarArquivoEmOrdemDeAcertos();
