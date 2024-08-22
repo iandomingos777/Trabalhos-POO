@@ -26,7 +26,7 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\ianbr\\teste\\" + nome);
+		diretorio = new File("C:\\Users\\Vitor\\Desktop\\" + nome);
 		diretorio.mkdir();
 		respostaAlunos = new File(diretorio, nome + ".txt");
 		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
@@ -41,7 +41,7 @@ public class Disciplina {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
 		String sequenciaGabarito = "";
-		while (!validarSequencia(sequenciaGabarito)) {
+		while (!validarSequencia(sequenciaGabarito, true)) {
 			System.out.println("Insira a sequência das respostas: ");
 			sequenciaGabarito = scan.nextLine();
 		}
@@ -84,7 +84,7 @@ public class Disciplina {
 		System.out.println("Turma registrada com sucesso!");
 	}
 
-	private boolean validarSequencia(String seq) {
+	private boolean validarSequencia(String seq, boolean isGabarito) {
 
 		seq = seq.toUpperCase();
 		int numF = 0;
@@ -103,7 +103,7 @@ public class Disciplina {
 			}
 		}
 
-		if (numF == 10 || numV == 10) {
+		if ((numF == 10 || numV == 10) && isGabarito) {
 			return false;
 		}
 		return true;
