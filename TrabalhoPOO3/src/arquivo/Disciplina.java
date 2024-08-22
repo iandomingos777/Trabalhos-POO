@@ -20,13 +20,13 @@ public class Disciplina {
 	private ArrayList<Aluno> alunos;
 	private File diretorio;
 	private File respostaAlunos;
-	Scanner scan = new Scanner(System.in);
+	static Scanner scan = new Scanner(System.in);
 
 	public Disciplina(String nome) {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\Vitor\\Desktop\\" + nome);
+		diretorio = new File("C:\\Users\\Vitor\\Desktop\\ARQUIVOS\\" + nome);
 		diretorio.mkdir();
 		respostaAlunos = new File(diretorio, nome + ".txt");
 		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
@@ -66,7 +66,7 @@ public class Disciplina {
 				return false;
 			}
 		}
-		String nome = scan.next();
+		String nome = scan.nextLine();
 		StringBuilder sb = new StringBuilder();
 		sb.append(sequenciaRespostas.toUpperCase()).append("\t").append(nome.toUpperCase()).append("\n");
 		FileWriter registrarAluno = new FileWriter(respostaAlunos, true);
@@ -81,7 +81,7 @@ public class Disciplina {
 		while (true) {
 			try {
 				if (!registrarGabaritoAluno()) {
-					scan.close();
+					
 					break;
 				}
 			} catch (IOException e) {
@@ -89,7 +89,7 @@ public class Disciplina {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Turma registrada com sucesso!");
+		System.out.println("Turma registrada com sucesso!\n");
 	}
 
 	private boolean validarSequencia(String seq, boolean isGabarito) {
@@ -118,7 +118,7 @@ public class Disciplina {
 
 	}
 
-	public void calcularMedia() {
+	private void calcularMedia() {
 		double total = 0.0;
 		for (Aluno al : alunos) {
 			total += al.getNumAcertos();
@@ -137,6 +137,7 @@ public class Disciplina {
 		}
 		br.close();
 		registrarAcertos();
+		calcularMedia();
 	}
 
 	private void registrarAcertos() {
@@ -191,8 +192,14 @@ public class Disciplina {
 	}
 	
 	public void exibirResultado() {
+		System.out.println();
 		System.out.println("Dados da disciplina: " + nome);
 		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
 		System.out.println("Media da turma: " + media);
+		System.out.println();
+	}
+	
+	public String getNome() {
+		return nome;
 	}
 }
