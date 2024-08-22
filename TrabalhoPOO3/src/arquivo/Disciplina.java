@@ -17,7 +17,7 @@ public class Disciplina {
 	private String caminhoGabaritoOficial;
 	private String gabarito;
 	private ArrayList<Aluno> alunos;
-	private static File diretorio;
+	private File diretorio;
 	Scanner scan = new Scanner(System.in);
 
 	public Disciplina(String nome) {
@@ -74,6 +74,7 @@ public class Disciplina {
 			}
 		}
 		System.out.println("Turma registrada com sucesso!");
+		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial + "\n");
 	}
 
 	private boolean validarSequencia(String seq) {
