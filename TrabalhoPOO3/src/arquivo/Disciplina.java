@@ -82,7 +82,6 @@ public class Disciplina {
 			}
 		}
 		System.out.println("Turma registrada com sucesso!");
-		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial + "\n");
 	}
 
 	private boolean validarSequencia(String seq) {
@@ -181,5 +180,11 @@ public class Disciplina {
 		}
 		bw.write(String.format("Média: %.2f", media));
 		bw.close();
+	}
+	
+	public void exibirResultado() {
+		System.out.println("Dados da disciplina: " + nome);
+		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
+		System.out.println("Media da turma: " + media);
 	}
 }
