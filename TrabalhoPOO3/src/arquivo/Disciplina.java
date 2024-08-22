@@ -82,7 +82,6 @@ public class Disciplina {
 			}
 		}
 		System.out.println("Turma registrada com sucesso!");
-		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial + "\n");
 	}
 
 	private boolean validarSequencia(String seq) {
@@ -110,18 +109,7 @@ public class Disciplina {
 		return true;
 		
 	}
-
-	public void calcularMedia() {
-		double total = 0.0;		
-		for (Aluno al : alunos) {
-			total += al.getNumAcertos();
-		}
-		media = total / numAlunos;
-		System.out.println("Total: " + total);
-		System.out.println("Num alunos: " + numAlunos) ;
-		System.out.println("Media: " + media);
-	}
-
+	
 	public void gerarDados() throws IOException {
 		File arq = new File(caminhoRespostasAlunos);
 		BufferedReader br = new BufferedReader(new FileReader(arq));
@@ -159,10 +147,16 @@ public class Disciplina {
 			}
 			
 		}
-		for(int i = 0; i < alunos.size(); i++) {
-			System.out.println("Numero de acertos de " + i + " = " + alunos.get(i).getNumAcertos());
-		}
 	}
+
+	public void calcularMedia() {
+		double total = 0.0;		
+		for (Aluno al : alunos) {
+			total += al.getNumAcertos();
+		}
+		media = total / numAlunos;
+		System.out.println("Media: " + media);
+	}	
 	
 	public void criarArquivoEmOrdemDeAcertos() throws IOException {
 		alunos.sort((a1, a2) -> Double.compare(a1.getNumAcertos(), a2.getNumAcertos()));;
@@ -186,5 +180,11 @@ public class Disciplina {
 		}
 		bw.write("Média: " + media);
 		bw.close();
+	}
+	
+	public void exibirResultado() {
+		System.out.println("Dados da disciplina: " + nome);
+		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
+		System.out.println("Media da turma: " + media);
 	}
 }
