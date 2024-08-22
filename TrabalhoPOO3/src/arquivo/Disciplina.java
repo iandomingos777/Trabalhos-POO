@@ -41,6 +41,7 @@ public class Disciplina {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
 		String sequenciaGabarito = "";
+		if(Fachada.numDisciplinas > 0) scan.nextLine();
 		while (!validarSequencia(sequenciaGabarito, true)) {
 			System.out.println("Insira a sequência das respostas: ");
 			sequenciaGabarito = scan.nextLine();
@@ -195,7 +196,7 @@ public class Disciplina {
 		System.out.println();
 		System.out.println("Dados da disciplina: " + nome);
 		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
-		System.out.println("Media da turma: " + media);
+		System.out.println(String.format("Média da turma: %.2f", media));
 		System.out.println();
 	}
 	

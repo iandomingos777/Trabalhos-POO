@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Fachada {
 	
 	ArrayList<Disciplina> disciplinas = new ArrayList<>();
+	static int numDisciplinas = 0;
 	
 	public void execução() throws IOException {
 		Disciplina disciplina;
@@ -28,6 +29,7 @@ public class Fachada {
 				disciplina.criarArquivoEmOrdemAlfabetica();
 				disciplina.criarArquivoEmOrdemDeAcertos();
 				disciplinas.add(disciplina);
+				numDisciplinas++;
 				break;
 			case 2: 
 				System.out.println("Digite o nome da disciplina: ");
@@ -42,6 +44,7 @@ public class Fachada {
 				if(!disciplinaExiste) System.out.println("Disciplina não encontrada\n");
 				break;
 			case 3:
+				System.out.println(numDisciplinas + " disciplinas foram cadastradas!");
 				break;
 			default: 
 				System.out.println("Opção inválida.");
