@@ -26,7 +26,7 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\Vitor\\Desktop\\ARQUIVOS\\" + nome);
+		diretorio = new File("C:\\Users\\ianbr\\teste\\" + nome);
 		diretorio.mkdir();
 		respostaAlunos = new File(diretorio, nome + ".txt");
 		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
@@ -68,6 +68,7 @@ public class Disciplina {
 			}
 		}
 		String nome = scan.nextLine();
+		nome = nome.substring(1);
 		StringBuilder sb = new StringBuilder();
 		sb.append(sequenciaRespostas.toUpperCase()).append("\t").append(nome.toUpperCase()).append("\n");
 		FileWriter registrarAluno = new FileWriter(respostaAlunos, true);
@@ -199,8 +200,9 @@ public class Disciplina {
 		System.out.println(String.format("Média da turma: %.2f", media));
 		System.out.println();
 		for(Aluno al : alunos) {
-			System.out.println(al.getNome() + ": " + al.getNumAcertos() + "\n");
+			System.out.println(al.getNome() + ": " + al.getNumAcertos());
 		}
+		System.out.println();
 	}
 	
 	public String getNome() {
