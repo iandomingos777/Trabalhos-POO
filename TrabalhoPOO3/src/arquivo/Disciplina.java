@@ -26,7 +26,7 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\ianbr\\teste\\" + nome);
+		diretorio = new File("C:\\Users\\Vitor\\Desktop\\Trabalho-PH\\ARQUIVOS\\" + nome);
 		diretorio.mkdir();
 		respostaAlunos = new File(diretorio, nome + ".txt");
 		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
@@ -120,14 +120,6 @@ public class Disciplina {
 
 	}
 
-	private void calcularMedia() {
-		double total = 0.0;
-		for (Aluno al : alunos) {
-			total += al.getNumAcertos();
-		}
-		media = total / numAlunos;
-	}
-
 	public void gerarDados() throws IOException {
 		File arq = new File(caminhoRespostasAlunos);
 		BufferedReader br = new BufferedReader(new FileReader(arq));
@@ -167,6 +159,14 @@ public class Disciplina {
 
 		}
 	}
+	
+	private void calcularMedia() {
+		double total = 0.0;
+		for (Aluno al : alunos) {
+			total += al.getNumAcertos();
+		}
+		media = total / numAlunos;
+	}
 
 	public void criarArquivoEmOrdemDeAcertos() throws IOException {
 		alunos.sort((a1, a2) -> Double.compare(a2.getNumAcertos(), a1.getNumAcertos()));
@@ -198,7 +198,6 @@ public class Disciplina {
 		System.out.println("Dados da disciplina: " + nome);
 		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
 		System.out.println(String.format("Média da turma: %.2f", media));
-		System.out.println();
 		for(Aluno al : alunos) {
 			System.out.println(al.getNome() + ": " + al.getNumAcertos());
 		}

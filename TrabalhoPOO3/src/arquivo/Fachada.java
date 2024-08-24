@@ -44,7 +44,8 @@ public class Fachada {
 				if(!disciplinaExiste) System.out.println("Disciplina não encontrada\n");
 				break;
 			case 3:
-				System.out.println(numDisciplinas + " disciplinas foram cadastradas!");
+				if (numDisciplinas == 1) System.out.println("1 disciplina foi cadastrada!");
+				else System.out.println(numDisciplinas + " disciplinas foram cadastradas!");
 				break;
 			default: 
 				System.out.println("Opção inválida.");
