@@ -1,11 +1,18 @@
 package arquivo;
 
+import java.io.IOException;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Correcao correcao = new Correcao();
-		correcao.comecar();
+		Fachada programa = new Fachada();
+		try {
+			programa.execução();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
