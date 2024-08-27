@@ -21,7 +21,8 @@ public class Disciplina {
 	private File diretorio;
 	private File respostaAlunos;
 	static Scanner scan = new Scanner(System.in);
-
+	private static int numDisciplinas = 0;
+	
 	public Disciplina(String nome) {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
@@ -41,7 +42,7 @@ public class Disciplina {
 		File gabaritoOficial = new File(diretorio, "gabarito.txt");
 		FileWriter registrarGabarito = new FileWriter(gabaritoOficial);
 		String sequenciaGabarito = "";
-		if(Fachada.numDisciplinas > 0) scan.nextLine();
+		if(numDisciplinas > 0) scan.nextLine();
 		while (!validarSequencia(sequenciaGabarito, true)) {
 			System.out.println("Insira a sequência das respostas: ");
 			sequenciaGabarito = scan.nextLine();
@@ -229,5 +230,13 @@ public class Disciplina {
 	
 	public String getNome() {
 		return nome;
+	}
+
+	public static int getNumDisciplinas() {
+		return numDisciplinas;
+	}
+	
+	public static void incrementarDisciplinas() {
+		numDisciplinas++;
 	}
 }
