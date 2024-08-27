@@ -193,6 +193,28 @@ public class Disciplina {
 		bw.close();
 	}
 	
+	public void readNotasEmOrdemDeAcertos() throws IOException {
+		File arq = new File(diretorio, "Notas_em_ordem_de_acertos.txt");
+		BufferedReader br = new BufferedReader(new FileReader(arq));
+		String linha = br.readLine();
+		while (linha != null) {
+			System.out.println(linha);
+			linha = br.readLine();
+		}
+		br.close();
+	}
+
+	public void readNotasEmOrdemAlfabetica() throws IOException {
+		File arq = new File(diretorio, "Notas_em_ordem_alfabetica.txt");
+		BufferedReader br = new BufferedReader(new FileReader(arq));
+		String linha = br.readLine();
+		while (linha != null) {
+			System.out.println(linha);
+			linha = br.readLine();
+		}
+		br.close();
+	}
+	
 	public void exibirResultado() {
 		System.out.println();
 		System.out.println("Dados da disciplina: " + nome);
