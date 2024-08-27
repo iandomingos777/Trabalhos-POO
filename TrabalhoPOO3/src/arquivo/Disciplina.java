@@ -6,11 +6,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Disciplina {
+public class Disciplina implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private int numAlunos;
 	private double media;
@@ -20,7 +22,7 @@ public class Disciplina {
 	private ArrayList<Aluno> alunos;
 	private File diretorio;
 	private File respostaAlunos;
-	static Scanner scan = new Scanner(System.in);
+	static transient Scanner scan = new Scanner(System.in);
 	private static int numDisciplinas = 0;
 	
 	public Disciplina(String nome) {

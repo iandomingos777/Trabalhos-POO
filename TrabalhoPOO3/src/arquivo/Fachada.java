@@ -1,6 +1,11 @@
 package arquivo;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +14,7 @@ public class Fachada {
 	ArrayList<Disciplina> disciplinas = new ArrayList<>();
 	
 	public void execução() throws IOException {
+		carregarDisciplinas();
 		Disciplina disciplina;
 		
 		Scanner input = new Scanner(System.in);
@@ -57,6 +63,25 @@ public class Fachada {
 		}
 		input.close();
 		Disciplina.scan.close();
+		salvarDisciplinas();
 	}
+	
+    private void salvarDisciplinas() throws IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("disciplinas.ser"))) {
+            oos.writeObject(disciplinas);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+	private void carregarDisciplinas() throws IOException {
+        File file = new File("disciplinas.ser");
+        if (file.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+                disciplinas = (ArrayList<Disciplina>) ois.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 	
 }
