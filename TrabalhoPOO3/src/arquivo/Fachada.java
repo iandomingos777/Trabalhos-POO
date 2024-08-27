@@ -82,6 +82,8 @@ public class Fachada {
                 e.printStackTrace();
             }
         }
+        // Para apagar o conteúdo atual do arquivo serializado, descomente a linha abaixo:
+        // disciplinas.clear();
     }
 	
 }
