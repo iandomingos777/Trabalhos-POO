@@ -27,7 +27,7 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\ianbr\\teste\\" + nome);
+		diretorio = new File("C:\\Users\\Vitor\\Desktop\\Trabalho-PH\\ARQUIVOS\\" + nome);
 		diretorio.mkdir();
 		respostaAlunos = new File(diretorio, nome + ".txt");
 		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
@@ -80,7 +80,7 @@ public class Disciplina {
 	}
 
 	public void registrarClasse() {
-		System.out.println("Digite '-1' ou 'sair' para parar o registro.");
+		System.out.println("Digite '-1' ou 'sair' para parar o registro.\n");
 		while (true) {
 			try {
 				if (!registrarGabaritoAluno()) {
@@ -194,7 +194,7 @@ public class Disciplina {
 		bw.close();
 	}
 	
-	public void readNotasEmOrdemDeAcertos() throws IOException {
+	public void lerNotasEmOrdemDeAcertos() throws IOException {
 		File arq = new File(diretorio, "Notas_em_ordem_de_acertos.txt");
 		BufferedReader br = new BufferedReader(new FileReader(arq));
 		String linha = br.readLine();
@@ -205,7 +205,7 @@ public class Disciplina {
 		br.close();
 	}
 
-	public void readNotasEmOrdemAlfabetica() throws IOException {
+	public void lerNotasEmOrdemAlfabetica() throws IOException {
 		File arq = new File(diretorio, "Notas_em_ordem_alfabetica.txt");
 		BufferedReader br = new BufferedReader(new FileReader(arq));
 		String linha = br.readLine();
@@ -221,9 +221,9 @@ public class Disciplina {
 		System.out.println("Dados da disciplina: " + nome);
 		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
          if(opc == 1) {
-        	 readNotasEmOrdemAlfabetica();
+        	 lerNotasEmOrdemAlfabetica();
          } else if(opc == 2) {
-        	 readNotasEmOrdemDeAcertos();
+        	 lerNotasEmOrdemDeAcertos();
          }
 		System.out.println();
 	}
