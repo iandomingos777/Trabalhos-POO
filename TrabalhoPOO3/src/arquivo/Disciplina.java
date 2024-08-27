@@ -26,7 +26,7 @@ public class Disciplina {
 		this.nome = nome;
 		this.alunos = new ArrayList<>();
 		numAlunos = 0;
-		diretorio = new File("C:\\Users\\Vitor\\Desktop\\Trabalho-PH\\ARQUIVOS\\" + nome);
+		diretorio = new File("C:\\Users\\ianbr\\teste\\" + nome);
 		diretorio.mkdir();
 		respostaAlunos = new File(diretorio, nome + ".txt");
 		caminhoRespostasAlunos = respostaAlunos.getAbsolutePath();
@@ -215,14 +215,15 @@ public class Disciplina {
 		br.close();
 	}
 	
-	public void exibirResultado() {
+	public void exibirResultado(int opc) throws IOException {
 		System.out.println();
 		System.out.println("Dados da disciplina: " + nome);
 		System.out.println("Caminho do gabarito: " + caminhoGabaritoOficial);
-		System.out.println(String.format("Média da turma: %.2f", media));
-		for(Aluno al : alunos) {
-			System.out.println(al.getNome() + ": " + al.getNumAcertos());
-		}
+         if(opc == 1) {
+        	 readNotasEmOrdemAlfabetica();
+         } else if(opc == 2) {
+        	 readNotasEmOrdemDeAcertos();
+         }
 		System.out.println();
 	}
 	

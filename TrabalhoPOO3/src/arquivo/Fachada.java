@@ -37,7 +37,12 @@ public class Fachada {
 				boolean disciplinaExiste = false;
 				for(Disciplina dis : disciplinas) {
 					if(disciplinaBuscada.equalsIgnoreCase(dis.getNome())) {
-						dis.exibirResultado();
+						int opc2 = 0;
+						while(opc2 != 1 && opc2 != 2) {
+							System.out.println("1 - Exibir em ordem alfabética\n2 - exibir em ordem decrescente de notas");
+						opc2 = input.nextInt();	
+						}
+						dis.exibirResultado(opc2);
 						disciplinaExiste = true;
 					}
 				}
