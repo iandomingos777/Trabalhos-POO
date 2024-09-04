@@ -3,13 +3,14 @@ package jogo2.modelo;
 import java.util.ArrayList;
 
 public class Tabuleiro {
-	private ArrayList<Casa> casas;
-	private ArrayList<Jogador> jogadores;
+	private static ArrayList<Casa> casas;
+	private static ArrayList<Jogador> jogadores;
 	public static Tabuleiro instancia;
+	private static Jogador ultimo;
 
 	private Tabuleiro(ArrayList<Casa> casas, ArrayList<Jogador> jogadores) {
-		this.jogadores = jogadores;
-		this.casas = casas;
+		Tabuleiro.jogadores = jogadores;
+		Tabuleiro.casas = casas;
 		for (Jogador j : jogadores) {
 			casas.get(0).addJogador(j);
 		}
@@ -63,5 +64,27 @@ public class Tabuleiro {
 			sb.append(casas.get(3*num - i));
 		}
 		return sb.toString();
+	}
+	
+    public void setUltimoNoTabuleiro() {
+        Jogador ultimoNoTabuleiro = null;
+        for (Jogador jogador : jogadores) {
+            if (ultimoNoTabuleiro == null || jogador.getPosition() < ultimoNoTabuleiro.getPosition()) {
+                ultimoNoTabuleiro = jogador;
+            }
+        }
+        ultimo = ultimoNoTabuleiro;
+    }
+
+	public static ArrayList<Casa> getCasas() {
+		return casas;
+	}
+
+	public static ArrayList<Jogador> getJogadores() {
+		return jogadores;
+	}
+	
+	public static Jogador getUltimo() {
+		return ultimo;
 	}
 }
