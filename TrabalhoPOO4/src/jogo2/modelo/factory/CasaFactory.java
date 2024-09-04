@@ -1,4 +1,12 @@
-package jogo2.modelo;
+package jogo2.modelo.factory;
+
+import jogo2.modelo.Casa;
+import jogo2.modelo.CasaAzar;
+import jogo2.modelo.CasaJogaDeNovo;
+import jogo2.modelo.CasaPrisao;
+import jogo2.modelo.CasaSimples;
+import jogo2.modelo.CasaSorte;
+import jogo2.modelo.CasaSurpresa;
 
 public class CasaFactory {
 	public static Casa criarCasa(int opc, int posiçao) {
