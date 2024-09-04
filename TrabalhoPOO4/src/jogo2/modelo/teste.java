@@ -8,8 +8,11 @@ public class teste {
 	public static void main(String[] args) {
 		Jogador jogador;
 		ArrayList<Jogador> jogadores = new ArrayList<>();
+		ArrayList<Casa> casas = new ArrayList<>();
 		Scanner scan = new Scanner(System.in);
-		
+		for(int i = 0; i <= 4; i++) {
+			casas.add(new CasaSimples(i));
+		}
 		for(int i = 0; i < 6; i++) {
 			System.out.println("1 - Azarado");
 			System.out.println("2 - Normal");
@@ -22,6 +25,8 @@ public class teste {
 		for(Jogador j : jogadores) {
 			System.out.println(j.id);
 		}
+	    Tabuleiro tab = Tabuleiro.getInstancia(casas, jogadores);
+	    System.out.println(tab);
 		scan.close();
 	}
 }

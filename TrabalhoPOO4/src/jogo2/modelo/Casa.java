@@ -24,4 +24,16 @@ public abstract class Casa {
 			}
 		}
 	}
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		for(Jogador j : jogadores) {
+			sb.append(j);
+		}
+		for(int i = jogadores.size(); i < 6; i++) {
+			sb.append(" ");
+		}
+		sb.append("]");
+		return sb.toString();
+	}
 }
