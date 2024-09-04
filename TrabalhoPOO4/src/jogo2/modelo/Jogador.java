@@ -67,6 +67,11 @@ public abstract class Jogador {
 		this.somaDados = somaDados;
 	}
 
+	
+	
+	public int getSomaDados() {
+		return somaDados;
+	}
 	public boolean isArrested() {
 		return arrested;
 	}
