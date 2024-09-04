@@ -9,6 +9,8 @@ public abstract class Jogador {
 	protected boolean winner = false;
 	protected int somaDados;
 	protected int numMoedas; 
+	protected int rodadasConsecutivasPreso = 0;
+	protected boolean jogaDenovo = false;
 	
 	public abstract void jogarDados();
 	public abstract String tipoJogador();
@@ -71,6 +73,58 @@ public abstract class Jogador {
 
 	public void setArrested(boolean arrested) {
 		this.arrested = arrested;
+	}
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
+	}
+	public int getNumMoedas() {
+		return numMoedas;
+	}
+	
+	public void incrementarNumMoedas(int incremento) {
+		numMoedas += incremento;
+	}
+	
+	public void decrementarNumMoedas(int decremento) {
+		numMoedas -= decremento;
+	}
+	
+	public boolean pagarFianca() {
+		if(numMoedas >= 2) {
+			numMoedas -= 2;
+			return true;
+		}
+		return false;
+	}
+	
+	public int getRodadasConsecutivasPreso() {
+		return rodadasConsecutivasPreso;
+	}
+	
+	public void setRodadasConsecutivasPreso(int rodadasConsecutivasPreso) {
+		this.rodadasConsecutivasPreso = rodadasConsecutivasPreso;
+	}
+	public boolean isJogaDenovo() {
+		return jogaDenovo;
+	}
+	public void setJogaDenovo(boolean jogaDenovo) {
+		this.jogaDenovo = jogaDenovo;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void receberAtributos(Jogador source, Jogador destination) {
+		destination.setPosition(source.getPosition());
+		destination.setArrested(source.isArrested());
+		destination.setSomaDados(source.somaDados);
+		destination.incrementarNumMoedas(source.getNumMoedas() - destination.getNumMoedas());
+		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
+		destination.setJogaDenovo(source.isJogaDenovo());
 	}
 	
 }

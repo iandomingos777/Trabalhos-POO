@@ -10,11 +10,11 @@ public class CasaAzar extends Casa{
 	@Override
 	public void aplicarRegra(Jogador jogador) {
      if(jogador instanceof JogadorSortudo) {
-    	 System.out.println("Jogador é sortudo: não perde as 3 moedas");
+    	 System.out.println("Jogador é sortudo. Logo, não perde as 3 moedas.");
     	 return;
      }
      System.out.println("Jogador perde 3 moedas");
-     jogador.setNumMoedas(jogador.getNumMoedas() - 3);
+     jogador.decrementarNumMoedas(3);
 	}
 
 }

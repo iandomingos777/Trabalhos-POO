@@ -1,4 +1,4 @@
-package jogo.modelo;
+package jogo2.modelo;
 
 import java.util.Random;
 
@@ -10,39 +10,47 @@ public class CasaSurpresa extends Casa {
 
 	@Override
 	public void aplicarRegra(Jogador jogador) {
+		int id = jogador.getId();
 		Random random = new Random();
 		int temp = random.nextInt(2) + 1;
-		if (Jogador instanceof JogadorSortado) {
+
+		Jogador novoJogador = null;
+		
+		if (jogador instanceof JogadorSortudo) {
 			switch (temp) {
-			case 1:
-				jogador = new JogadorAzarado();
-				break;
-			case 2:
-				jogador = new JogadorNormal();
-				break;
+				case 1:
+					novoJogador = new JogadorAzarado(id);
+					break;
+				case 2:
+					novoJogador = new JogadorNormal(id);
+					break;
 			}
-			;
 		} else if (jogador instanceof JogadorNormal) {
 			switch (temp) {
-			case 1:
-				jogador = new JogadorAzarado();
-				break;
-			case 2:
-				jogador = new JogadorSortudo();
-				break;
+				case 1:
+					novoJogador = new JogadorAzarado(id);
+					break;
+				case 2:
+					novoJogador = new JogadorSortudo(id);
+					break;
 			}
-			;
 		} else {
 			switch (temp) {
-			case 1:
-				jogador = new JogadorNormal();
-				break;
-			case 2:
-				jogador = new JogadorSortudo();
-				break;
+				case 1:
+					novoJogador = new JogadorNormal(id);
+					break;
+				case 2:
+					novoJogador = new JogadorSortudo(id);
+					break;
 			}
-			;
 		}
+		if(novoJogador != null) {
+			novoJogador.receberAtributos(jogador, novoJogador);
+			jogador = novoJogador;	
+		}
+        
 	}
+
+
 
 }

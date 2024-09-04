@@ -1,6 +1,4 @@
-package src.jogo.modelo;
-
-import jogo.modelo.Casa;
+package jogo2.modelo;
 
 public class CasaSimples extends Casa {
 
@@ -10,7 +8,8 @@ public class CasaSimples extends Casa {
 
 	@Override
 	public void aplicarRegra(Jogador jogador) {
-		jogador.setNumMoedas(jogador.getNumMoedas() + 1);
+		System.out.println("Jogador ganha uma moeda.");
+		jogador.incrementarNumMoedas(1);
 	}
 
 }
