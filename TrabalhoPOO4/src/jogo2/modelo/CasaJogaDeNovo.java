@@ -1,4 +1,4 @@
-package jogo.modelo;
+package jogo2.modelo;
 
 public class CasaJogaDeNovo extends Casa{
 
