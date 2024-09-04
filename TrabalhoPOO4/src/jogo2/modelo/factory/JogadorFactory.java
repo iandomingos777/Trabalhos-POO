@@ -1,4 +1,9 @@
-package jogo2.modelo;
+package jogo2.modelo.factory;
+
+import jogo2.modelo.Jogador;
+import jogo2.modelo.JogadorAzarado;
+import jogo2.modelo.JogadorNormal;
+import jogo2.modelo.JogadorSortudo;
 
 public class JogadorFactory {
 	public static Jogador criarJogador(int opcao, int id) {
