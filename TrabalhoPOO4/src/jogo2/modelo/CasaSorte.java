@@ -1,4 +1,4 @@
-package jogo.modelo;
+package jogo2.modelo;
 
 public class CasaSorte extends Casa{
 
@@ -10,7 +10,7 @@ public class CasaSorte extends Casa{
 	@Override
 	public void aplicarRegra(Jogador jogador) {
 		System.out.println("Jogador anda 3 casas");
-    jogador.setPosiçao(jogador.getPosiçao() + 3);
+		jogador.setPosition(jogador.getPosition() + 3);
 	}
 
 }

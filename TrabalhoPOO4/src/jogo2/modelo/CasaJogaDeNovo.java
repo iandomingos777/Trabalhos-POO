@@ -1,4 +1,4 @@
-package jogo.modelo;
+package jogo2.modelo;
 
 public class CasaJogaDeNovo extends Casa{
 
@@ -9,8 +9,8 @@ public class CasaJogaDeNovo extends Casa{
 
 	@Override
 	public void aplicarRegra(Jogador jogador) {
-     System.out.println("Jogador deve jogar novamente.");
-     jogador.jogarDados();
+		System.out.println("Jogador deve jogar novamente.");
+     	jogador.setJogaDenovo(true);
 	}
 
 }
