@@ -15,7 +15,7 @@ public class Jogo {
 	private ArrayList<Jogador> jogadores = new ArrayList<>();
 	Tabuleiro tabuleiro;
 
-	public void gerarJogadores() {
+	public void lerJogadores() {
 		int numPlayers = 0;
 		
 		do {
@@ -55,7 +55,7 @@ public class Jogo {
 		} while (todosIguais);
 	}
 
-	public void gerarCasas() {
+	public void lerCasas() {
 		System.out.println("Quantas casas tem o tabuleiro?");
 		int numCasas = scanner.nextInt();
 		Tabuleiro.setNumCasas(numCasas);
@@ -89,9 +89,15 @@ public class Jogo {
 		}
 	}
 	
-	public Jogo() {
-		gerarJogadores();
-		gerarCasas();
+	public void gerarTabuleiro() {
 		tabuleiro = Tabuleiro.getInstancia(casas, jogadores);
+	}
+	
+	public void printarTabuleiro() {
+		System.out.println(tabuleiro);
+	}
+	
+	public void iniciar() {
+		
 	}
 }
