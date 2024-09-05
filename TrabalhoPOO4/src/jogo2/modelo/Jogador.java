@@ -120,8 +120,12 @@ public abstract class Jogador {
 		numMoedas += incremento;
 	}
 	
-	public void decrementarNumMoedas(int decremento) {
+	public boolean decrementarNumMoedas(int decremento) {
+		if(numMoedas >= decremento) {
 		numMoedas -= decremento;
+		return true;
+		}
+		return false;
 	}
 	
 	public boolean pagarFianca() {
