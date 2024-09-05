@@ -11,8 +11,9 @@ import jogo2.modelo.factory.JogadorFactory;
 public class Jogo {
 
 	static Scanner scanner = new Scanner(System.in);
-	private ArrayList<Casa> casas;
+	private ArrayList<Casa> casas = new ArrayList<Casa>();
 	private ArrayList<Jogador> jogadores = new ArrayList<>();
+	Tabuleiro tabuleiro;
 
 	public void gerarJogadores() {
 		int numPlayers = 0;
@@ -88,5 +89,9 @@ public class Jogo {
 		}
 	}
 	
-	Tabuleiro tabuleiro = Tabuleiro.getInstancia(casas, jogadores);
+	public Jogo() {
+		gerarJogadores();
+		gerarCasas();
+		tabuleiro = Tabuleiro.getInstancia(casas, jogadores);
+	}
 }
