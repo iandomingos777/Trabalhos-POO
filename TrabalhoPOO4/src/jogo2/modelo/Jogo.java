@@ -110,6 +110,9 @@ public class Jogo {
 				printarTabuleiro();
 				tabuleiro.aplicarRegraDaCasa(Tabuleiro.getCasas().get(posicao), jogador);
 				System.out.println();
+				if(tabuleiro.verificarVitoria()) {
+					System.exit(0);
+				}
 			}
 		}
 	}

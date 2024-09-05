@@ -8,7 +8,7 @@ public class CasaSimples extends Casa {
 
 	@Override
 	public void aplicarRegra(Jogador jogador) {
-		if(jogador.getPosition() == Tabuleiro.getNumCasas()) return;
+		if(jogador.getPosition() == Tabuleiro.getNumCasas() || jogador.getPosition() == 0) return;
 		System.out.println("Jogador ganha uma moeda.");
 		jogador.incrementarNumMoedas(1);
 	}
