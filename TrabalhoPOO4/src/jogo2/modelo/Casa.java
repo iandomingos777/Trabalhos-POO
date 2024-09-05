@@ -36,4 +36,9 @@ public abstract class Casa {
 		sb.append("]");
 		return sb.toString();
 	}
+
+	public ArrayList<Jogador> getJogadores() {
+		return jogadores;
+	}
+	
 }

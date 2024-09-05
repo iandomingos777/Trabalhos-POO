@@ -37,6 +37,10 @@ public class Jogo {
 				System.out.println("Defina o tipo do jogador " + i + "!");
 				System.out.println("1 - Azarado\n2 - Normal\n3 - Sortudo");
 				int opcao = scanner.nextInt();
+				while(opcao < 1 || opcao > 3) {
+					System.out.println("Tipo inválido. Tente novamente.");
+					opcao = scanner.nextInt();
+				}
 				jogador = JogadorFactory.criarJogador(opcao, i);
 				jogadores.add(jogador);
 				contadorTipo[opcao - 1]++;
@@ -98,6 +102,16 @@ public class Jogo {
 	}
 	
 	public void iniciar() {
-		
+		while(!tabuleiro.verificarVitoria()) {
+			for(Jogador jogador : Tabuleiro.getJogadores()) {
+				tabuleiro.exibirInfo(jogador);
+				tabuleiro.roolDiceAndmoveInSquare(jogador);
+				int posicao = jogador.getPosition();
+				printarTabuleiro();
+				tabuleiro.aplicarRegraDaCasa(Tabuleiro.getCasas().get(posicao), jogador);
+				System.out.println();
+			}
+		}
 	}
+	
 }

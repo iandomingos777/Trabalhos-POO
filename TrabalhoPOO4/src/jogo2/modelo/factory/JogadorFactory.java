@@ -15,7 +15,6 @@ public class JogadorFactory {
 		case 3: 
 			return new JogadorSortudo(id);
 		default:
-			System.out.println("Tipo inválido");
 			return null;
 		}
 	}

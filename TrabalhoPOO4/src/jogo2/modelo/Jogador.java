@@ -93,8 +93,6 @@ public abstract class Jogador {
 	public void setSomaDados(int somaDados) {
 		this.somaDados = somaDados;
 	}
-
-	
 	
 	public int getSomaDados() {
 		return somaDados;
@@ -136,6 +134,15 @@ public abstract class Jogador {
 		return false;
 	}
 	
+	public void receberAtributos(Jogador source, Jogador destination) {
+		destination.setPosition(source.getPosition());
+		destination.setArrested(source.isArrested());
+		destination.setSomaDados(source.somaDados);
+		destination.incrementarNumMoedas(source.getNumMoedas() - destination.getNumMoedas());
+		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
+		destination.setJogaDenovo(source.isJogaDenovo());
+	}
+	
 	public int getRodadasConsecutivasPreso() {
 		return rodadasConsecutivasPreso;
 	}
@@ -154,13 +161,12 @@ public abstract class Jogador {
 		return id;
 	}
 	
-	public void receberAtributos(Jogador source, Jogador destination) {
-		destination.setPosition(source.getPosition());
-		destination.setArrested(source.isArrested());
-		destination.setSomaDados(source.somaDados);
-		destination.incrementarNumMoedas(source.getNumMoedas() - destination.getNumMoedas());
-		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
-		destination.setJogaDenovo(source.isJogaDenovo());
+	public void incrementarNumJogadas() {
+		numJogadas++;
+	}
+	
+	public int getNumJogadas() {
+		return numJogadas;
 	}
 	
 	public int getMultiplicador() {
@@ -171,4 +177,7 @@ public abstract class Jogador {
 		this.multiplicador = multiplicador;
 	}
 	
+	public void exibirInfo() {
+		System.out.println(getColor() + " na casa " + getPosition() + ". Jogador possui " + getNumMoedas() + " moedas.");
+	}
 }

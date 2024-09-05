@@ -7,6 +7,6 @@ public class Main {
 			jogo.lerJogadores();
 			jogo.gerarTabuleiro();
 			jogo.printarTabuleiro();
-			// a fazer: jogo.start();
+			jogo.iniciar();
 		}
 }

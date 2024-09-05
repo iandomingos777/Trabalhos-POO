@@ -28,15 +28,41 @@ public class Tabuleiro {
 		casas.get(jogador.getPosition()).remJogador(jogador);
 		jogador.setPosition(jogador.getPosition() + 1);
 		casas.get(jogador.getPosition()).addJogador(jogador);
-		System.out.println(this);
 	}
 
-	public void moveInSquare(Jogador jogador) {
+	public void roolDiceAndmoveInSquare(Jogador jogador) {
 		jogador.jogarDados();
+		System.out.println();
 		int sum = jogador.getSomaDados();
 		for (int i = 0; i < sum; i++) {
 			mover(jogador);
+			if(jogador.getPosition() == numCasas) break;
 		}
+		jogador.incrementarNumJogadas();
+	}
+	
+	public void exibirInfo(Jogador jogador) {
+		for(Jogador j : jogadores) {
+			j.exibirInfo();
+		}
+		System.out.println("\nÉ a vez do jogador " + jogador.getColor() + ": " + jogador.tipoJogador());
+	}
+	
+	public boolean verificarVitoria() {
+		if(casas.get(casas.size()-1).getJogadores().size() != 0) {
+			String vencedor = casas.get(casas.size()-1).getJogadores().get(0).getColor();
+			System.out.println("Jogador " + vencedor + " venceu!");
+			for(Jogador j : jogadores) {
+				System.out.println("Jogador " + j.getColor() + " terminou na casa " + j.getPosition() + " e "
+						+ "fez " + j.getNumJogadas() + " jogadas.");
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public void aplicarRegraDaCasa(Casa casa, Jogador jogador) {
+		casa.aplicarRegra(jogador);
 	}
 	
 	public String toString() {
