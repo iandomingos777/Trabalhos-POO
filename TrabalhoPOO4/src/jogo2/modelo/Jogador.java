@@ -11,6 +11,8 @@ public abstract class Jogador {
 	protected int numMoedas = 0; 
 	protected int rodadasConsecutivasPreso = 0;
 	protected boolean jogaDenovo = false;
+	protected int multiplicador = 1;
+	protected int numJogadas = 0;
 	
 	public abstract void jogarDados();
 	public abstract String tipoJogador();
@@ -155,6 +157,14 @@ public abstract class Jogador {
 		destination.incrementarNumMoedas(source.getNumMoedas() - destination.getNumMoedas());
 		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
 		destination.setJogaDenovo(source.isJogaDenovo());
+	}
+	
+	public int getMultiplicador() {
+		return multiplicador;
+	}
+	
+	public void setMultiplicador(int multiplicador) {
+		this.multiplicador = multiplicador;
 	}
 	
 }

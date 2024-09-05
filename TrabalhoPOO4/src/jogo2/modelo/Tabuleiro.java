@@ -7,6 +7,7 @@ public class Tabuleiro {
 	private static ArrayList<Jogador> jogadores;
 	public static Tabuleiro instancia;
 	private static Jogador ultimo;
+	private static int numCasas;
 
 	private Tabuleiro(ArrayList<Casa> casas, ArrayList<Jogador> jogadores) {
 		Tabuleiro.jogadores = jogadores;
@@ -39,7 +40,7 @@ public class Tabuleiro {
 	}
 	
 	public String toString() {
-		int num = casas.size()/4;
+		int num = numCasas/4;
 		StringBuilder sb = new StringBuilder();
 		sb.append(casas.get(0));
 		for(int i = 1; i <= num; i++) {
@@ -87,4 +88,13 @@ public class Tabuleiro {
 	public static Jogador getUltimo() {
 		return ultimo;
 	}
+
+	public static int getNumCasas() {
+		return numCasas;
+	}
+
+	public static void setNumCasas(int numCasas) {
+		Tabuleiro.numCasas = numCasas;
+	}
+	
 }
