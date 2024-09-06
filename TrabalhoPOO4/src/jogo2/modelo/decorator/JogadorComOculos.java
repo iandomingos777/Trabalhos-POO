@@ -9,7 +9,4 @@ public class JogadorComOculos extends JogadorDecorator{
         multiplicador = 3;
 	}
 
-	public int getMultiplicador() {
-		return super.getMultiplicador() + multiplicador;
-	}
 }

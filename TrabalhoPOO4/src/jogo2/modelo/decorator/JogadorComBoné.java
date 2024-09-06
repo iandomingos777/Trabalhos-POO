@@ -8,8 +8,10 @@ public class JogadorComBoné extends JogadorDecorator {
 		super(jogadorDecorado);
 		multiplicador = 1;
 	}
-
-	public int getMultiplicador() {
-		return super.getMultiplicador() + multiplicador;
+	
+	@Override
+	public String tipoJogador() {
+		// TODO Auto-generated method stub
+		return super.tipoJogador() + " com BONÉ";
 	}
 }

@@ -9,7 +9,4 @@ public class JogadorComMoletom extends JogadorDecorator {
 		multiplicador = 2;
 	}
 
-	public int getMultiplicador() {
-		return super.getMultiplicador() + multiplicador;
-	}
 }

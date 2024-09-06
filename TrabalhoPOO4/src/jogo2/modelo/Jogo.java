@@ -107,6 +107,7 @@ public class Jogo {
 	public void iniciar() {
 		while(!tabuleiro.verificarVitoria()) {
 			for(Jogador jogador : Tabuleiro.getJogadores()) {
+				tabuleiro.setUltimoNoTabuleiro();
 				tabuleiro.exibirInfo(jogador);
 				tabuleiro.roolDiceAndmoveInSquare(jogador);
 				int posicao = jogador.getPosition();

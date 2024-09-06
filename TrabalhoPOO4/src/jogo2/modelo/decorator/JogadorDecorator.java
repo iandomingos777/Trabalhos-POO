@@ -12,17 +12,15 @@ public class JogadorDecorator extends Jogador {
 
 	@Override
 	public void jogarDados() {
-		// TODO Auto-generated method stub
-
+		jogadorDecorado.jogarDados();
 	}
 
 	@Override
 	public String tipoJogador() {
-		// TODO Auto-generated method stub
-		return null;
+		return jogadorDecorado.tipoJogador();
 	}
-
+	
 	public int getMultiplicador() {
-		return jogadorDecorado.getMultiplicador();
+		return super.getMultiplicador() + multiplicador;
 	}
 }
