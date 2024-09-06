@@ -1,11 +1,10 @@
-package jogo2.modelo;
+package jogo2.modelo.jogador;
 
 import java.util.Random;
 
-public class JogadorSortudo extends Jogador {
-	
+public class JogadorAzarado extends Jogador {
 
-	public JogadorSortudo(int id) {
+	public JogadorAzarado(int id) {
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
@@ -20,16 +19,16 @@ public class JogadorSortudo extends Jogador {
 			dado1 = random.nextInt(6) + 1;
 			dado2 = random.nextInt(6) + 1;
 			sum = dado1 + dado2;
-		} while(sum < 7);
+		} while(sum > 6);
 		System.out.println("Dado 1: " + dado1);
 		System.out.println("Dado 2: " + dado2);
 		System.out.println("Soma dos dados: " + sum);
-		setSomaDados(sum);		
+		setSomaDados(sum);	
 	}
 
 	@Override
 	public String tipoJogador() {
-		return "SORTUDO";
+		return "AZARADO";
 	}
 
 }

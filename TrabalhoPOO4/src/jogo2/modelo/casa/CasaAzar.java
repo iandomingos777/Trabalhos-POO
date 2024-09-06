@@ -1,4 +1,7 @@
-package jogo2.modelo;
+package jogo2.modelo.casa;
+
+import jogo2.modelo.jogador.Jogador;
+import jogo2.modelo.jogador.JogadorSortudo;
 
 public class CasaAzar extends Casa{
 

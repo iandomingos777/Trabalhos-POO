@@ -1,4 +1,4 @@
-package jogo2.modelo;
+package jogo2.modelo.jogador;
 
 public abstract class Jogador {
 	

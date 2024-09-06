@@ -2,6 +2,9 @@ package jogo2.modelo;
 
 import java.util.ArrayList;
 
+import jogo2.modelo.casa.Casa;
+import jogo2.modelo.jogador.Jogador;
+
 public class Tabuleiro {
 	private static ArrayList<Casa> casas;
 	private static ArrayList<Jogador> jogadores;

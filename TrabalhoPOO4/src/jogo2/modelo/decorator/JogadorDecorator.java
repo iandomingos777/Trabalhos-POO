@@ -1,6 +1,6 @@
 package jogo2.modelo.decorator;
 
-import jogo2.modelo.Jogador;
+import jogo2.modelo.jogador.Jogador;
 
 public class JogadorDecorator extends Jogador {
 	protected Jogador jogadorDecorado;

@@ -1,6 +1,8 @@
-package jogo2.modelo;
+package jogo2.modelo.casa;
 
 import java.util.ArrayList;
+
+import jogo2.modelo.jogador.Jogador;
 
 public abstract class Casa {
 	protected int posiçao;

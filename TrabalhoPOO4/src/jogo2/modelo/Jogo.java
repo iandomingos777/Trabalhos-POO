@@ -5,12 +5,14 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+import jogo2.modelo.casa.Casa;
 import jogo2.modelo.factory.CasaFactory;
 import jogo2.modelo.factory.JogadorFactory;
+import jogo2.modelo.jogador.Jogador;
 
 public class Jogo {
 
-	static Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
 	private ArrayList<Casa> casas = new ArrayList<Casa>();
 	private ArrayList<Jogador> jogadores = new ArrayList<>();
 	Tabuleiro tabuleiro;

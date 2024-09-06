@@ -1,6 +1,6 @@
-package jogo2.modelo;
+package jogo2.modelo.decorator;
 
-import jogo2.modelo.decorator.JogadorDecorator;
+import jogo2.modelo.jogador.Jogador;
 
 public class JogadorComBoné extends JogadorDecorator {
 	

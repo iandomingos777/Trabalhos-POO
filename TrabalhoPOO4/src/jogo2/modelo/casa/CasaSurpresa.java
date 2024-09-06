@@ -1,6 +1,11 @@
-package jogo2.modelo;
+package jogo2.modelo.casa;
 
 import java.util.Random;
+
+import jogo2.modelo.jogador.Jogador;
+import jogo2.modelo.jogador.JogadorAzarado;
+import jogo2.modelo.jogador.JogadorNormal;
+import jogo2.modelo.jogador.JogadorSortudo;
 
 public class CasaSurpresa extends Casa {
 
