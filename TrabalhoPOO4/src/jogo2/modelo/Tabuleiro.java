@@ -62,7 +62,17 @@ public class Tabuleiro {
 	}
 	
 	public void aplicarRegraDaCasa(Casa casa, Jogador jogador) {
-		casa.aplicarRegra(jogador);
+		Jogador temp = jogador;
+		if(!casa.getJogadores().isEmpty()) {
+			for(Jogador j : casa.getJogadores()) {
+				if(j.getId() == jogador.getId()) {
+					casa.aplicarRegra(j);
+					temp = j;
+                   break;
+				}
+			}
+			jogadores.set(temp.getId() - 1, temp);
+		}
 	}
 	
 	public String toString() {
