@@ -1,6 +1,7 @@
 package jogo2.modelo.casa;
 
 import jogo2.modelo.Jogo;
+import jogo2.modelo.Tabuleiro;
 import jogo2.modelo.decorator.JogadorComBoné;
 import jogo2.modelo.decorator.JogadorComMoletom;
 import jogo2.modelo.decorator.JogadorComOculos;
@@ -18,6 +19,7 @@ public class CasaTroca extends Casa {
 		System.out.println("1 - Boné 2 - Moletom 3 - Óculos 4 - Não trocar");
 		int opc;
 		opc = Jogo.scanner.nextInt();
+		Tabuleiro.getCasas().get(posiçao).remJogador(jogador);
 		switch (opc) {
 		case 1:
 			if (!(jogador instanceof JogadorComBoné) && jogador.decrementarNumMoedas(1)) {
@@ -48,6 +50,7 @@ public class CasaTroca extends Casa {
 		case 4:
 			System.out.println("Nenhuma compra foi realizada");
 		};
+		Tabuleiro.getCasas().get(posiçao).addJogador(jogador);
 	}
 	
 

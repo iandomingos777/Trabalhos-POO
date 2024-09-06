@@ -2,6 +2,7 @@ package jogo2.modelo.casa;
 
 import java.util.Random;
 
+import jogo2.modelo.Tabuleiro;
 import jogo2.modelo.jogador.Jogador;
 import jogo2.modelo.jogador.JogadorAzarado;
 import jogo2.modelo.jogador.JogadorNormal;
@@ -12,9 +13,9 @@ public class CasaSurpresa extends Casa {
 	public CasaSurpresa(int posiçao) {
 		super(posiçao);
 	}
-
 	@Override
 	public void aplicarRegra(Jogador jogador) {
+		Tabuleiro.getCasas().get(posiçao).remJogador(jogador);
 		int id = jogador.getId();
 		Random random = new Random();
 		int temp = random.nextInt(2) + 1;
@@ -51,7 +52,9 @@ public class CasaSurpresa extends Casa {
 		}
 		if(novoJogador != null) {
 			novoJogador.receberAtributos(jogador, novoJogador);
-			jogador = novoJogador;	
+			jogador = novoJogador;
+			Tabuleiro.getCasas().get(posiçao).addJogador(jogador);
+			Tabuleiro.getJogadores().set(jogador.getId() - 1, jogador);
 		}
         
 	}
