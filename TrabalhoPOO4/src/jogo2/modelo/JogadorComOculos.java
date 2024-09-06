@@ -6,7 +6,7 @@ public class JogadorComOculos extends JogadorDecorator{
 
 	public JogadorComOculos(Jogador jogadorDecorado) {
 		super(jogadorDecorado);
-        multiplicador = 1;
+        multiplicador = 3;
 	}
 
 	public int getMultiplicador() {

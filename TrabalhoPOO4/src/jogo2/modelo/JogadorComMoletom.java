@@ -6,7 +6,7 @@ public class JogadorComMoletom extends JogadorDecorator {
 
 	public JogadorComMoletom(Jogador jogadorDecorado) {
 		super(jogadorDecorado);
-		multiplicador = 1;
+		multiplicador = 2;
 	}
 
 	public int getMultiplicador() {

@@ -115,7 +115,7 @@ public abstract class Jogador {
 	}
 	
 	public void incrementarNumMoedas(int incremento) {
-		numMoedas += incremento;
+		numMoedas += incremento * getMultiplicador();
 	}
 	
 	public boolean decrementarNumMoedas(int decremento) {
