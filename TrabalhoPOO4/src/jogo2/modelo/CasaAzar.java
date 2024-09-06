@@ -16,5 +16,4 @@ public class CasaAzar extends Casa{
      System.out.println("Jogador perde 3 moedas");
      jogador.decrementarNumMoedas(3);
 	}
-
 }

@@ -121,6 +121,7 @@ public class Tabuleiro {
 
 	public static void setNumCasas(int numCasas) {
 		Tabuleiro.numCasas = numCasas;
+		casas= new ArrayList<Casa>(numCasas + 1);
 	}
 	
 }

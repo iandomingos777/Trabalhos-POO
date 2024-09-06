@@ -10,6 +10,14 @@ public abstract class Casa {
 		this.posiçao = posiçao;
 	}
 
+	public int getPosiçao() {
+		return posiçao;
+	}
+
+	public void setPosiçao(int posiçao) {
+		this.posiçao = posiçao;
+	}
+
 	public abstract void aplicarRegra(Jogador jogador);
 
 	public void addJogador(Jogador jogador) {
@@ -40,5 +48,4 @@ public abstract class Casa {
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
-	
 }

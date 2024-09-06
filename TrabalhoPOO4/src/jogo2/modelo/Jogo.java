@@ -71,7 +71,7 @@ public class Jogo {
 		for(int i = 1; i <= numCasasEspeciais; i++) {
 			Casa casa;
 			System.out.println("Diga o tipo da casa especial número " + i);
-			System.out.println("1 - CasaAzar\n2 - CasaJogaDeNovo\n3 - CasaPrisao\n4 - CasaSorte\n5 - CasaSurpresa");
+			System.out.println("1 - CasaAzar\n2 - CasaJogaDeNovo\n3 - CasaPrisao\n4 - CasaSorte\n5 - CasaSurpresa\n6 - CasaTroca");
 			int opcaoCasa = scanner.nextInt();
 			System.out.println("Diga a posição da casa especial número " + i);
 			int posicaoCasa = scanner.nextInt();
@@ -94,6 +94,7 @@ public class Jogo {
 	}
 	
 	public void gerarTabuleiro() {
+        casas.sort((c1, c2) -> Integer.compare(c1.getPosiçao(), c2.getPosiçao()));
 		tabuleiro = Tabuleiro.getInstancia(casas, jogadores);
 	}
 	
