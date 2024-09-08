@@ -25,7 +25,7 @@ public class CasaTroca extends Casa {
 
         switch (opc) {
             case 1:
-                if (!(jogador instanceof JogadorComBoné) && jogador.decrementarNumMoedas(1)) {
+                if (!(jogador instanceof JogadorComBoné)) {
                     System.out.println(jogador + " comprou um boné");
                     jogadorDecorado = new JogadorComBoné(jogador);
                 } else {
@@ -33,8 +33,7 @@ public class CasaTroca extends Casa {
                 }
                 break;
             case 2:
-                if (jogador instanceof JogadorComBoné && !(jogador instanceof JogadorComMoletom)
-                        && jogador.decrementarNumMoedas(4)) {
+                if (jogador instanceof JogadorComBoné) {
                     System.out.println(jogador + " comprou um moletom");
                     jogadorDecorado = new JogadorComMoletom(jogador);
                 } else {
@@ -42,8 +41,7 @@ public class CasaTroca extends Casa {
                 }
                 break;
             case 3:
-                if (jogador instanceof JogadorComMoletom && !(jogador instanceof JogadorComOculos)
-                        && jogador.decrementarNumMoedas(7)) {
+                if (jogador instanceof JogadorComMoletom) {
                     System.out.println(jogador + " comprou um óculos");
                     jogadorDecorado = new JogadorComOculos(jogador);
                 } else {

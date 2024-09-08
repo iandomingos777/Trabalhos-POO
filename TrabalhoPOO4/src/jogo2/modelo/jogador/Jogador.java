@@ -138,7 +138,7 @@ public abstract class Jogador {
 		destination.setPosition(source.getPosition());
 		destination.setArrested(source.isArrested());
 		destination.setSomaDados(source.somaDados);
-		destination.incrementarNumMoedas(source.getNumMoedas() - destination.getNumMoedas());
+		destination.setNumMoedas(source.getNumMoedas());
 		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
 		destination.setJogaDenovo(source.isJogaDenovo());
 		destination.setNumJogadas(source.getNumJogadas());
@@ -185,6 +185,10 @@ public abstract class Jogador {
 	public void setNumJogadas(int numJogadas) {
 		this.numJogadas = numJogadas;
 	}
+	
+	public void setNumMoedas(int numMoedas) {
+		this.numMoedas = numMoedas;
+	}	
 	
 	
 }
