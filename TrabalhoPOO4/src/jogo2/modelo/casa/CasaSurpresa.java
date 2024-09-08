@@ -26,27 +26,33 @@ public class CasaSurpresa extends Casa {
 			switch (temp) {
 				case 1:
 					novoJogador = new JogadorAzarado(id);
+					System.out.println(jogador.getColor() + " virou AZARADO!");
 					break;
 				case 2:
 					novoJogador = new JogadorNormal(id);
+					System.out.println(jogador.getColor() + " virou NORMAL!");
 					break;
 			}
 		} else if (jogador instanceof JogadorNormal) {
 			switch (temp) {
 				case 1:
 					novoJogador = new JogadorAzarado(id);
+					System.out.println(jogador.getColor() + " virou AZARADO!");
 					break;
 				case 2:
 					novoJogador = new JogadorSortudo(id);
+					System.out.println(jogador.getColor() + " virou SORTUDO!");
 					break;
 			}
 		} else {
 			switch (temp) {
 				case 1:
 					novoJogador = new JogadorNormal(id);
+					System.out.println(jogador.getColor() + " virou NORMAL!");
 					break;
 				case 2:
 					novoJogador = new JogadorSortudo(id);
+					System.out.println(jogador.getColor() + " virou SORTUDO!");
 					break;
 			}
 		}

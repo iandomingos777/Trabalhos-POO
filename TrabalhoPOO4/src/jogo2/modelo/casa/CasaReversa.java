@@ -27,6 +27,7 @@ public class CasaReversa extends Casa{
 		Tabuleiro.getCasas().get(jogador.getPosition()).remJogador(jogador);
 		jogador.setPosition(posicaoDoUltimo);
 		Tabuleiro.getCasas().get(posicaoDoUltimo).addJogador(jogador);
+		System.out.println("Trocou de casa com o jogador mais atrás\n");
 	}
 
 }

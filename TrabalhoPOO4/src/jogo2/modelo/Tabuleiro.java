@@ -3,6 +3,8 @@ package jogo2.modelo;
 import java.util.ArrayList;
 
 import jogo2.modelo.casa.Casa;
+import jogo2.modelo.casa.CasaReversa;
+import jogo2.modelo.casa.CasaSorte;
 import jogo2.modelo.jogador.Jogador;
 
 public class Tabuleiro {
@@ -66,6 +68,7 @@ public class Tabuleiro {
 	
 	public void aplicarRegraDaCasa(Casa casa, Jogador jogador) {
 		casa.aplicarRegra(jogador);
+		if(casa instanceof CasaReversa || casa instanceof CasaSorte) System.out.println(this);
 	}
 	
 	public String toString() {
