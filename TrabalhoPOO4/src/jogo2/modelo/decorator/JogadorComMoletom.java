@@ -8,5 +8,10 @@ public class JogadorComMoletom extends JogadorDecorator {
 		super(jogadorDecorado);
 		multiplicador = 2;
 	}
+	
+	public String tipoJogador() {
+		return super.tipoJogador() + ", MOLETOM";
+		
+	}
 
 }

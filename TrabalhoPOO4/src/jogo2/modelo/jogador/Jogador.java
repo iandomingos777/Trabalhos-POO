@@ -141,6 +141,7 @@ public abstract class Jogador {
 		destination.incrementarNumMoedas(source.getNumMoedas() - destination.getNumMoedas());
 		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
 		destination.setJogaDenovo(source.isJogaDenovo());
+		destination.setNumJogadas(source.getNumJogadas());
 	}
 	
 	public int getRodadasConsecutivasPreso() {
@@ -180,4 +181,10 @@ public abstract class Jogador {
 	public void exibirInfo() {
 		System.out.println(getColor() + " na casa " + getPosition() + ". Jogador possui " + getNumMoedas() + " moedas.");
 	}
+	
+	public void setNumJogadas(int numJogadas) {
+		this.numJogadas = numJogadas;
+	}
+	
+	
 }

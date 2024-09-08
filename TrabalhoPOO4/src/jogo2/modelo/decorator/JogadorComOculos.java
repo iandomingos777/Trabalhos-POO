@@ -8,5 +8,10 @@ public class JogadorComOculos extends JogadorDecorator{
 		super(jogadorDecorado);
         multiplicador = 3;
 	}
+	
+	public String tipoJogador() {
+		return super.tipoJogador() + ", ÓCULOS";
+		
+	}
 
 }
