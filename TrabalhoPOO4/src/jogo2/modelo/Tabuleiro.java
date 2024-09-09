@@ -54,8 +54,11 @@ public class Tabuleiro {
 	}
 	
 	public void debugar(Jogador jogador) {
+		int sum = -1;
+		while(sum < 0 || jogador.getPosition() + sum > numCasas) {
 	    System.out.println("Andar quantas casas?");
-	    int sum = Jogo.scanner.nextInt();
+	    sum = Jogo.scanner.nextInt();
+		}
 	    for(int i = 0; i < sum; i++) {
 	        mover(jogador);
 	        if(jogador.getPosition() == numCasas) break;
@@ -64,8 +67,11 @@ public class Tabuleiro {
 	}
 	
 	public void jogar(Jogador jogador) {
+		int opcao = 0;
+		while(opcao != 1 && opcao != 2) {
 		System.out.println("1 - Jogar dados\n2 - Debugar");
-		int opcao = Jogo.scanner.nextInt();
+		opcao = Jogo.scanner.nextInt();
+		}
 		if (opcao == 1) {
 			roolDiceAndmoveInSquare(jogador);
 		} else if (opcao == 2) {
