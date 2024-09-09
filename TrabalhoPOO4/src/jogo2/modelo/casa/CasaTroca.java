@@ -8,9 +8,12 @@ import jogo2.modelo.decorator.JogadorComOculos;
 import jogo2.modelo.jogador.Jogador;
 
 public class CasaTroca extends Casa {
+	
+	String strColor;
 
 	public CasaTroca(int posiçao) {
 		super(posiçao);
+		strColor = "\u001B[30m"; // preto
 	}
 
     @Override
@@ -61,6 +64,10 @@ public class CasaTroca extends Casa {
 
         Tabuleiro.getCasas().get(posiçao).addJogador(jogadorDecorado);
     }
+    
+	public String toString() {
+		return super.toString(strColor);
+	}
 	
 
 }

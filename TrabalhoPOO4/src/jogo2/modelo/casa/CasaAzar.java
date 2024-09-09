@@ -4,10 +4,12 @@ import jogo2.modelo.jogador.Jogador;
 import jogo2.modelo.jogador.JogadorSortudo;
 
 public class CasaAzar extends Casa{
+	
+	String strColor;
 
 	public CasaAzar(int posiçao) {
 		super(posiçao);
-		// TODO Auto-generated constructor stub
+		strColor = "\u001B[31m"; // vermelho
 	}
 
 	@Override
@@ -18,5 +20,9 @@ public class CasaAzar extends Casa{
      }
      System.out.println("Jogador perde 3 moedas");
      jogador.decrementarNumMoedas(3);
+	}
+	
+	public String toString() {
+		return super.toString(strColor);
 	}
 }

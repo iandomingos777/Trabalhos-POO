@@ -9,9 +9,12 @@ import jogo2.modelo.jogador.JogadorNormal;
 import jogo2.modelo.jogador.JogadorSortudo;
 
 public class CasaSurpresa extends Casa {
+	
+	String strColor;
 
 	public CasaSurpresa(int posiçao) {
 		super(posiçao);
+		strColor = "\u001B[36m"; // ciano
 	}
 	@Override
 	public void aplicarRegra(Jogador jogador) {
@@ -63,6 +66,10 @@ public class CasaSurpresa extends Casa {
 			Tabuleiro.getJogadores().set(jogador.getId() - 1, jogador);
 		}
         
+	}
+	
+	public String toString() {
+		return super.toString(strColor);
 	}
 
 

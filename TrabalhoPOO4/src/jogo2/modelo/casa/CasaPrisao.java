@@ -4,10 +4,13 @@ import jogo2.modelo.Jogo;
 import jogo2.modelo.jogador.Jogador;
 
 public class CasaPrisao extends Casa{
+	
+	String strColor;
 
 	
 	public CasaPrisao(int posiçao) {
 		super(posiçao);
+		strColor = "\u001B[35m"; // magenta
 	}
 
 	@Override
@@ -39,5 +42,9 @@ public class CasaPrisao extends Casa{
 		   jogador.setRodadasConsecutivasPreso(0);
 	   };
       }
+	
+	public String toString() {
+		return super.toString(strColor);
+	}
 
 }

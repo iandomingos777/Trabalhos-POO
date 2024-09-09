@@ -5,8 +5,11 @@ import jogo2.modelo.jogador.Jogador;
 
 public class CasaReversa extends Casa{
 
+	String strColor;
+	
 	public CasaReversa(int posiçao) {
 		super(posiçao);
+		strColor = "\u001B[34m"; // azul
 	}
 
 	@Override
@@ -30,4 +33,7 @@ public class CasaReversa extends Casa{
 		System.out.println("Trocou de casa com o jogador mais atrás\n");
 	}
 
+	public String toString() {
+		return super.toString(strColor);
+	}
 }
