@@ -22,7 +22,7 @@ public class CasaPrisao extends Casa{
 	    jogador.setRodadasConsecutivasPreso(1);
 	    break;
 	   case 1:
-	   System.out.println("1 - Pagar fiança 2 - continuar preso");
+	   System.out.println("1 - Pagar fiança (2 moedas).\n2 - Continuar preso.");
 	   int opc = 0;
 	   while(opc != 1 && opc!= 2) {
 		   opc = Jogo.scanner.nextInt();
