@@ -30,6 +30,12 @@ public class Tabuleiro {
 	}
 
 	public void mover(Jogador jogador) {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		casas.get(jogador.getPosition()).remJogador(jogador);
 		jogador.setPosition(jogador.getPosition() + 1);
 		casas.get(jogador.getPosition()).addJogador(jogador);

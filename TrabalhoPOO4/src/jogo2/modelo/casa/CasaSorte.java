@@ -19,6 +19,8 @@ public class CasaSorte extends Casa{
        Tabuleiro.instancia.mover(jogador);
 		}
 		
+		Tabuleiro.instancia.aplicarRegraDaCasa(Tabuleiro.getCasas().get(jogador.getPosition()), jogador);
+		
 	}
 	
 	public String toString() {

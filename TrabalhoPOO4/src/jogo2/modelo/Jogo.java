@@ -106,6 +106,12 @@ public class Jogo {
 	
 	private void aplicarLogica(Jogador jogador) {
 		tabuleiro.exibirInfo(jogador);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(!jogador.isArrested()) {
 		tabuleiro.jogar(jogador);
 		}else {
