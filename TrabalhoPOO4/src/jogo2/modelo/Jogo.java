@@ -66,17 +66,26 @@ public class Jogo {
 		int numCasas = scanner.nextInt();
 		Tabuleiro.setNumCasas(numCasas);
 		
+		int numCasasEspeciais = -1;
+		while(numCasasEspeciais < 0 || numCasasEspeciais > numCasas) {
 		System.out.println("Quantas casas especiais?\nOBS: Casas que não são simples");
-		int numCasasEspeciais = scanner.nextInt();
+		numCasasEspeciais = scanner.nextInt();
+		}
 		
 		Set<Integer> posicoesDasCasasEspeciais = new HashSet<>();
 		for(int i = 1; i <= numCasasEspeciais; i++) {
 			Casa casa;
+			int opcaoCasa = 0;
+			while(opcaoCasa < 1 || opcaoCasa > 7) {
 			System.out.println("Diga o tipo da casa especial número " + i);
 			System.out.println("1 - CasaAzar\n2 - CasaJogaDeNovo\n3 - CasaPrisao\n4 - CasaSorte\n5 - CasaSurpresa\n6 - CasaTroca\n7 - CasaReversa");
-			int opcaoCasa = scanner.nextInt();
+			opcaoCasa = scanner.nextInt();
+			}
+			int posicaoCasa = -1;
+			while(posicaoCasa < 1 || posicaoCasa > numCasas) {
 			System.out.println("Diga a posição da casa especial número " + i);
-			int posicaoCasa = scanner.nextInt();
+			posicaoCasa = scanner.nextInt();
+			}
 			
 			while (posicoesDasCasasEspeciais.contains(posicaoCasa)) {
 				System.out.println("Posição já utilizada. Diga uma nova posição para a casa especial número " + i);
