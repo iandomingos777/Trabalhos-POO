@@ -137,7 +137,7 @@ public abstract class Jogador {
 	public void receberAtributos(Jogador source, Jogador destination) {
 		destination.setPosition(source.getPosition());
 		destination.setArrested(source.isArrested());
-		destination.setSomaDados(source.somaDados);
+		destination.setSomaDados(source.getSomaDados()); 
 		destination.setNumMoedas(source.getNumMoedas());
 		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
 		destination.setJogaDenovo(source.isJogaDenovo());

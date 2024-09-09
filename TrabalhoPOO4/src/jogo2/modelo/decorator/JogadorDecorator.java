@@ -23,4 +23,8 @@ public class JogadorDecorator extends Jogador {
 	public int getMultiplicador() {
 		return jogadorDecorado.getMultiplicador() + multiplicador;
 	}
+	
+	public int getSomaDados() {
+		return jogadorDecorado.getSomaDados();
+	}
 }

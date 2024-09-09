@@ -108,7 +108,7 @@ public class Jogo {
 		tabuleiro.setUltimoNoTabuleiro();
 		tabuleiro.exibirInfo(jogador);
 		if(!jogador.isArrested()) {
-		tabuleiro.roolDiceAndmoveInSquare(jogador);
+		tabuleiro.jogar(jogador);
 		}else {
 			System.out.println(jogador.getColor() + " está preso");
 		}
