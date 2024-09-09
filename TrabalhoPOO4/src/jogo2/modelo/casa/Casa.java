@@ -36,16 +36,16 @@ public abstract class Casa {
 	}
 	   public String toString(String strColor) {
 	        StringBuilder sb = new StringBuilder();
-	        sb.append("[");
+	        String resetColor = "\u001B[0m";
+	        sb.append(strColor + "[" + resetColor);
 	        for (Jogador j : jogadores) {
 	            sb.append(j);
 	        }
 	        for (int i = jogadores.size(); i < 6; i++) {
 	            sb.append(" ");
 	        }
-	        sb.append("]");
-	        String resetColor = "\u001B[0m";
-	        return strColor + sb.toString() + resetColor;
+	        sb.append( strColor + "]" + resetColor);
+	        return  sb.toString();
 	    }
 
 	public ArrayList<Jogador> getJogadores() {
