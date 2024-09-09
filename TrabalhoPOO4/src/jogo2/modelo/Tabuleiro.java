@@ -97,20 +97,32 @@ public class Tabuleiro {
 	public String toString() {
 		int num = numCasas/4;
 		StringBuilder sb = new StringBuilder();
+    for(int i = 0; i <= num; i++) {
+    	int alg = String.valueOf(Math.abs(i)).length();
+    	if(alg == 1) {
+    	sb.append("   " + i + "    ");
+    	}
+    	else {
+    		sb.append("   " + i + "   ");
+    	}
+    }
+    sb.append("\n");
 		sb.append(casas.get(0));
 		for(int i = 1; i <= num; i++) {
 			sb.append(casas.get(i));
 		}
 		sb.append("\n");
 		for(int i = 0; i < num; i++) {
-			for(int j = 0; j < 8; j++) {
+			for(int j = 0; j < 6; j++) {
 				sb.append(" ");
 			}
+			sb.append(4*num - i);
 			sb.append(casas.get(4*num - i));
 			for(int j = 0; j < (num - 2)*8; j++) {
 				sb.append(" ");
 			}
 			sb.append(casas.get(num + i + 1));
+			sb.append(num + i +1);
 			sb.append("\n");
 		}
 		for(int j = 0; j < 8; j++) {
@@ -118,6 +130,13 @@ public class Tabuleiro {
 		}
 		for(int i = 0; i < num; i++) {
 			sb.append(casas.get(3*num - i));
+		}
+		sb.append("\n");
+		for(int j = 0; j < 8; j++) {
+			sb.append(" ");
+		}
+		for(int i = 0; i < num; i++) {
+			sb.append("   " + (3*num - i) + "   ");
 		}
 		return sb.toString();
 	}
