@@ -110,9 +110,9 @@ public class Jogo {
 		tabuleiro.jogar(jogador);
 		}else {
 			System.out.println(jogador.getColor() + " está preso");
+			System.out.println(tabuleiro);
 		}
 		int posicao = jogador.getPosition();
-		printarTabuleiro();
 		tabuleiro.aplicarRegraDaCasa(Tabuleiro.getCasas().get(posicao), jogador);
 		System.out.println();
 	}

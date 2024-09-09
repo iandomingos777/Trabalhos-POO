@@ -15,9 +15,10 @@ public class CasaSorte extends Casa{
 	@Override
 	public void aplicarRegra(Jogador jogador) {
 		System.out.println("Jogador anda 3 casas");
-		Tabuleiro.getCasas().get(posiçao).remJogador(jogador);
-		jogador.setPosition(jogador.getPosition() + 3);
-		Tabuleiro.getCasas().get(jogador.getPosition()).addJogador(jogador);
+		for(int i = 0; i < 3; i++) {
+       Tabuleiro.instancia.mover(jogador);
+		}
+		
 	}
 	
 	public String toString() {

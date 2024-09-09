@@ -33,6 +33,7 @@ public class Tabuleiro {
 		casas.get(jogador.getPosition()).remJogador(jogador);
 		jogador.setPosition(jogador.getPosition() + 1);
 		casas.get(jogador.getPosition()).addJogador(jogador);
+		System.out.println(this);
 	}
 
 	public void roolDiceAndmoveInSquare(Jogador jogador) {
