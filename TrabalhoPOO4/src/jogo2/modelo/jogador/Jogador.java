@@ -131,6 +131,7 @@ public abstract class Jogador {
 			numMoedas -= 2;
 			return true;
 		}
+		System.out.println("Saldo insuficiente para pagar fiança.");
 		return false;
 	}
 	

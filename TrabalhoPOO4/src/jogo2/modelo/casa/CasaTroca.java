@@ -18,17 +18,41 @@ public class CasaTroca extends Casa {
 
     @Override
     public void aplicarRegra(Jogador jogador) {
-        System.out.println("Deseja trocar suas moedas por:");
-        System.out.println("1 - Boné 2 - Moletom 3 - Óculos 4 - Não trocar");
+    	
+    	if(jogador instanceof JogadorComOculos) {
+    		System.out.println("Jogador no auge.");
+    		return;
+    	}
+    	
+
         int opc;
-        opc = Jogo.scanner.nextInt();
+        
+        System.out.print("Deseja trocar suas moedas por ");
+        if(jogador instanceof JogadorComMoletom) {
+        	System.out.println("óculos por 7 moedas");
+        	opc = 3;
+        }
+        else if(jogador instanceof JogadorComBoné) {
+        	System.out.println("moletom por 4 moedas");
+        	opc = 2;
+        }
+        else {
+        	System.out.println("boné por 1 moeda");
+        	opc = 1;
+        }
+        System.out.println("1 - Sim.\n2 - Não");
+        int escolha;
+        escolha = Jogo.scanner.nextInt();
+        
+        if(escolha == 2) return;
+        
         Tabuleiro.getCasas().get(posiçao).remJogador(jogador);
 
         Jogador jogadorDecorado = jogador;
 
         switch (opc) {
             case 1:
-                if (!(jogador instanceof JogadorComBoné)) {
+                if (!(jogador instanceof JogadorComBoné) && jogador.decrementarNumMoedas(1)) {
                     System.out.println(jogador + " comprou um boné");
                     jogadorDecorado = new JogadorComBoné(jogador);
                 } else {
@@ -36,7 +60,7 @@ public class CasaTroca extends Casa {
                 }
                 break;
             case 2:
-                if (jogador instanceof JogadorComBoné) {
+                if (jogador instanceof JogadorComBoné && jogador.decrementarNumMoedas(4)) {
                     System.out.println(jogador + " comprou um moletom");
                     jogadorDecorado = new JogadorComMoletom(jogador);
                 } else {
@@ -44,14 +68,14 @@ public class CasaTroca extends Casa {
                 }
                 break;
             case 3:
-                if (jogador instanceof JogadorComMoletom) {
+                if (jogador instanceof JogadorComMoletom && jogador.decrementarNumMoedas(7)) {
                     System.out.println(jogador + " comprou um óculos");
                     jogadorDecorado = new JogadorComOculos(jogador);
                 } else {
                     System.out.println("Operação não pode ser realizada");
                 }
                 break;
-            case 4:
+            default:
                 System.out.println("Nenhuma compra foi realizada");
         }
         
