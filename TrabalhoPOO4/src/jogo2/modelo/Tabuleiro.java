@@ -141,7 +141,7 @@ public class Tabuleiro {
 		return sb.toString();
 	}
 	
-    public void setUltimoNoTabuleiro() {
+    public static void setUltimoNoTabuleiro() {
         Jogador ultimoNoTabuleiro = null;
         for (Jogador jogador : jogadores) {
             if (ultimoNoTabuleiro == null || jogador.getPosition() < ultimoNoTabuleiro.getPosition()) {

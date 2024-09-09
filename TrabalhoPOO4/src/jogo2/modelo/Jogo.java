@@ -105,7 +105,6 @@ public class Jogo {
 	}
 	
 	private void aplicarLogica(Jogador jogador) {
-		tabuleiro.setUltimoNoTabuleiro();
 		tabuleiro.exibirInfo(jogador);
 		if(!jogador.isArrested()) {
 		tabuleiro.jogar(jogador);
