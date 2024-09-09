@@ -15,7 +15,10 @@ public class CasaReversa extends Casa{
 	@Override
 	public void aplicarRegra(Jogador jogador) {
 		Tabuleiro.setUltimoNoTabuleiro();
-		if(Tabuleiro.getUltimo().getId() == jogador.getId()) return;
+		if(Tabuleiro.getUltimo().getId() == jogador.getId()) {
+			System.out.println("Jogador é o mais atrás no tabuleiro");
+			return;
+		}
 		
 		int posicaoDoUltimo = Tabuleiro.getUltimo().getPosition();
 		
