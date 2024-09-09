@@ -73,7 +73,7 @@ public class Jogo {
 		for(int i = 1; i <= numCasasEspeciais; i++) {
 			Casa casa;
 			System.out.println("Diga o tipo da casa especial número " + i);
-			System.out.println("1 - CasaAzar\n2 - CasaJogaDeNovo\n3 - CasaPrisao\n4 - CasaSorte\n5 - CasaSurpresa\n6 - CasaTroca");
+			System.out.println("1 - CasaAzar\n2 - CasaJogaDeNovo\n3 - CasaPrisao\n4 - CasaSorte\n5 - CasaSurpresa\n6 - CasaTroca\n7 - CasaReversa");
 			int opcaoCasa = scanner.nextInt();
 			System.out.println("Diga a posição da casa especial número " + i);
 			int posicaoCasa = scanner.nextInt();
@@ -104,16 +104,28 @@ public class Jogo {
 		System.out.println(tabuleiro);
 	}
 	
+	private void aplicarLogica(Jogador jogador) {
+		tabuleiro.setUltimoNoTabuleiro();
+		tabuleiro.exibirInfo(jogador);
+		if(!jogador.isArrested()) {
+		tabuleiro.roolDiceAndmoveInSquare(jogador);
+		}else {
+			System.out.println(jogador.getColor() + " está preso");
+		}
+		int posicao = jogador.getPosition();
+		printarTabuleiro();
+		tabuleiro.aplicarRegraDaCasa(Tabuleiro.getCasas().get(posicao), jogador);
+		System.out.println();
+	}
+	
 	public void iniciar() {
 		while(!tabuleiro.verificarVitoria()) {
 			for(Jogador jogador : Tabuleiro.getJogadores()) {
-				tabuleiro.setUltimoNoTabuleiro();
-				tabuleiro.exibirInfo(jogador);
-				tabuleiro.roolDiceAndmoveInSquare(jogador);
-				int posicao = jogador.getPosition();
-				printarTabuleiro();
-				tabuleiro.aplicarRegraDaCasa(Tabuleiro.getCasas().get(posicao), jogador);
-				System.out.println();
+                  aplicarLogica(jogador);
+                  if(jogador.isJogaDenovo()) {
+                	  aplicarLogica(jogador);
+                	  jogador.setJogaDenovo(false);
+                  }
 				if(tabuleiro.verificarVitoria()) {
 					System.exit(0);
 				}
