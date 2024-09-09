@@ -46,6 +46,29 @@ public class Tabuleiro {
 		jogador.incrementarNumJogadas();
 	}
 	
+	public void debugar(Jogador jogador) {
+	    System.out.println("Andar quantas casas?");
+	    int sum = Jogo.scanner.nextInt();
+	    for(int i = 0; i < sum; i++) {
+	        mover(jogador);
+	        if(jogador.getPosition() == numCasas) break;
+	    }
+	    jogador.incrementarNumJogadas();
+	}
+	
+	public void jogar(Jogador jogador) {
+		System.out.println("1 - Jogar dados\n2 - Debugar");
+		int opcao = Jogo.scanner.nextInt();
+		if (opcao == 1) {
+			roolDiceAndmoveInSquare(jogador);
+		} else if (opcao == 2) {
+			debugar(jogador);
+		} else {
+			System.out.println("Opção inválida. Tente novamente.");
+			jogar(jogador);
+		}
+	}
+	
 	public void exibirInfo(Jogador jogador) {
 		for(Jogador j : jogadores) {
 			j.exibirInfo();
