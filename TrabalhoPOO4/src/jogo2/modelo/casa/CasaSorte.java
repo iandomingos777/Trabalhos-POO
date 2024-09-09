@@ -4,10 +4,12 @@ import jogo2.modelo.Tabuleiro;
 import jogo2.modelo.jogador.Jogador;
 
 public class CasaSorte extends Casa{
+	
+	String strColor;
 
 	public CasaSorte(int posiçao) {
 		super(posiçao);
-		// TODO Auto-generated constructor stub
+		strColor = "\u001B[32m"; // verde
 	}
 
 	@Override
@@ -16,6 +18,10 @@ public class CasaSorte extends Casa{
 		Tabuleiro.getCasas().get(posiçao).remJogador(jogador);
 		jogador.setPosition(jogador.getPosition() + 3);
 		Tabuleiro.getCasas().get(jogador.getPosition()).addJogador(jogador);
+	}
+	
+	public String toString() {
+		return super.toString(strColor);
 	}
 
 }
