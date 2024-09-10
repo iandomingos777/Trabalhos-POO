@@ -48,29 +48,31 @@ public class Tabuleiro {
 		int sum = jogador.getSomaDados();
 		for (int i = 0; i < sum; i++) {
 			mover(jogador);
-			if(jogador.getPosition() == numCasas) break;
+			if (jogador.getPosition() == numCasas)
+				break;
 		}
 		jogador.incrementarNumJogadas();
 	}
-	
+
 	public void debugar(Jogador jogador) {
 		int sum = -1;
-		while(sum < 0 || jogador.getPosition() + sum > numCasas) {
-	    System.out.println("Andar quantas casas?");
-	    sum = Jogo.scanner.nextInt();
+		while (sum < 0 || jogador.getPosition() + sum > numCasas) {
+			System.out.println("Andar quantas casas?");
+			sum = Jogo.scanner.nextInt();
 		}
-	    for(int i = 0; i < sum; i++) {
-	        mover(jogador);
-	        if(jogador.getPosition() == numCasas) break;
-	    }
-	    jogador.incrementarNumJogadas();
+		for (int i = 0; i < sum; i++) {
+			mover(jogador);
+			if (jogador.getPosition() == numCasas)
+				break;
+		}
+		jogador.incrementarNumJogadas();
 	}
-	
+
 	public void jogar(Jogador jogador) {
 		int opcao = 0;
-		while(opcao != 1 && opcao != 2) {
-		System.out.println("1 - Jogar dados\n2 - Debugar");
-		opcao = Jogo.scanner.nextInt();
+		while (opcao != 1 && opcao != 2) {
+			System.out.println("1 - Jogar dados.\n2 - Debugar.");
+			opcao = Jogo.scanner.nextInt();
 		}
 		if (opcao == 1) {
 			roolDiceAndmoveInSquare(jogador);
@@ -81,88 +83,88 @@ public class Tabuleiro {
 			jogar(jogador);
 		}
 	}
-	
+
 	public void exibirInfo(Jogador jogador) {
-		for(Jogador j : jogadores) {
+		for (Jogador j : jogadores) {
 			j.exibirInfo();
 		}
 		System.out.println("\nÉ a vez do jogador " + jogador.getColor() + ": " + jogador.tipoJogador());
 	}
-	
+
 	public boolean verificarVitoria() {
-		if(casas.get(casas.size()-1).getJogadores().size() != 0) {
-			String vencedor = casas.get(casas.size()-1).getJogadores().get(0).getColor();
+		if (casas.get(casas.size() - 1).getJogadores().size() != 0) {
+			String vencedor = casas.get(casas.size() - 1).getJogadores().get(0).getColor();
 			System.out.println("Jogador " + vencedor + " venceu!");
-			for(Jogador j : jogadores) {
-				System.out.println("Jogador " + j.getColor() + " terminou na casa " + j.getPosition() + " e "
-						+ "fez " + j.getNumJogadas() + " jogadas.");
+			for (Jogador j : jogadores) {
+				System.out.println("Jogador " + j.getColor() + " terminou na casa " + j.getPosition() + " e " + "fez "
+						+ j.getNumJogadas() + " jogadas.");
 			}
 			return true;
 		}
 		return false;
 	}
-	
+
 	public void aplicarRegraDaCasa(Casa casa, Jogador jogador) {
 		casa.aplicarRegra(jogador);
-		if(casa instanceof CasaReversa || casa instanceof CasaSorte) System.out.println(this);
+		if (casa instanceof CasaReversa || casa instanceof CasaSorte)
+			System.out.println(this);
 	}
-	
+
 	public String toString() {
-		int num = numCasas/4;
+		int num = numCasas / 4;
 		StringBuilder sb = new StringBuilder();
-    for(int i = 0; i <= num; i++) {
-    	int alg = String.valueOf(Math.abs(i)).length();
-    	if(alg == 1) {
-    	sb.append("   " + i + "    ");
-    	}
-    	else {
-    		sb.append("   " + i + "   ");
-    	}
-    }
-    sb.append("\n");
+		for (int i = 0; i <= num; i++) {
+			int alg = String.valueOf(Math.abs(i)).length();
+			if (alg == 1) {
+				sb.append("   " + i + "    ");
+			} else {
+				sb.append("   " + i + "   ");
+			}
+		}
+		sb.append("\n");
 		sb.append(casas.get(0));
-		for(int i = 1; i <= num; i++) {
+		for (int i = 1; i <= num; i++) {
 			sb.append(casas.get(i));
 		}
 		sb.append("\n");
-		for(int i = 0; i < num; i++) {
-			for(int j = 0; j < 6; j++) {
+		for (int i = 0; i < num; i++) {
+			for (int j = 0; j < 6; j++) {
 				sb.append(" ");
 			}
-			sb.append(4*num - i);
-			sb.append(casas.get(4*num - i));
-			for(int j = 0; j < (num - 2)*8; j++) {
+			sb.append(4 * num - i);
+			sb.append(casas.get(4 * num - i));
+			for (int j = 0; j < (num - 2) * 8; j++) {
 				sb.append(" ");
 			}
 			sb.append(casas.get(num + i + 1));
-			sb.append(num + i +1);
+			sb.append(num + i + 1);
 			sb.append("\n");
 		}
-		for(int j = 0; j < 8; j++) {
+		for (int j = 0; j < 8; j++) {
 			sb.append(" ");
 		}
-		for(int i = 0; i < num; i++) {
-			sb.append(casas.get(3*num - i));
+		for (int i = 0; i < num; i++) {
+			sb.append(casas.get(3 * num - i));
 		}
 		sb.append("\n");
-		for(int j = 0; j < 8; j++) {
+		for (int j = 0; j < 8; j++) {
 			sb.append(" ");
 		}
-		for(int i = 0; i < num; i++) {
-			sb.append("   " + (3*num - i) + "   ");
+		for (int i = 0; i < num; i++) {
+			sb.append("   " + (3 * num - i) + "   ");
 		}
 		return sb.toString();
 	}
-	
-    public static void setUltimoNoTabuleiro() {
-        Jogador ultimoNoTabuleiro = null;
-        for (Jogador jogador : jogadores) {
-            if (ultimoNoTabuleiro == null || jogador.getPosition() < ultimoNoTabuleiro.getPosition()) {
-                ultimoNoTabuleiro = jogador;
-            }
-        }
-        ultimo = ultimoNoTabuleiro;
-    }
+
+	public static void setUltimoNoTabuleiro() {
+		Jogador ultimoNoTabuleiro = null;
+		for (Jogador jogador : jogadores) {
+			if (ultimoNoTabuleiro == null || jogador.getPosition() < ultimoNoTabuleiro.getPosition()) {
+				ultimoNoTabuleiro = jogador;
+			}
+		}
+		ultimo = ultimoNoTabuleiro;
+	}
 
 	public static ArrayList<Casa> getCasas() {
 		return casas;
@@ -171,7 +173,7 @@ public class Tabuleiro {
 	public static ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
-	
+
 	public static Jogador getUltimo() {
 		return ultimo;
 	}
@@ -182,7 +184,7 @@ public class Tabuleiro {
 
 	public static void setNumCasas(int numCasas) {
 		Tabuleiro.numCasas = numCasas;
-		casas= new ArrayList<Casa>(numCasas + 1);
+		casas = new ArrayList<Casa>(numCasas + 1);
 	}
-	
+
 }

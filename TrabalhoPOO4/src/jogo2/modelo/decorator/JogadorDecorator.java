@@ -19,11 +19,11 @@ public class JogadorDecorator extends Jogador {
 	public String tipoJogador() {
 		return jogadorDecorado.tipoJogador();
 	}
-	
+
 	public int getMultiplicador() {
 		return jogadorDecorado.getMultiplicador() + multiplicador;
 	}
-	
+
 	public int getSomaDados() {
 		return jogadorDecorado.getSomaDados();
 	}

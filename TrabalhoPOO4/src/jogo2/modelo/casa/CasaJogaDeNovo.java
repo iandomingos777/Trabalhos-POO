@@ -2,8 +2,8 @@ package jogo2.modelo.casa;
 
 import jogo2.modelo.jogador.Jogador;
 
-public class CasaJogaDeNovo extends Casa{
-	
+public class CasaJogaDeNovo extends Casa {
+
 	String strColor;
 
 	public CasaJogaDeNovo(int posiçao) {
@@ -14,9 +14,9 @@ public class CasaJogaDeNovo extends Casa{
 	@Override
 	public void aplicarRegra(Jogador jogador) {
 		System.out.println("Jogador deve jogar novamente.");
-     	jogador.setJogaDenovo(true);
+		jogador.setJogaDenovo(true);
 	}
-	
+
 	public String toString() {
 		return super.toString(strColor);
 	}

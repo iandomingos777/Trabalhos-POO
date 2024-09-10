@@ -10,9 +10,9 @@ public class JogadorFactory {
 		switch (opcao) {
 		case 1:
 			return new JogadorAzarado(id);
-		case 2: 
+		case 2:
 			return new JogadorNormal(id);
-		case 3: 
+		case 3:
 			return new JogadorSortudo(id);
 		default:
 			return null;

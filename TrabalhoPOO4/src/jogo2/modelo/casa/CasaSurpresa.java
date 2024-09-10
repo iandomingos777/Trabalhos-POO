@@ -9,13 +9,14 @@ import jogo2.modelo.jogador.JogadorNormal;
 import jogo2.modelo.jogador.JogadorSortudo;
 
 public class CasaSurpresa extends Casa {
-	
+
 	String strColor;
 
 	public CasaSurpresa(int posiçao) {
 		super(posiçao);
 		strColor = "\u001B[36m"; // ciano
 	}
+
 	@Override
 	public void aplicarRegra(Jogador jogador) {
 		Tabuleiro.getCasas().get(posiçao).remJogador(jogador);
@@ -24,54 +25,52 @@ public class CasaSurpresa extends Casa {
 		int temp = random.nextInt(2) + 1;
 
 		Jogador novoJogador = null;
-		
+
 		if (jogador instanceof JogadorSortudo) {
 			switch (temp) {
-				case 1:
-					novoJogador = new JogadorAzarado(id);
-					System.out.println(jogador.getColor() + " virou AZARADO!");
-					break;
-				case 2:
-					novoJogador = new JogadorNormal(id);
-					System.out.println(jogador.getColor() + " virou NORMAL!");
-					break;
+			case 1:
+				novoJogador = new JogadorAzarado(id);
+				System.out.println(jogador.getColor() + " virou AZARADO!");
+				break;
+			case 2:
+				novoJogador = new JogadorNormal(id);
+				System.out.println(jogador.getColor() + " virou NORMAL!");
+				break;
 			}
 		} else if (jogador instanceof JogadorNormal) {
 			switch (temp) {
-				case 1:
-					novoJogador = new JogadorAzarado(id);
-					System.out.println(jogador.getColor() + " virou AZARADO!");
-					break;
-				case 2:
-					novoJogador = new JogadorSortudo(id);
-					System.out.println(jogador.getColor() + " virou SORTUDO!");
-					break;
+			case 1:
+				novoJogador = new JogadorAzarado(id);
+				System.out.println(jogador.getColor() + " virou AZARADO!");
+				break;
+			case 2:
+				novoJogador = new JogadorSortudo(id);
+				System.out.println(jogador.getColor() + " virou SORTUDO!");
+				break;
 			}
 		} else {
 			switch (temp) {
-				case 1:
-					novoJogador = new JogadorNormal(id);
-					System.out.println(jogador.getColor() + " virou NORMAL!");
-					break;
-				case 2:
-					novoJogador = new JogadorSortudo(id);
-					System.out.println(jogador.getColor() + " virou SORTUDO!");
-					break;
+			case 1:
+				novoJogador = new JogadorNormal(id);
+				System.out.println(jogador.getColor() + " virou NORMAL!");
+				break;
+			case 2:
+				novoJogador = new JogadorSortudo(id);
+				System.out.println(jogador.getColor() + " virou SORTUDO!");
+				break;
 			}
 		}
-		if(novoJogador != null) {
+		if (novoJogador != null) {
 			novoJogador.receberAtributos(jogador, novoJogador);
 			jogador = novoJogador;
 			Tabuleiro.getCasas().get(posiçao).addJogador(jogador);
 			Tabuleiro.getJogadores().set(jogador.getId() - 1, jogador);
 		}
-        
+
 	}
-	
+
 	public String toString() {
 		return super.toString(strColor);
 	}
-
-
 
 }
