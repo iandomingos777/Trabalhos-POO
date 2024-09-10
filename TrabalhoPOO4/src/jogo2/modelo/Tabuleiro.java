@@ -44,6 +44,12 @@ public class Tabuleiro {
 
 	public void roolDiceAndmoveInSquare(Jogador jogador) {
 		jogador.jogarDados();
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println();
 		int sum = jogador.getSomaDados();
 		for (int i = 0; i < sum; i++) {
