@@ -145,7 +145,7 @@ public abstract class Jogador {
 		destination.setSomaDados(source.getSomaDados());
 		destination.setNumMoedas(source.getNumMoedas());
 		destination.setRodadasConsecutivasPreso(source.getRodadasConsecutivasPreso());
-		destination.setJogaDenovo(source.isJogaDenovo());
+		destination.setJogaDenovo(false);
 		destination.setNumJogadas(source.getNumJogadas());
 	}
 

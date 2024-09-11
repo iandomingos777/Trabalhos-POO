@@ -8,6 +8,7 @@ public class JogadorDecorator extends Jogador {
 	public JogadorDecorator(Jogador jogadorDecorado) {
 		super(jogadorDecorado.getId());
 		this.jogadorDecorado = jogadorDecorado;
+		
 	}
 
 	@Override
