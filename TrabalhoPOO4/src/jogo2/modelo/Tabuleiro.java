@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import jogo2.modelo.casa.Casa;
 import jogo2.modelo.casa.CasaReversa;
-import jogo2.modelo.casa.CasaSorte;
 import jogo2.modelo.jogador.Jogador;
 
 public class Tabuleiro {
@@ -66,6 +65,9 @@ public class Tabuleiro {
 			System.out.println("Andar quantas casas?");
 			sum = Jogo.scanner.nextInt();
 		}
+		if(sum == 0) {
+			System.out.println(this + "\nJogador não se moveu.");
+		}
 		for (int i = 0; i < sum; i++) {
 			mover(jogador);
 			if (jogador.getPosition() == numCasas)
@@ -112,7 +114,7 @@ public class Tabuleiro {
 
 	public void aplicarRegraDaCasa(Casa casa, Jogador jogador) {
 		casa.aplicarRegra(jogador);
-		if (casa instanceof CasaReversa || casa instanceof CasaSorte)
+		if (casa instanceof CasaReversa)
 			System.out.println(this);
 	}
 

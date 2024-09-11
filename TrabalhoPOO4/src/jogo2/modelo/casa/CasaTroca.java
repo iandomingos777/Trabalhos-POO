@@ -28,18 +28,20 @@ public class CasaTroca extends Casa {
 
 		System.out.print("Deseja trocar suas moedas por ");
 		if (jogador instanceof JogadorComMoletom) {
-			System.out.println("óculos por 7 moedas");
+			System.out.println("óculos por 7 moedas?");
 			opc = 3;
 		} else if (jogador instanceof JogadorComBoné) {
-			System.out.println("moletom por 4 moedas");
+			System.out.println("moletom por 4 moedas?");
 			opc = 2;
 		} else {
-			System.out.println("boné por 1 moeda");
+			System.out.println("boné por 1 moeda?");
 			opc = 1;
 		}
-		System.out.println("1 - Sim.\n2 - Não");
-		int escolha;
-		escolha = Jogo.scanner.nextInt();
+		int escolha = 0;
+		do {
+			System.out.println("1 - Sim.\n2 - Não");
+			escolha = Jogo.scanner.nextInt();
+		} while (!(escolha == 1 || escolha == 2));
 
 		if (escolha == 2)
 			return;

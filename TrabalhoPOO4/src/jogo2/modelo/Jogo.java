@@ -83,7 +83,7 @@ public class Jogo {
 				opcaoCasa = scanner.nextInt();
 			}
 			int posicaoCasa = -1;
-			while (posicaoCasa < 1 || posicaoCasa > numCasas) {
+			while (posicaoCasa < 1 || posicaoCasa >= numCasas) {
 				System.out.println("Diga a posição da casa especial número " + i);
 				posicaoCasa = scanner.nextInt();
 			}
