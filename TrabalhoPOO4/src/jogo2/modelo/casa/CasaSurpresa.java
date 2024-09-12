@@ -3,6 +3,10 @@ package jogo2.modelo.casa;
 import java.util.Random;
 
 import jogo2.modelo.Tabuleiro;
+import jogo2.modelo.decorator.JogadorComBoné;
+import jogo2.modelo.decorator.JogadorComMoletom;
+import jogo2.modelo.decorator.JogadorComOculos;
+import jogo2.modelo.decorator.JogadorDecorator;
 import jogo2.modelo.jogador.Jogador;
 import jogo2.modelo.jogador.JogadorAzarado;
 import jogo2.modelo.jogador.JogadorNormal;
@@ -60,6 +64,19 @@ public class CasaSurpresa extends Casa {
 				break;
 			}
 		}
+		
+		if(jogador instanceof JogadorDecorator) {
+			if(jogador instanceof JogadorComBoné) {
+				novoJogador = new JogadorComBoné(novoJogador);
+			}
+			else if(jogador instanceof JogadorComMoletom) {
+				novoJogador = new JogadorComMoletom(novoJogador);
+			}
+			else if(jogador instanceof JogadorComOculos) {
+				novoJogador = new JogadorComOculos(novoJogador);
+			}
+		}
+		
 		if (novoJogador != null) {
 			novoJogador.receberAtributos(jogador, novoJogador);
 			jogador = novoJogador;
