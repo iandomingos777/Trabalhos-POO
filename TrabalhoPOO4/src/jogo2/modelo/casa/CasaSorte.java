@@ -24,6 +24,8 @@ public class CasaSorte extends Casa {
 		System.out.println("Jogador anda 3 casas.");
 		for (int i = 0; i < 3; i++) {
 			Tabuleiro.instancia.mover(jogador);
+			if(jogador.getPosition() == Tabuleiro.getNumCasas()) 
+				break;
 		}
 
 		Tabuleiro.instancia.aplicarRegraDaCasa(Tabuleiro.getCasas().get(jogador.getPosition()), jogador);
