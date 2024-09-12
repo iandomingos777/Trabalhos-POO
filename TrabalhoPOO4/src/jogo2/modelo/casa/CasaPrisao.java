@@ -25,6 +25,7 @@ public class CasaPrisao extends Casa {
 				if (jogador.pagarFianca()) {
 					System.out.println(jogador.getColor() + " foi liberado.");
 					Tabuleiro.instancia.jogar(jogador);
+					Tabuleiro.instancia.aplicarRegraDaCasa(Tabuleiro.getCasas().get(jogador.getPosition()), jogador);
 				} else {
 					System.out.println("Número de moedas insuficientes.");
 				}
