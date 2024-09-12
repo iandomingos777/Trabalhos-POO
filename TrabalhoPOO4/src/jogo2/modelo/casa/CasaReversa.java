@@ -24,6 +24,10 @@ public class CasaReversa extends Casa {
 
 		for (Jogador jog : Tabuleiro.getJogadores()) {
 			if (jog.getId() == Tabuleiro.getUltimo().getId()) {
+				if (jog.isArrested()) {
+					jog.setArrested(false);
+					jog.setRodadasConsecutivasPreso(0);
+				}
 				Tabuleiro.getCasas().get(posicaoDoUltimo).remJogador(jog);
 				jog.setPosition(jogador.getPosition());
 				Tabuleiro.getCasas().get(jogador.getPosition()).addJogador(jog);
@@ -33,7 +37,7 @@ public class CasaReversa extends Casa {
 
 		Tabuleiro.getCasas().get(jogador.getPosition()).remJogador(jogador);
 		jogador.setPosition(posicaoDoUltimo);
-		if(jogador.isArrested()) {
+		if (jogador.isArrested()) {
 			jogador.setArrested(false);
 			jogador.setRodadasConsecutivasPreso(0);
 		}
