@@ -19,7 +19,7 @@ public class CasaAzar extends Casa {
 			return;
 		}
 		System.out.println("Jogador perde 3 moedas.");
-		if (jogador.getNumJogadas() < 3) {
+		if (jogador.getNumMoedas() <= 3) {
 			jogador.setNumMoedas(0);
 			return;
 		}
