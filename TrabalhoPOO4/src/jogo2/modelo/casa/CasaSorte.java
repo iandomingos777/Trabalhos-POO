@@ -2,6 +2,7 @@ package jogo2.modelo.casa;
 
 import jogo2.modelo.Tabuleiro;
 import jogo2.modelo.jogador.Jogador;
+import jogo2.modelo.jogador.JogadorAzarado;
 
 public class CasaSorte extends Casa {
 
@@ -14,7 +15,13 @@ public class CasaSorte extends Casa {
 
 	@Override
 	public void aplicarRegra(Jogador jogador) {
-		System.out.println("Jogador anda 3 casas");
+		
+		if(jogador instanceof JogadorAzarado) {
+			System.out.println("Jogador é azarado, não pode andar 3 casas.");
+			return;
+		}
+		
+		System.out.println("Jogador anda 3 casas.");
 		for (int i = 0; i < 3; i++) {
 			Tabuleiro.instancia.mover(jogador);
 		}
