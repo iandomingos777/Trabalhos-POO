@@ -33,6 +33,10 @@ public class CasaReversa extends Casa {
 
 		Tabuleiro.getCasas().get(jogador.getPosition()).remJogador(jogador);
 		jogador.setPosition(posicaoDoUltimo);
+		if(jogador.isArrested()) {
+			jogador.setArrested(false);
+			jogador.setRodadasConsecutivasPreso(0);
+		}
 		Tabuleiro.getCasas().get(posicaoDoUltimo).addJogador(jogador);
 		System.out.println("Trocou de casa com o jogador mais atrás.\n");
 	}
