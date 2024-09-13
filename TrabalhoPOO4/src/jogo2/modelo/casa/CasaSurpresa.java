@@ -33,37 +33,36 @@ public class CasaSurpresa extends Casa {
 		if (jogador instanceof JogadorSortudo) {
 			switch (temp) {
 			case 1:
-				novoJogador = new JogadorAzarado(id);
+				novoJogador = JogadorFactory.criarJogador(1, id);
 				System.out.println(jogador.getColor() + " virou AZARADO!");
 				break;
 			case 2:
-				novoJogador = new JogadorNormal(id);
+				novoJogador = JogadorFactory.criarJogador(2, id);
 				System.out.println(jogador.getColor() + " virou NORMAL!");
 				break;
 			}
 		} else if (jogador instanceof JogadorNormal) {
 			switch (temp) {
 			case 1:
-				novoJogador = new JogadorAzarado(id);
+				novoJogador = JogadorFactory.criarJogador(1, id);
 				System.out.println(jogador.getColor() + " virou AZARADO!");
 				break;
 			case 2:
-				novoJogador = new JogadorSortudo(id);
+				novoJogador = JogadorFactory.criarJogador(3, id);
 				System.out.println(jogador.getColor() + " virou SORTUDO!");
 				break;
 			}
 		} else {
 			switch (temp) {
 			case 1:
-				novoJogador = new JogadorNormal(id);
+				novoJogador = JogadorFactory.criarJogador(2, id);
 				System.out.println(jogador.getColor() + " virou NORMAL!");
 				break;
 			case 2:
-				novoJogador = new JogadorSortudo(id);
+				novoJogador = JogadorFactory.criarJogador(3, id);
 				System.out.println(jogador.getColor() + " virou SORTUDO!");
 				break;
 			}
-		}
 		
 		if(jogador instanceof JogadorDecorator) {
 			if(jogador instanceof JogadorComBoné) {
