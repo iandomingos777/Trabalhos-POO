@@ -9,6 +9,7 @@ import jogo2.modelo.decorator.JogadorComOculos;
 import jogo2.modelo.decorator.JogadorDecorator;
 import jogo2.modelo.factory.JogadorFactory;
 import jogo2.modelo.jogador.Jogador;
+import jogo2.modelo.jogador.JogadorAzarado;
 import jogo2.modelo.jogador.JogadorNormal;
 import jogo2.modelo.jogador.JogadorSortudo;
 
@@ -30,7 +31,7 @@ public class CasaSurpresa extends Casa {
 
         Jogador novoJogador = null;
 
-        if (jogador instanceof JogadorSortudo) {
+        if (jogador instanceof JogadorSortudo || (jogador instanceof JogadorDecorator && ((JogadorDecorator) jogador).getJogadorDecorado() instanceof JogadorSortudo)) {
             switch (temp) {
                 case 1:
                     novoJogador = JogadorFactory.criarJogador(1, id);
@@ -41,8 +42,8 @@ public class CasaSurpresa extends Casa {
                     System.out.println(jogador.getColor() + " virou NORMAL!");
                     break;
             }
-        } else if (jogador instanceof JogadorNormal) {
-            switch (temp) {
+        } else if (jogador instanceof JogadorNormal  || (jogador instanceof JogadorDecorator && ((JogadorDecorator) jogador).getJogadorDecorado() instanceof JogadorNormal)) {
+        	switch (temp) {
                 case 1:
                     novoJogador = JogadorFactory.criarJogador(1, id);
                     System.out.println(jogador.getColor() + " virou AZARADO!");
@@ -52,8 +53,8 @@ public class CasaSurpresa extends Casa {
                     System.out.println(jogador.getColor() + " virou SORTUDO!");
                     break;
             }
-        } else {
-            switch (temp) {
+        } else if (jogador instanceof JogadorAzarado  || (jogador instanceof JogadorDecorator && ((JogadorDecorator) jogador).getJogadorDecorado() instanceof JogadorAzarado)) {
+        	switch (temp) {
                 case 1:
                     novoJogador = JogadorFactory.criarJogador(2, id);
                     System.out.println(jogador.getColor() + " virou NORMAL!");

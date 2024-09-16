@@ -27,4 +27,8 @@ public class JogadorDecorator extends Jogador {
 	public int getSomaDados() {
 		return jogadorDecorado.getSomaDados();
 	}
+	
+	public Jogador getJogadorDecorado() {
+		return jogadorDecorado;
+	}
 }
